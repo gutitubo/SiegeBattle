@@ -1,0 +1,27 @@
+name: SiegeBattle
+main: Siege.SiegeBattleMain
+version: 0.0.1
+api-version: 1.14
+commands:
+   sb:
+      description: SiegeBattle basic commands.
+      usage: /sb <something>
+      permission: SoegeBattle.sb
+      permission-message: Banana.
+   start:
+      description: SiegeBattle basic commands.
+      usage: /start
+      permission: SoegeBattle.sb
+      permission-message: Banana.
+   recall:
+      description: SiegeBattle basic commands.
+      usage: /recall
+      aliases: r
+      permission: SoegeBattle.sb
+      permission-message: Banana. 
+   r:
+      description: SiegeBattle basic commands.
+      usage: /r
+      aliases: r
+      permission: SoegeBattle.sb
+      permission-message: Banana. 
