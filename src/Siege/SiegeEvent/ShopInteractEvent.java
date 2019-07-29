@@ -22,7 +22,7 @@ public class ShopInteractEvent implements Listener{
 		if (isSign(b)) {
 			Sign sign = (Sign) b.getState();
 			if (sign.getLine(2).contains(SignPlaceEvent.normalshopname)) { //DARKNESS SHOP
-				p.openInventory(NormalShop.getInventory());
+				p.openInventory(NormalShop.getInventory("RED"));
 			}
 			if (sign.getLine(2).contains(SignPlaceEvent.expshopname)) { //EXP SHOP
 				p.openInventory(ExpShop.getInventory());
