@@ -1,10 +1,12 @@
 package Lib;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -12,6 +14,34 @@ public class ItemFactory {
 
 	private ItemFactory() {
 
+	}
+
+	public static ItemStack createItem(Material material, int amount) {
+		ItemStack item = new ItemStack(material, amount);
+		return item;
+	}
+
+	public static ItemStack createItem(Material material, int amount, String itemName) {
+		ItemStack item = createItem(material, amount);
+		ItemMeta itemMeta = item.getItemMeta();
+		itemMeta.setDisplayName(itemName);
+		item.setItemMeta(itemMeta);
+		return item;
+	}
+
+	public static ItemStack createItem(Material material, int amount, String itemName, String... itemLore) {
+		ItemStack item = createItem(material, amount, itemName);
+		ItemMeta itemMeta = item.getItemMeta();
+		List<String> loreList = Arrays.asList(itemLore);
+		itemMeta.setLore(loreList);
+		item.setItemMeta(itemMeta);
+		return item;
+	}
+
+	public static ItemStack createItem(Material material, int amount, String itemName, Enchantment enchant, int enchLv, String... itemLore) {
+		ItemStack item = createItem(material, amount, itemName, itemLore);
+		item.addEnchantment(enchant, enchLv);
+		return item;
 	}
 
 	public static ItemStack getGambleIcon () {
@@ -72,17 +102,6 @@ public class ItemFactory {
 		return item;
 	}
 
-	public static ItemStack getEnchantedShears() {
-		ItemStack item = new ItemStack(Material.SHEARS);
-		ItemMeta meta = item.getItemMeta();
-		meta.setDisplayName(ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + "SHARES +2");
-		List<String> lore = new ArrayList<String>();
-		lore.add("めっちゃ早いハサミ");
-		meta.setLore(lore);
-		item.setItemMeta(meta);
-		return item;
-	}
-
 	public static ItemStack getGoldIngots() {
 		ItemStack item = new ItemStack(Material.GOLD_INGOT, 3);
 		ItemMeta meta = item.getItemMeta();
@@ -117,13 +136,27 @@ public class ItemFactory {
 	}
 
 	public static ItemStack getShopArrow() {
-		ItemStack item = new ItemStack(Material.ARROW);
-		ItemMeta meta = item.getItemMeta();
-		meta.setDisplayName(ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + "矢");
-		List<String> lore = new ArrayList<String>();
-		lore.add("これがないと始まらない");
-		meta.setLore(lore);
-		item.setItemMeta(meta);
+		ItemStack item = createItem(Material.ARROW,
+				1,
+				ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + "矢",
+				"これがないと始まらない");
+//		ItemStack item = new ItemStack(Material.ARROW);
+//		ItemMeta meta = item.getItemMeta();
+//		meta.setDisplayName(ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + "矢");
+//		List<String> lore = new ArrayList<String>();
+//		lore.add("これがないと始まらない");
+//		meta.setLore(lore);
+//		item.setItemMeta(meta);
+		return item;
+	}
+
+	public static ItemStack getEnchantedShears() {
+		ItemStack item = createItem(Material.SHEARS,
+				1,
+				ChatColor.GOLD + "Shears +2",
+				Enchantment.DIG_SPEED,
+				2,
+				"めっちゃはやい");
 		return item;
 	}
 }

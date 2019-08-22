@@ -15,8 +15,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
+import Lib.SiegeItems;
 import Siege.SiegeShop.NormalShop;
 
 public class ShopItemInteractEvent implements Listener {
@@ -46,22 +46,84 @@ public class ShopItemInteractEvent implements Listener {
 			p.openInventory(NormalShop.getDiaInventory());
 		}
 		//ハサミの場合
-		if (clicked.getType().equals(Material.SHEARS)) {
-			ItemMeta meta = clicked.getItemMeta();
-			String itemName = meta.getDisplayName();
-			//エンチャハサミと名前が同じだったら
-			// - NameListに含まれていたら買えるようにする。TODO
-			if (itemName.equals(getEnchantedShears().getItemMeta().getDisplayName())) {
-				//買えた場合
-				if (purchaseItem(p, REDSHOP_SHEARS_COST, REDSTONE_BLOCK)) {
-					//アイテムを渡す処理
+		// - NameListに含まれていたら買えるようにする。TODO
+		if (compareItem(clicked, Material.SHEARS, getEnchantedShears().getItemMeta().getDisplayName())) {
+			//買えた場合
+			if (purchaseItem(p, REDSHOP_SHEARS_COST, REDSTONE_BLOCK)) {
+				//アイテムを渡す処理
+				giveItem(p, SiegeItems.ENCHANTED_SHEARS.toItemStack());
 				//買えなかった場合
-				} else {
-					//だめなときの処理
-					youCantBuy(p);
-				}
+			} else {
+				//だめなときの処理
+				youCantBuy(p);
 			}
 		}
+		//金インゴットの場合
+		else if (compareItem(clicked, Material.GOLD_INGOT, getGoldIngots().getItemMeta().getDisplayName())) {
+			//買えた場合
+			if (purchaseItem(p, REDSHOP_GOLDINGOT_COST, REDSTONE_BLOCK)) {
+				//アイテムを渡す処理
+				giveItem(p, new ItemStack(Material.GOLD_INGOT, REDSHOP_GOLDINGOT_AMOUNT));
+				//買えなかった場合
+			} else {
+				//だめなときの処理
+				youCantBuy(p);
+			}
+		}
+
+		//蜘蛛の巣の場合
+		else if (compareItem(clicked, Material.COBWEB, getWebItem().getItemMeta().getDisplayName())) {
+			//買えた場合
+			if (purchaseItem(p, REDSHOP_COWWEB_COST, REDSTONE_BLOCK)) {
+				//アイテムを渡す処理
+				giveItem(p, new ItemStack(Material.COBWEB, REDSHOP_COWWEB_AMOUNT));
+				//買えなかった場合
+			} else {
+				//だめなときの処理
+				youCantBuy(p);
+			}
+		}
+
+		//弓の場合
+		else if (compareItem(clicked, Material.BOW, getShopBow().getItemMeta().getDisplayName())) {
+			//買えた場合
+			if (purchaseItem(p, LAPSHOP_BOW_COST, LAPIS_BLOCK)) {
+				//アイテムを渡す処理
+				giveItem(p, new ItemStack(Material.BOW, 1));
+				//買えなかった場合
+			} else {
+				//だめなときの処理
+				youCantBuy(p);
+			}
+		}
+
+		//弓の場合
+		else if (compareItem(clicked, Material.ARROW, getShopArrow().getItemMeta().getDisplayName())) {
+			//買えた場合
+			if (purchaseItem(p, LAPSHOP_ARROW_COST, LAPIS_BLOCK)) {
+				//アイテムを渡す処理
+				giveItem(p, new ItemStack(Material.BOW, LAPSHOP_ARROW_AMOUNT));
+				//買えなかった場合
+			} else {
+				//だめなときの処理
+				youCantBuy(p);
+			}
+		}
+
+		else {
+			//何も当てはまらないとき
+		}
+	}
+
+	private static boolean compareItem(ItemStack item, Material material, String displayName) {
+		boolean bool = true;
+		if (!item.getType().equals(material)) {
+			bool = false;
+		}
+		if (!item.getItemMeta().getDisplayName().equalsIgnoreCase(displayName)) {
+			bool = false;
+		}
+		return bool;
 	}
 
 	private static boolean purchaseItem(Player p, int cost, Material mat) {
@@ -98,7 +160,7 @@ public class ShopItemInteractEvent implements Listener {
 						flag = true;
 						break;
 					}
-				//足りない場合
+					//足りない場合
 				} else {
 					//コストを引いてアイテムをクリアする
 					cost -= amount;

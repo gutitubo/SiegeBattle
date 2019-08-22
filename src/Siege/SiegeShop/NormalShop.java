@@ -37,6 +37,7 @@ public class NormalShop extends SiegeShop{
 		return inv;
 	}
 
+	//経験値ビン売ってもいいかも?
 	public static Inventory getRedInventory() {
 		Inventory inv = Bukkit.createInventory(null, 54, SHOP_NORMAL_TITLE);
 		SiegeLib.setInventoryFlame(inv, new ItemStack(Material.RED_STAINED_GLASS_PANE));
