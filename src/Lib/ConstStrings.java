@@ -17,5 +17,5 @@ public class ConstStrings {
 	public static final String SHOP_NORMAL_TITLE = ChatColor.GRAY + "Darkness Shop";
 
 	public static final String SHOP_MESSAGE_YOUCANTBUY = ChatColor.RED + "コストが不足しているため購入できません。";
-	public static final String SHOP_MESSAGE_BOUGHT_ITEM = ChatColor.GOLD + "を購入した。";
+	public static final String SHOP_MESSAGE_BOUGHT_ITEM = ChatColor.GRAY + "を購入した。";
 }

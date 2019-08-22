@@ -6,6 +6,7 @@ import static Lib.Parameters.*;
 import static org.bukkit.Material.*;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
@@ -30,10 +31,8 @@ public class ShopItemInteractEvent implements Listener {
 
 		InventoryView inv = p.getOpenInventory();
 		String iname = inv.getTitle();
-
-		if (!iname.equalsIgnoreCase(SHOP_NORMAL_NAME)) return;
+		if (!iname.equalsIgnoreCase(SHOP_NORMAL_TITLE)) return;
 		e.setCancelled(true);
-
 		ItemStack clicked = e.getCurrentItem();
 
 		if (clicked.getType().equals(getRedStoneShopIcon().getType())) {
@@ -102,7 +101,7 @@ public class ShopItemInteractEvent implements Listener {
 			//買えた場合
 			if (purchaseItem(p, LAPSHOP_ARROW_COST, LAPIS_BLOCK)) {
 				//アイテムを渡す処理
-				giveItem(p, new ItemStack(Material.BOW, LAPSHOP_ARROW_AMOUNT));
+				giveItem(p, new ItemStack(Material.ARROW, LAPSHOP_ARROW_AMOUNT));
 				//買えなかった場合
 			} else {
 				//だめなときの処理
@@ -135,7 +134,7 @@ public class ShopItemInteractEvent implements Listener {
 
 		//アイテムの個数をカウント
 		for (ItemStack item : inv.getContents()) {
-			if(item.getType().equals(mat)) {
+			if(item!=null && item.getType().equals(mat)) {
 				have += item.getAmount();
 			}
 		}
@@ -144,7 +143,7 @@ public class ShopItemInteractEvent implements Listener {
 		//コストの分だけインベントリからアイテムを引く
 		for (int i=0;i < inv.getSize(); i++) {
 			ItemStack cursor = inv.getItem(i);
-			if (cursor.getType().equals(mat)) {
+			if (cursor!=null && cursor.getType().equals(mat)) {
 				/* ここから持っている量に応じて引く */
 				int amount = cursor.getAmount();
 				//1ItemStackで事足りる場合
@@ -174,7 +173,9 @@ public class ShopItemInteractEvent implements Listener {
 	public static void giveItem(Player p, ItemStack item) {
 		Inventory inv = p.getInventory();
 		inv.addItem(item);
-		p.sendMessage(item.getItemMeta().getDisplayName() + SHOP_MESSAGE_BOUGHT_ITEM);
+		String name = item.getItemMeta().getDisplayName();
+		name = name.isEmpty() ? "アイテム" : name;
+		p.sendMessage(ChatColor.GRAY + "[" + name + ChatColor.GRAY + "] " + SHOP_MESSAGE_BOUGHT_ITEM);
 	}
 
 	public static void youCantBuy(Player p) {

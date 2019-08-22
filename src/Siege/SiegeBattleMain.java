@@ -33,6 +33,7 @@ import Siege.SiegeEvent.PumpkinBreakEvent;
 import Siege.SiegeEvent.Recall;
 import Siege.SiegeEvent.RespawnEvent;
 import Siege.SiegeEvent.ShearsDropEvent;
+import Siege.SiegeEvent.ShopItemInteractEvent;
 import Siege.SiegeEvent.ShopSignInteractEvent;
 import Siege.SiegeEvent.SignPlaceEvent;
 import Siege.SiegeEvent.SignTeleport;
@@ -166,6 +167,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new ShearsDropEvent(), this);
 		pm.registerEvents(new SignPlaceEvent(), this);
 		pm.registerEvents(new ShopSignInteractEvent(), this);
+		pm.registerEvents(new ShopItemInteractEvent(), this);
 		pm.registerEvents(new FallDamageEvent(), this);
 		pm.registerEvents(new GappleEatEvent(), this);
 	}
