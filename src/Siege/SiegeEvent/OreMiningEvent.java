@@ -1,5 +1,7 @@
 package Siege.SiegeEvent;
 
+import static Lib.Parameters.*;
+
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -11,13 +13,6 @@ import org.bukkit.inventory.ItemStack;
 
 public class OreMiningEvent implements Listener{
 	public OreMiningEvent () {}
-	
-	public static final int COAL_EXP = 3;
-	public static final int IRON_EXP = 10;
-	public static final int GOLD_EXP = 40;
-	public static final int DIAMOND_EXP = 100;
-	public static final int REDSTONE_EXP = 25;
-	public static final int LAPIS_EXP = 10;
 
 	@EventHandler
 	public void onMining(BlockBreakEvent e) {
@@ -34,9 +29,9 @@ public class OreMiningEvent implements Listener{
 		int exp = 0;
 		Material mat = null;
 		boolean flag = false; //鉱石だったら
-		
+
 		if (m.equals(Material.COAL_ORE)) {
-			if (hand.equals(Material.WOODEN_PICKAXE) || hand.equals(Material.STONE_PICKAXE) 
+			if (hand.equals(Material.WOODEN_PICKAXE) || hand.equals(Material.STONE_PICKAXE)
 					|| hand.equals(Material.IRON_PICKAXE) || hand.equals(Material.GOLDEN_PICKAXE)
 					|| hand.equals(Material.DIAMOND_PICKAXE)) {
 
@@ -91,7 +86,7 @@ public class OreMiningEvent implements Listener{
 		} else {
 			flag = true;
 		}
-		
+
 		if (!flag) {
 			p.getInventory().addItem(new ItemStack(mat, amount));
 			p.getWorld().playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 0.5F, 1F);

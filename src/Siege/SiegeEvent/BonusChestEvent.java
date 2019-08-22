@@ -1,5 +1,7 @@
 package Siege.SiegeEvent;
 
+import static Lib.Parameters.*;
+
 import java.util.Random;
 
 import org.bukkit.Material;
@@ -10,15 +12,15 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
 public class BonusChestEvent implements Listener{
-	
-	public static int chance = 100;
-	
+
+	public static int chance = BONUS_CHEST_CHANCE;
+
 	@EventHandler
 	public void onMining(BlockBreakEvent e) {
 		Player p = e.getPlayer();
 
 		Block b = e.getBlock();
-		
+
 		if (b.getType().equals(Material.STONE)) {
 			Random rnd = new Random();
 			int c = rnd.nextInt(chance);
