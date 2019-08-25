@@ -81,7 +81,7 @@ public class RuneInteractEvent implements Listener {
 			return;
 		}
 
-		if (clicked.getType().equals(Material.BARRIER)) {
+		if (clicked.getType().equals(Material.NETHER_STAR)) {
 			sp.clearRune();
 			p.openInventory(RuneInventory.getRuneInventory(sp));
 			return;
