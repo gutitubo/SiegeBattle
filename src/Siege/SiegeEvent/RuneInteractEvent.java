@@ -50,12 +50,11 @@ public class RuneInteractEvent implements Listener {
 		SiegePlayer sp = null;
 		if (Siege.SiegeBattleMain.siegeBattleMain.getGame() != null && Siege.SiegeBattleMain.siegeBattleMain.getGame().isSiegePlayer(p)) {
 			sp = Siege.SiegeBattleMain.siegeBattleMain.getGame().getSiegePlayer(p);
-			Bukkit.broadcastMessage("debug 1");
 		}
 		ItemStack clicked = e.getCurrentItem();
 		Material material = null;
-		if (clicked == null) return; else clicked.getType();
-		Bukkit.broadcastMessage("debug 2");
+		if (clicked == null) return; else material = clicked.getType();
+
 		if (flag == 1) {
 			if (material == Material.DIAMOND_SWORD) {
 				sp.setMainPath(RuneCategory.ATTACK);
@@ -67,7 +66,6 @@ public class RuneInteractEvent implements Listener {
 				sp.setMainPath(RuneCategory.COLLECT);
 			}
 			p.openInventory(RuneInventory.getRuneInventory(sp));
-			Bukkit.broadcastMessage("debug 3");
 			return;
 		} else if (flag == 2) {
 			if (material == Material.DIAMOND_SWORD) {
@@ -80,7 +78,6 @@ public class RuneInteractEvent implements Listener {
 				sp.setSubPath(RuneCategory.COLLECT);
 			}
 			p.openInventory(RuneInventory.getRuneInventory(sp));
-			Bukkit.broadcastMessage("debug 4");
 			return;
 		}
 
