@@ -210,7 +210,6 @@ public class ItemFactory {
 				1,
 				ChatColor.RED.toString() + ChatColor.BOLD.toString() + "選択済",
 				"メインパスとして選択済");
-		setSelected(item);
 		return item;
 	}
 }

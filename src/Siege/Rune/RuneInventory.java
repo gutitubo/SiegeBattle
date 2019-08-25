@@ -26,13 +26,13 @@ public class RuneInventory {
 			case ATTACK:
 				main = 2;
 				break;
-			case COLLECT:
+			case MAGIC:
 				main = 3;
 				break;
-			case MAGIC:
+			case SWIFT:
 				main = 4;
 				break;
-			case SWIFT:
+			case COLLECT:
 				main = 5;
 				break;
 			}

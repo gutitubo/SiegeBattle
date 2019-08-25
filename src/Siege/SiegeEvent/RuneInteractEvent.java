@@ -45,6 +45,7 @@ public class RuneInteractEvent implements Listener {
 		} else {
 			return;
 		}
+
 		e.setCancelled(true);
 		SiegePlayer sp = null;
 		if (Siege.SiegeBattleMain.siegeBattleMain.getGame() != null && Siege.SiegeBattleMain.siegeBattleMain.getGame().isSiegePlayer(p)) {
@@ -52,7 +53,7 @@ public class RuneInteractEvent implements Listener {
 		}
 		ItemStack clicked = e.getCurrentItem();
 		Material material = null;
-		if (clicked == null) return; else clicked.getType();
+		if (clicked == null) return; else material = clicked.getType();
 
 		if (flag == 1) {
 			if (material == Material.DIAMOND_SWORD) {
@@ -65,6 +66,7 @@ public class RuneInteractEvent implements Listener {
 				sp.setMainPath(RuneCategory.COLLECT);
 			}
 			p.openInventory(RuneInventory.getRuneInventory(sp));
+			return;
 		} else if (flag == 2) {
 			if (material == Material.DIAMOND_SWORD) {
 				sp.setSubPath(RuneCategory.ATTACK);
@@ -76,22 +78,25 @@ public class RuneInteractEvent implements Listener {
 				sp.setSubPath(RuneCategory.COLLECT);
 			}
 			p.openInventory(RuneInventory.getRuneInventory(sp));
+			return;
+		}
+
+		if (clicked.getType().equals(Material.NETHER_STAR)) {
+			sp.clearRune();
+			p.openInventory(RuneInventory.getRuneInventory(sp));
+			return;
 		}
 
 		Runes r = null;
 		Runes[] rs = sp.getCurrentRunes();
 		if (Runes.isRune(clicked)) {
 			r = Runes.getRune(clicked);
-		} else {
-			if (clicked.getType().equals(Material.BARRIER)) {
-				sp.clearRune();
-				p.openInventory(RuneInventory.getRuneInventory(sp));
-			}
 		}
 
 		if (r.getTier() == 1) {
 			rs[0] = r;
 			p.openInventory(RuneInventory.getRuneInventory(sp));
+			return;
 		} else if (r.getCategory() == sp.getMainPath()) {
 			/* メインパスだった場合 */
 			if (rs[1] == null) {
@@ -103,6 +108,7 @@ public class RuneInteractEvent implements Listener {
 				rs[2] = r;
 			}
 			p.openInventory(RuneInventory.getRuneInventory(sp));
+			return;
 		} else if (r.getCategory() == sp.getSubPath()){
 			/* サブパスだった場合 */
 			if (rs[3] == null) {
@@ -114,6 +120,7 @@ public class RuneInteractEvent implements Listener {
 				rs[4] = r;
 			}
 			p.openInventory(RuneInventory.getRuneInventory(sp));
+			return;
 		}
 	}
 }
