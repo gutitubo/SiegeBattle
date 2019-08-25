@@ -105,6 +105,9 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 
 			//任意のチームを創れるようにする
 			//ex) 先に赤ブロックに乗っていると赤チーム
+			if (sb.getTeam("RED") != null) {
+				sb.getTeam("RED").unregister();
+			}
 			Team redTeam = sb.registerNewTeam("RED");
 			redTeam.setPrefix(ChatColor.RED.toString());
 			redTeam.setCanSeeFriendlyInvisibles(true);
@@ -112,6 +115,9 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 			redTeam.setOption(Option.COLLISION_RULE, OptionStatus.NEVER);
 			redTeam.setOption(Option.NAME_TAG_VISIBILITY, OptionStatus.FOR_OTHER_TEAMS);
 
+			if (sb.getTeam("BLUE") != null) {
+				sb.getTeam("BLUE").unregister();
+			}
 			Team blueTeam = sb.registerNewTeam("BLUE");
 			blueTeam.setPrefix(ChatColor.BLUE.toString());
 			blueTeam.setCanSeeFriendlyInvisibles(true);
