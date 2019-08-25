@@ -65,6 +65,7 @@ public class RuneInteractEvent implements Listener {
 				sp.setMainPath(RuneCategory.COLLECT);
 			}
 			p.openInventory(RuneInventory.getRuneInventory(sp));
+			return;
 		} else if (flag == 2) {
 			if (material == Material.DIAMOND_SWORD) {
 				sp.setSubPath(RuneCategory.ATTACK);
@@ -76,6 +77,7 @@ public class RuneInteractEvent implements Listener {
 				sp.setSubPath(RuneCategory.COLLECT);
 			}
 			p.openInventory(RuneInventory.getRuneInventory(sp));
+			return;
 		}
 
 		Runes r = null;
@@ -86,12 +88,14 @@ public class RuneInteractEvent implements Listener {
 			if (clicked.getType().equals(Material.BARRIER)) {
 				sp.clearRune();
 				p.openInventory(RuneInventory.getRuneInventory(sp));
+				return;
 			}
 		}
 
 		if (r.getTier() == 1) {
 			rs[0] = r;
 			p.openInventory(RuneInventory.getRuneInventory(sp));
+			return;
 		} else if (r.getCategory() == sp.getMainPath()) {
 			/* メインパスだった場合 */
 			if (rs[1] == null) {
@@ -103,6 +107,7 @@ public class RuneInteractEvent implements Listener {
 				rs[2] = r;
 			}
 			p.openInventory(RuneInventory.getRuneInventory(sp));
+			return;
 		} else if (r.getCategory() == sp.getSubPath()){
 			/* サブパスだった場合 */
 			if (rs[3] == null) {
@@ -114,6 +119,7 @@ public class RuneInteractEvent implements Listener {
 				rs[4] = r;
 			}
 			p.openInventory(RuneInventory.getRuneInventory(sp));
+			return;
 		}
 	}
 }
