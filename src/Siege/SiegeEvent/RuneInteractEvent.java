@@ -26,8 +26,6 @@ public class RuneInteractEvent implements Listener {
 		Player p = human instanceof Player ? Bukkit.getPlayer(human.getName()) : null ;
 		if (p == null) { return; }
 
-		Bukkit.broadcastMessage("debug 1");
-
 		InventoryView inv = p.getOpenInventory();
 		String iname = inv.getTitle();
 
@@ -47,16 +45,17 @@ public class RuneInteractEvent implements Listener {
 		} else {
 			return;
 		}
-		Bukkit.broadcastMessage("debug 2");
+
 		e.setCancelled(true);
 		SiegePlayer sp = null;
 		if (Siege.SiegeBattleMain.siegeBattleMain.getGame() != null && Siege.SiegeBattleMain.siegeBattleMain.getGame().isSiegePlayer(p)) {
 			sp = Siege.SiegeBattleMain.siegeBattleMain.getGame().getSiegePlayer(p);
+			Bukkit.broadcastMessage("debug 1");
 		}
 		ItemStack clicked = e.getCurrentItem();
 		Material material = null;
 		if (clicked == null) return; else clicked.getType();
-		Bukkit.broadcastMessage("debug 3");
+		Bukkit.broadcastMessage("debug 2");
 		if (flag == 1) {
 			if (material == Material.DIAMOND_SWORD) {
 				sp.setMainPath(RuneCategory.ATTACK);
@@ -68,6 +67,7 @@ public class RuneInteractEvent implements Listener {
 				sp.setMainPath(RuneCategory.COLLECT);
 			}
 			p.openInventory(RuneInventory.getRuneInventory(sp));
+			Bukkit.broadcastMessage("debug 3");
 			return;
 		} else if (flag == 2) {
 			if (material == Material.DIAMOND_SWORD) {
@@ -80,9 +80,10 @@ public class RuneInteractEvent implements Listener {
 				sp.setSubPath(RuneCategory.COLLECT);
 			}
 			p.openInventory(RuneInventory.getRuneInventory(sp));
+			Bukkit.broadcastMessage("debug 4");
 			return;
 		}
-		Bukkit.broadcastMessage("debug 4");
+
 		Runes r = null;
 		Runes[] rs = sp.getCurrentRunes();
 		if (Runes.isRune(clicked)) {
@@ -94,7 +95,7 @@ public class RuneInteractEvent implements Listener {
 				return;
 			}
 		}
-		Bukkit.broadcastMessage("debug 5");
+
 		if (r.getTier() == 1) {
 			rs[0] = r;
 			p.openInventory(RuneInventory.getRuneInventory(sp));
