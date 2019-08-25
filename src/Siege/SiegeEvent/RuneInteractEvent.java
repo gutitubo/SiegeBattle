@@ -81,16 +81,16 @@ public class RuneInteractEvent implements Listener {
 			return;
 		}
 
+		if (clicked.getType().equals(Material.BARRIER)) {
+			sp.clearRune();
+			p.openInventory(RuneInventory.getRuneInventory(sp));
+			return;
+		}
+
 		Runes r = null;
 		Runes[] rs = sp.getCurrentRunes();
 		if (Runes.isRune(clicked)) {
 			r = Runes.getRune(clicked);
-		} else {
-			if (clicked.getType().equals(Material.BARRIER)) {
-				sp.clearRune();
-				p.openInventory(RuneInventory.getRuneInventory(sp));
-				return;
-			}
 		}
 
 		if (r.getTier() == 1) {
