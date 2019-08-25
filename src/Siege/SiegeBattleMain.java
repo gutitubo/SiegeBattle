@@ -32,6 +32,7 @@ import Siege.SiegeEvent.PlayerAttackWithHandEvent;
 import Siege.SiegeEvent.PumpkinBreakEvent;
 import Siege.SiegeEvent.Recall;
 import Siege.SiegeEvent.RespawnEvent;
+import Siege.SiegeEvent.RuneInteractEvent;
 import Siege.SiegeEvent.ShearsDropEvent;
 import Siege.SiegeEvent.ShopItemInteractEvent;
 import Siege.SiegeEvent.SignInteractEvent;
@@ -71,7 +72,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 
 	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
-		if(cmd.getName().equalsIgnoreCase("sb")){ 
+		if(cmd.getName().equalsIgnoreCase("sb")){
 			sender.sendMessage("いいよ");
 			return true;
 		}
@@ -85,10 +86,10 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 					}
 					return true;
 				}
-			} 
+			}
 			return false;
 		}
-		if(cmd.getName().equalsIgnoreCase("start")){ 
+		if(cmd.getName().equalsIgnoreCase("start")){
 			//チームつくんないといけない
 			ScoreboardManager sbm = Bukkit.getScoreboardManager();
 			Scoreboard sb = sbm.getMainScoreboard();
@@ -110,14 +111,14 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 			redTeam.setAllowFriendlyFire(false);
 			redTeam.setOption(Option.COLLISION_RULE, OptionStatus.NEVER);
 			redTeam.setOption(Option.NAME_TAG_VISIBILITY, OptionStatus.FOR_OTHER_TEAMS);
-			
+
 			Team blueTeam = sb.registerNewTeam("BLUE");
 			blueTeam.setPrefix(ChatColor.BLUE.toString());
 			blueTeam.setCanSeeFriendlyInvisibles(true);
 			blueTeam.setAllowFriendlyFire(false);
 			blueTeam.setOption(Option.COLLISION_RULE, OptionStatus.NEVER);
 			blueTeam.setOption(Option.NAME_TAG_VISIBILITY, OptionStatus.FOR_OTHER_TEAMS);
-			
+
 
 			int i = 0;
 			for (Player p : players) {
@@ -147,7 +148,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 
 			return true;
 		}
-		return false; 
+		return false;
 	}
 
 	public void eventRegist(PluginManager pm) {
@@ -170,8 +171,9 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new ShopItemInteractEvent(), this);
 		pm.registerEvents(new FallDamageEvent(), this);
 		pm.registerEvents(new GappleEatEvent(), this);
+		pm.registerEvents(new RuneInteractEvent(), this);
 	}
-	
+
 	public void recipeRegist() {
 		GappleRecipe.addRecipe();
 	}

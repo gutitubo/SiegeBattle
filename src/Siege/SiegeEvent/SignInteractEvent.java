@@ -34,7 +34,7 @@ public class SignInteractEvent implements Listener{
 			if (sign.getLine(2).contains(SHOP_EXP_PLANE)) { //EXP SHOP
 				p.openInventory(ExpShop.getInventory());
 			}
-			if (game != null && game.isSiegePlayer(p)) {
+			if (game != null && game.isSiegePlayer(p) && sign.getLine(2).contains(RUNE_SIGN_PLANE)) {
 				SiegePlayer sp = game.getSiegePlayer(p);
 				p.openInventory(RuneInventory.getRuneInventory(sp));
 			}
