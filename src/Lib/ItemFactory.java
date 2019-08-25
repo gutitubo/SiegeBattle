@@ -7,8 +7,11 @@ import java.util.List;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import Siege.Rune.RuneCategory;
 
 public class ItemFactory {
 
@@ -140,13 +143,13 @@ public class ItemFactory {
 				1,
 				ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + "矢",
 				"これがないと始まらない");
-//		ItemStack item = new ItemStack(Material.ARROW);
-//		ItemMeta meta = item.getItemMeta();
-//		meta.setDisplayName(ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + "矢");
-//		List<String> lore = new ArrayList<String>();
-//		lore.add("これがないと始まらない");
-//		meta.setLore(lore);
-//		item.setItemMeta(meta);
+		//		ItemStack item = new ItemStack(Material.ARROW);
+		//		ItemMeta meta = item.getItemMeta();
+		//		meta.setDisplayName(ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + "矢");
+		//		List<String> lore = new ArrayList<String>();
+		//		lore.add("これがないと始まらない");
+		//		meta.setLore(lore);
+		//		item.setItemMeta(meta);
 		return item;
 	}
 
@@ -157,6 +160,57 @@ public class ItemFactory {
 				Enchantment.DIG_SPEED,
 				2,
 				"めっちゃはやい");
+		return item;
+	}
+
+	public static ItemStack getResetRunes() {
+		ItemStack item = createItem(Material.NETHER_STAR,
+				1,
+				ChatColor.RED.toString() + ChatColor.BOLD.toString() + "RESET RUNE",
+				"ルーンをリセットする");
+		return item;
+	}
+
+	public static void setSelected(ItemStack item) {
+		item.addEnchantment(Enchantment.ARROW_INFINITE, 0);
+		ItemMeta meta = item.getItemMeta();
+		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_POTION_EFFECTS);
+		item.setItemMeta(meta);
+	}
+
+	public static ItemStack getRunePathIcon(RuneCategory category, boolean selected) {
+		ItemStack item = createItem(Material.BARRIER, 1, "error.");
+		if (category == RuneCategory.ATTACK) {
+			item = createItem(Material.DIAMOND_SWORD,
+					1,
+					ChatColor.RED.toString() + ChatColor.BOLD.toString() + category.getName(),
+					"殴り合いに特化したルーン");
+		} else if (category == RuneCategory.MAGIC) {
+			item = createItem(Material.BOOK,
+					1,
+					ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + category.getName(),
+					"魔法の力を強化するルーン");
+		} else if (category == RuneCategory.SWIFT) {
+			item = createItem(Material.FEATHER,
+					1,
+					ChatColor.AQUA.toString() + ChatColor.BOLD.toString() + category.getName(),
+					"移動力を強化するルーン");
+		} else if (category == RuneCategory.COLLECT) {
+			item = createItem(Material.DIAMOND_PICKAXE,
+					1,
+					ChatColor.GREEN.toString() + ChatColor.BOLD.toString() + category.getName(),
+					"アイテム集めに特化したルーン");
+		}
+		if(selected) setSelected(item);
+		return item;
+	}
+
+	public static ItemStack getRunePathSelected() {
+		ItemStack item = createItem(Material.BARRIER,
+				1,
+				ChatColor.RED.toString() + ChatColor.BOLD.toString() + "選択済",
+				"メインパスとして選択済");
+		setSelected(item);
 		return item;
 	}
 }

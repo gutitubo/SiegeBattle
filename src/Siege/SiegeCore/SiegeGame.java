@@ -23,7 +23,7 @@ public class SiegeGame {
 
 	private SiegeTeam redTeam;
 	private SiegeTeam blueTeam;
-	
+
 	private Team red;
 	private Team blue;
 
@@ -40,7 +40,7 @@ public class SiegeGame {
 		phase = 0;
 		this.redTeam = redTeam;
 		this.blueTeam = blueTeam;
-		
+
 		this.red = red;
 		this.blue = blue;
 	}
@@ -178,19 +178,37 @@ public class SiegeGame {
 				Bukkit.broadcastMessage(ChatColor.YELLOW + "30秒後にServerを再起動します。");
 				for (Player p : Bukkit.getOnlinePlayers()) {
 					Lib.SiegeLib.teleportSpawn(p);
-					
+
 					red.unregister();
 					blue.unregister();
 				}
 			}
 		}.runTaskLater(SiegeBattleMain.siegeBattleMain, 20 * 5);
-		
+
 		new BukkitRunnable() {
 			@Override
 			public void run() {
 				Bukkit.shutdown();
 			}
 		}.runTaskLater(SiegeBattleMain.siegeBattleMain, 20 * 30);
+	}
+
+	public boolean isSiegePlayer(Player p) {
+		boolean bool = false;
+		SiegeTeam red = getRedTeam();
+		SiegeTeam blue = getBlueTeam();
+		if (red.isMember(p) || blue.isMember(p)) bool = true;
+		return bool;
+	}
+
+	public SiegePlayer getSiegePlayer(Player p) {
+		SiegePlayer sp = null;
+		SiegeTeam red = getRedTeam();
+		SiegeTeam blue = getBlueTeam();
+		if (isSiegePlayer(p)) {
+			sp = red.isMember(p) ? red.getMember(p) : blue.getMember(p);
+		}
+		return sp;
 	}
 
 	public void coreDamage(SiegePlayer p, SiegeTeam t) {
@@ -235,7 +253,7 @@ public class SiegeGame {
 			p.sendMessage(team.getColor() + "貴方は" + team.getTeamName() + "に所属しました");
 		}
 	}
-	
+
 	public void disbandTeam() {
 		this.red.unregister();
 		this.blue.unregister();

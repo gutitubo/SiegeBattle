@@ -10,24 +10,33 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 
+import Siege.Rune.RuneInventory;
+import Siege.SiegeCore.SiegeGame;
+import Siege.SiegePlayer.SiegePlayer;
 import Siege.SiegeShop.ExpShop;
 import Siege.SiegeShop.NormalShop;
 
-public class ShopSignInteractEvent implements Listener{
+public class SignInteractEvent implements Listener{
 
 	@EventHandler
 	public void onInteract(PlayerInteractEvent e) {
 		Player p = e.getPlayer();
 		Block b = e.getClickedBlock();
 
+		SiegeGame game = Siege.SiegeBattleMain.siegeBattleMain.getGame();
+
 		if (b == null) { return; }
 		if (isSign(b)) {
 			Sign sign = (Sign) b.getState();
-			if (sign.getLine(2).contains(SHOP_NORMAL_NAME)) { //DARKNESS SHOP
+			if (sign.getLine(2).contains(SHOP_NORMAL_PLANE)) { //DARKNESS SHOP
 				p.openInventory(NormalShop.getInventory("RED"));
 			}
-			if (sign.getLine(2).contains(SHOP_EXP_NAME)) { //EXP SHOP
+			if (sign.getLine(2).contains(SHOP_EXP_PLANE)) { //EXP SHOP
 				p.openInventory(ExpShop.getInventory());
+			}
+			if (game != null && game.isSiegePlayer(p)) {
+				SiegePlayer sp = game.getSiegePlayer(p);
+				p.openInventory(RuneInventory.getRuneInventory(sp));
 			}
 		}
 	}

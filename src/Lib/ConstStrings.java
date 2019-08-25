@@ -9,11 +9,11 @@ public class ConstStrings {
 	public static final String SHOP_SIGN_LINE = ChatColor.DARK_BLUE + "==============";
 	public static final String SHOP_SIGN_SIEGE = ChatColor.RED + "Siege Battle";
 
-	public static final String SHOP_NORMAL_NAME = "Darkness Shop";
-	public static final String SHOP_EXP_NAME = "Level Shop";
+	public static final String SHOP_NORMAL_PLANE = "Darkness Shop";
+	public static final String SHOP_EXP_PLANE = "Level Shop";
 
-	public static final String SHOP_NORMAL_STRING = ChatColor.BLACK.toString() + ChatColor.BOLD.toString() + SHOP_NORMAL_NAME;
-	public static final String SHOP_EXP_STRING = ChatColor.GREEN + SHOP_EXP_NAME;
+	public static final String SHOP_NORMAL_STRING = ChatColor.BLACK.toString() + ChatColor.BOLD.toString() + SHOP_NORMAL_PLANE;
+	public static final String SHOP_EXP_STRING = ChatColor.GREEN + SHOP_EXP_PLANE;
 
 	public static final String SHOP_NORMAL_TITLE = ChatColor.GRAY + "Darkness Shop";
 
@@ -21,7 +21,12 @@ public class ConstStrings {
 	public static final String SHOP_MESSAGE_BOUGHT_ITEM = ChatColor.GRAY + "を購入した。";
 
 	/* ========== RUNE関連 ========== */
+	public static final String RUNE_SIGN_LINE = ChatColor.DARK_BLUE + "==============";
+	public static final String RUNE_SIGN_SIEGE = ChatColor.RED + "Siege Battle";
+	public static final String RUNE_SIGN_PLANE = "Rune Selector";
+	public static final String RUNE_SIGN_STRING = ChatColor.BLACK.toString() + ChatColor.BOLD.toString() + RUNE_SIGN_PLANE;
 
-	public static final String RUNE_INV_TITLE_PATH = "ルーンパスを選択してください";
+	public static final String RUNE_INV_TITLE_PATH = "メインパスを選択してください";
+	public static final String RUNE_INV_TITLE_PATH_SUB = "サブパスを選択してください";
 	public static final String RUNE_INV_TITLE_MAIN = "ルーンを選択してください";
 }
