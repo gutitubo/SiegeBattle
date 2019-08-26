@@ -113,7 +113,7 @@ public class RuneInteractEvent implements Listener {
 		} else if (r.getCategory() == sp.getSubPath()){
 			/* サブパスだった場合 */
 			if (rs[3] == null) {
-				rs[4] = r;
+				rs[3] = r;
 			} else if (rs[4] == null) {
 				rs[4] = r;
 			} else {

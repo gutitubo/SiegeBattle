@@ -6,22 +6,28 @@ commands:
    sb:
       description: SiegeBattle basic commands.
       usage: /sb <something>
-      permission: SoegeBattle.sb
+      permission: SiegeBattle.sb
       permission-message: Banana.
    start:
       description: SiegeBattle basic commands.
       usage: /start
-      permission: SoegeBattle.sb
+      permission: SiegeBattle.sb
       permission-message: Banana.
    recall:
       description: SiegeBattle basic commands.
       usage: /recall
       aliases: r
-      permission: SoegeBattle.sb
+      permission: SiegeBattle.sb
       permission-message: Banana. 
    r:
       description: SiegeBattle basic commands.
       usage: /r
       aliases: r
-      permission: SoegeBattle.sb
+      permission: SiegeBattle.sb
       permission-message: Banana. 
+   info:
+      description: player info.
+      usage: /info
+      aliases: info
+      permission: SiegeBattle.info
+      permission-message: Banana.

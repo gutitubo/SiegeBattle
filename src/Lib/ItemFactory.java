@@ -172,7 +172,7 @@ public class ItemFactory {
 	}
 
 	public static void setSelected(ItemStack item) {
-		item.addEnchantment(Enchantment.ARROW_INFINITE, 0);
+		item.addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 0);
 		ItemMeta meta = item.getItemMeta();
 		meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_POTION_EFFECTS);
 		item.setItemMeta(meta);

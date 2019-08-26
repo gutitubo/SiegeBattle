@@ -20,6 +20,7 @@ import org.bukkit.scoreboard.Team.Option;
 import org.bukkit.scoreboard.Team.OptionStatus;
 
 import Siege.Recipe.GappleRecipe;
+import Siege.Rune.Events.PlayerAttackEvent;
 import Siege.SiegeCore.SiegeGame;
 import Siege.SiegeEvent.BonusChestEvent;
 import Siege.SiegeEvent.BreakCancelEvent;
@@ -73,8 +74,25 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
 		if(cmd.getName().equalsIgnoreCase("sb")){
-			sender.sendMessage("いいよ");
-			return true;
+			sender.sendMessage(ChatColor.GOLD + "=== Siege Battle ===");
+			if (args[0] != null && args[0].equalsIgnoreCase("help")) {
+				sender.sendMessage("/recall - リコールコマンド");
+				sender.sendMessage("/r - リコールコマンド");
+				sender.sendMessage("/info - 自分の情報を確認(未実装)");
+				if (sender.isOp()) {
+					sender.sendMessage(ChatColor.RED + "/start - ゲームを開始する");
+					sender.sendMessage(ChatColor.RED + "/info <name> - 他人の情報を確認する");
+					sender.sendMessage(ChatColor.RED + "<各看板の作り方>");
+					sender.sendMessage(ChatColor.RED + "1行目に指定された文字を入れることでショップ等になる");
+					sender.sendMessage(ChatColor.RED + "siegeshop - 鉱石ショップを設置");
+					sender.sendMessage(ChatColor.RED + "expshop - 経験値ショップを設置");
+					sender.sendMessage(ChatColor.RED + "siegerune - ルーンセレクターを設置");
+				}
+			} else {
+				sender.sendMessage("/sb help - このプラグインのコマンドが見れます");
+				return true;
+			}
+			sender.sendMessage(ChatColor.GOLD + "===================");
 		}
 		if(cmd.getName().equalsIgnoreCase("recall") || cmd.getName().equalsIgnoreCase("r")) {
 			if (getGame().getPhase() >= 2) {
@@ -84,6 +102,18 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 					if (r != null) {
 						Bukkit.getPluginManager().registerEvents(r, this);
 					}
+					return true;
+				}
+			}
+			return false;
+		}
+		if(cmd.getName().equalsIgnoreCase("info")) {
+			if (getGame().getPhase() >= 2) {
+				if(sender instanceof Player) {
+					Player p = ((Player) sender).getPlayer();
+					if (getGame() == null) return false;
+					if (!getGame().isSiegePlayer(p)) return false;
+					getGame().getSiegePlayer(p).showRunesString(p);
 					return true;
 				}
 			}
@@ -151,7 +181,6 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 				e.printStackTrace();
 			}
 
-
 			return true;
 		}
 		return false;
@@ -178,6 +207,10 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new FallDamageEvent(), this);
 		pm.registerEvents(new GappleEatEvent(), this);
 		pm.registerEvents(new RuneInteractEvent(), this);
+	}
+
+	public void runeEventRegist(PluginManager pm) {
+		pm.registerEvents(new PlayerAttackEvent(), null);
 	}
 
 	public void recipeRegist() {
