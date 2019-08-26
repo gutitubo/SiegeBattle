@@ -82,7 +82,7 @@ public class SiegePlayer {
 	public void clearRune() {
 		this.mainPath = null;
 		this.subPath = null;
-		this.currentRunes = null;
+		this.currentRunes = new Runes[5];
 	}
 
 	public String[] getRunesString() {
