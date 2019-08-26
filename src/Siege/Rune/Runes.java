@@ -115,7 +115,7 @@ public enum Runes {
 		if (item != null) {
 			itemName = item.getItemMeta().getDisplayName();
 		}
-		if (item.getItemMeta() != null) {
+		if (item.getItemMeta() == null) {
 			return null;
 		}
 		if (itemName == null) return null;
