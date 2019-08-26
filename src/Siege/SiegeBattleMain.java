@@ -73,8 +73,25 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
 		if(cmd.getName().equalsIgnoreCase("sb")){
-			sender.sendMessage("いいよ");
-			return true;
+			sender.sendMessage(ChatColor.GOLD + "=== Siege Battle ===");
+			if (args[0] != null && args[0].equalsIgnoreCase("help")) {
+				sender.sendMessage("/recall - リコールコマンド");
+				sender.sendMessage("/r - リコールコマンド");
+				sender.sendMessage("/info - 自分の情報を確認(未実装)");
+				if (sender.isOp()) {
+					sender.sendMessage(ChatColor.RED + "/start - ゲームを開始する");
+					sender.sendMessage(ChatColor.RED + "/info <name> - 他人の情報を確認する");
+					sender.sendMessage(ChatColor.RED + "<各看板の作り方>");
+					sender.sendMessage(ChatColor.RED + "1行目に指定された文字を入れることでショップ等になる");
+					sender.sendMessage(ChatColor.RED + "siegeshop - 鉱石ショップを設置");
+					sender.sendMessage(ChatColor.RED + "expshop - 経験値ショップを設置");
+					sender.sendMessage(ChatColor.RED + "siegerune - ルーンセレクターを設置");
+				}
+			} else {
+				sender.sendMessage("/sb help - このプラグインのコマンドが見れます");
+				return true;
+			}
+			sender.sendMessage(ChatColor.GOLD + "===================");
 		}
 		if(cmd.getName().equalsIgnoreCase("recall") || cmd.getName().equalsIgnoreCase("r")) {
 			if (getGame().getPhase() >= 2) {
@@ -150,7 +167,6 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 				Bukkit.broadcastMessage("ぐちつぼさんなんかエラー出てますよ");
 				e.printStackTrace();
 			}
-
 
 			return true;
 		}
