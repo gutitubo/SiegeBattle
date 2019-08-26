@@ -103,31 +103,31 @@ public enum Runes {
 	}
 
 	public static boolean isRune(ItemStack item) {
-		Material mat = item.getType();
-		String itemName = null;
-		if (item != null) itemName = item.getItemMeta().getDisplayName();
-		if (itemName == null) return false;
-		switch(mat) {
-		case BLAZE_POWDER:
-			if (itemName.equals("test string")) return true;
-			if (itemName.equals("test string 2")) return true;
-		default:
+		if (getRune(item) == null) {
 			return false;
 		}
+		return true;
 	}
 
 	public static Runes getRune(ItemStack item) {
-		if (!isRune(item)) return null;
 		Material mat = item.getType();
 		String itemName = null;
-		if (item != null) itemName = item.getItemMeta().getDisplayName();
-		if (itemName == null) return null;
-		switch (mat) {
-		case BLAZE_POWDER:
-			if (itemName.equals(Runes.BATTLE_SOLOFIGHTER.getName())) return Runes.BATTLE_SOLOFIGHTER;
-		default:
+		if (item != null) {
+			itemName = item.getItemMeta().getDisplayName();
+		}
+		if (item.getItemMeta() != null) {
 			return null;
 		}
+		if (itemName == null) return null;
+
+		for (Runes r :Runes.values()) {
+			if (r.getMaterial() == mat) { //マテリアルが同じ
+				if (r.getName().equalsIgnoreCase(itemName)) {
+					return r;
+				}
+			}
+		}
+		return null;
 	}
 
 	public static HashSet<Runes> asHashSet() {
