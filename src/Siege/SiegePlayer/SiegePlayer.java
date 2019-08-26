@@ -70,6 +70,9 @@ public class SiegePlayer {
 	}
 
 	public boolean isHolder(Runes rune) {
+		if (currentRunes == null) {
+			return false;
+		}
 		for (Runes r : currentRunes) {
 			if (rune == r) return true;
 		}
