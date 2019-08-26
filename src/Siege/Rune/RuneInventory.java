@@ -5,6 +5,7 @@ import static Lib.ConstStrings.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 import Lib.ItemFactory;
 import Siege.SiegePlayer.SiegePlayer;
@@ -52,18 +53,33 @@ public class RuneInventory {
 		/* MainのTier1ルーン */
 		for (Runes r : Runes.asHashSet(sp.getMainPath(), 1)) {
 			inv.setItem(i, r.toItemStack());
+			if (sp.isHolder(r)) {
+				ItemStack selected = r.toItemStack();
+				ItemFactory.setSelected(selected);
+				inv.setItem(i, selected);
+			}
 			i++;
 		}
 		/* MainのTier2ルーン */
 		i = 9;
 		for (Runes r : Runes.asHashSet(sp.getMainPath(), 2)) {
 			inv.setItem(i, r.toItemStack());
+			if (sp.isHolder(r)) {
+				ItemStack selected = r.toItemStack();
+				ItemFactory.setSelected(selected);
+				inv.setItem(i, selected);
+			}
 			i++;
 		}
 		/* SubのTier2ルーン */
 		i = 27;
 		for (Runes r : Runes.asHashSet(sp.getSubPath(), 2)) {
 			inv.setItem(i, r.toItemStack());
+			if (sp.isHolder(r)) {
+				ItemStack selected = r.toItemStack();
+				ItemFactory.setSelected(selected);
+				inv.setItem(i, selected);
+			}
 			i++;
 		}
 		//下の枠

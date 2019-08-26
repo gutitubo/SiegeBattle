@@ -27,37 +27,37 @@ public class RuneNames {
 	public static final String COLLECT_MINER_NAME = "炭鉱夫";
 
 	/* === 戦闘系 Tier2 === */
-	public static final String BATTLE_2_MELEEDAMAGE = "近接攻撃強化";
-	public static final String BATTLE_2_ARROWDAMAGE = "遠距離攻撃強化";
-	public static final String BATTLE_2_ANTIDEFENDER = "対防衛特攻";
-	public static final String BATTLE_2_HEALTHBOOST = "体力増加";
-	public static final String BATTLE_2_REGENERATION = "再生力";
-	public static final String BATTLE_2_ANTIATTACKER = "防衛力強化";
-	public static final String BATTLE_2_COREDIGSPEED = "コア採掘強化";
+	public static final String BATTLE_2_MELEEDAMAGE_NAME = "近接攻撃強化";
+	public static final String BATTLE_2_ARROWDAMAGE_NAME = "遠距離攻撃強化";
+	public static final String BATTLE_2_ANTIDEFENDER_NAME = "対防衛特攻";
+	public static final String BATTLE_2_HEALTHBOOST_NAME = "体力増加";
+	public static final String BATTLE_2_REGENERATION_NAME = "再生力";
+	public static final String BATTLE_2_ANTIATTACKER_NAME = "防衛力強化";
+	public static final String BATTLE_2_COREDIGSPEED_NAME = "コア採掘強化";
 
 	/* === 錬金系 Tier2 === */
-	public static final String MAGIC_2_ENCHANT = "エンチャント強化";
-	public static final String MAGIC_2_POTION_AMP = "ポーション強化";
-	public static final String MAGIC_2_POTION_DUR = "ポーション効果延長";
-	public static final String MAGIC_2_EXPUP = "獲得経験値上昇";
-	public static final String MAGIC_2_KEYSTONE = "ルーン強化";
-	public static final String MAGIC_2_KILLTOPOTION = "アルケミスト";
-	public static final String MAGIC_2_EXPARMOR = "経験値アーマー";
+	public static final String MAGIC_2_ENCHANT_NAME = "エンチャント強化";
+	public static final String MAGIC_2_POTION_AMP_NAME = "ポーション強化";
+	public static final String MAGIC_2_POTION_DUR_NAME = "ポーション効果延長";
+	public static final String MAGIC_2_EXPUP_NAME = "獲得経験値上昇";
+	public static final String MAGIC_2_KEYSTONE_NAME = "ルーン強化";
+	public static final String MAGIC_2_KILLPOTION_NAME = "アルケミスト";
+	public static final String MAGIC_2_EXPARMOR_NAME = "経験値アーマー";
 
 	/* === 敏捷系 Tier2 === */
-	public static final String SWIFT_2_SPEEDUP = "移動速度上昇";
-	public static final String SWIFT_2_JUMPBOOST = "跳躍力上昇";
-	public static final String SWIFT_2_NOFALL = "転落ダメージ無効化";
-	public static final String SWIFT_2_NOHUNGRY = "空腹無効化";
-	public static final String SWIFT_2_HOMEGUARD = "自陣移動速度上昇";
-	public static final String SWIFT_2_RUNNER = "逃げ足";
+	public static final String SWIFT_2_SPEEDUP_NAME = "移動速度上昇";
+	public static final String SWIFT_2_JUMPBOOST_NAME = "跳躍力上昇";
+	public static final String SWIFT_2_NOFALL_NAME = "転落ダメージ無効化";
+	public static final String SWIFT_2_NOHUNGRY_NAME = "空腹無効化";
+	public static final String SWIFT_2_HOMEGUARD_NAME = "自陣移動速度上昇";
+	public static final String SWIFT_2_RUNNER_NAME = "逃げ足";
 
 	/* === 収集系 Tier2 === */
-	public static final String COLLECT_2_IRON = "鉄採掘量増加";
-	public static final String COLLECT_2_GOLD = "金採掘量増加";
-	public static final String COLLECT_2_DIA = "ダイヤ採掘量増加";
-	public static final String COLLECT_2_RED = "赤石採掘量増加";
-	public static final String COLLECT_2_LUCK = "幸運";
-	public static final String COLLECT_2_RECALL = "リコール時間短縮";
-	public static final String COLLECT_2_HUMANFORGE = "人間かまど";
+	public static final String COLLECT_2_IRON_NAME = "鉄採掘量増加";
+	public static final String COLLECT_2_GOLD_NAME = "金採掘量増加";
+	public static final String COLLECT_2_DIA_NAME = "ダイヤ採掘量増加";
+	public static final String COLLECT_2_RED_NAME = "赤石採掘量増加";
+	public static final String COLLECT_2_LUCK_NAME = "幸運";
+	public static final String COLLECT_2_RECALL_NAME = "リコール時間短縮";
+	public static final String COLLECT_2_HUMANFORGE_NAME = "人間かまど";
 }

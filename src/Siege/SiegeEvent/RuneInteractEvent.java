@@ -54,6 +54,7 @@ public class RuneInteractEvent implements Listener {
 		ItemStack clicked = e.getCurrentItem();
 		Material material = null;
 		if (clicked == null) return; else material = clicked.getType();
+		if (!clicked.getEnchantments().isEmpty()) return;
 
 		if (flag == 1) {
 			if (material == Material.DIAMOND_SWORD) {

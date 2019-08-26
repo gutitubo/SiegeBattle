@@ -81,4 +81,21 @@ public class SiegePlayer {
 		this.subPath = null;
 		this.currentRunes = null;
 	}
+
+	public String[] getRunesString() {
+		String[] str = new String[5];
+		int i = 0;
+		for (Runes r: this.currentRunes) {
+			str[i] = r.toString();
+			i++;
+		}
+		return str;
+	}
+
+	public void showRunesString(Player p) {
+		String[] str = getRunesString();
+		p.sendMessage("--- " + this.getPlayer().getDisplayName() + "'s Rune ---");
+		p.sendMessage("Tier1: [" + str[0] + "]");
+		p.sendMessage("Tier2: [" + str[1] + "], [" + str[2] + "], [" + str[3] + "], [" + str[4] + "]");
+	}
 }
