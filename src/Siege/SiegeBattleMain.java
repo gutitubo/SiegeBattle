@@ -111,7 +111,8 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 			if (getGame().getPhase() >= 2) {
 				if(sender instanceof Player) {
 					Player p = ((Player) sender).getPlayer();
-					if (getGame().isSiegePlayer(p)) return false;
+					if (getGame() == null) return false;
+					if (!getGame().isSiegePlayer(p)) return false;
 					getGame().getSiegePlayer(p).showRunesString(p);
 					return true;
 				}
