@@ -8,6 +8,7 @@ public class RuneNames {
 	public static final String BATTLE_BERSERKER_NAME = "狂戦士";
 	public static final String BATTLE_CHEERER_NAME = "応援団";
 	public static final String BATTLE_RESIRIENCE_NAME = "逆境魂";
+	public static final String BATTLE_TENACITY_NAME = "執念";
 
 	/* === 錬金系 Tier1 === */
 	public static final String MAGIC_CORESHIELD_NAME = "コアシールド";

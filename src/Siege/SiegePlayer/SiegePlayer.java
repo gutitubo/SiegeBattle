@@ -8,6 +8,8 @@ import org.bukkit.potion.PotionEffect;
 
 import Siege.Rune.RuneCategory;
 import Siege.Rune.Runes;
+import Siege.SiegeCore.SiegeGame;
+import Siege.SiegeException.IkaretaPhaseException;
 import Siege.SiegeTeam.SiegeTeam;
 
 public class SiegePlayer {
@@ -110,6 +112,13 @@ public class SiegePlayer {
 		return str;
 	}
 
+	public boolean hasRune(Runes rune) {
+		for (Runes r : currentRunes) {
+			if (r == rune) return true;
+		}
+		return false;
+	}
+
 	public void refleshRuneStatus() {
 		//TODO 実装
 		resetToDefault();
@@ -136,6 +145,34 @@ public class SiegePlayer {
 		p.sendMessage("Tier1: [" + str[0] + "]");
 		p.sendMessage("Tier2: [" + str[1] + "], [" + str[2] + "], [" + str[3] + "], [" + str[4] + "]");
 		p.sendMessage("");
+	}
+
+	public double getDistanceWhileOwnCore() throws IkaretaPhaseException {
+		SiegeGame game = Siege.SiegeBattleMain.siegeBattleMain.getGame();
+		if (game == null) {
+			throw new IkaretaPhaseException("ゲーム中じゃないと使えないよ");
+		}
+		if (game.getBlueTeam().isMember(getPlayer())) {
+			return game.getSiegeStage().getBlueCore().distance(getPlayer().getLocation());
+		} else if (game.getRedTeam().isMember(getPlayer())) {
+			return game.getSiegeStage().getRedCore().distance(getPlayer().getLocation());
+		} else {
+			throw new IkaretaPhaseException("チームに所属してないみたいだよ");
+		}
+	}
+
+	public double getDistanceWhileEnemyCore() throws IkaretaPhaseException {
+		SiegeGame game = Siege.SiegeBattleMain.siegeBattleMain.getGame();
+		if (game == null) {
+			throw new IkaretaPhaseException("ゲーム中じゃないと使えないよ");
+		}
+		if (game.getBlueTeam().isMember(getPlayer())) {
+			return game.getSiegeStage().getRedCore().distance(getPlayer().getLocation());
+		} else if (game.getRedTeam().isMember(getPlayer())) {
+			return game.getSiegeStage().getBlueCore().distance(getPlayer().getLocation());
+		} else {
+			throw new IkaretaPhaseException("チームに所属してないみたいだよ");
+		}
 	}
 
 	public int getAdditionalDamage() {

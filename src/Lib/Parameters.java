@@ -34,4 +34,11 @@ public class Parameters {
 	public static final int LAPSHOP_BOW_COST = 3;
 	public static final int LAPSHOP_ARROW_COST = 1;
 	public static final int LAPSHOP_ARROW_AMOUNT = 4;
+
+	/*
+	 *  RUNE定数
+	 */
+	public static final int RUNE_MELEEDAMAGE_VALUE = 3;
+	public static final int RUNE_ANTIDEFENDER_VALUE = 5;
+	public static final int RUNE_ANTIATTACKER_VALUE = 2;
 }

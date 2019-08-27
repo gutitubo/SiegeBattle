@@ -20,6 +20,9 @@ public class RuneLore {
 	public static final ArrayList<String> BATTLE_RESIRIENCE_LORE =
 			asList("あなたは逆境でこそ力を発揮する",
 					"自身のピンチ、味方のピンチにおいて戦闘力が上がる");
+	public static final ArrayList<String> BATTLE_TENACITY_LORE =
+			asList("あなたはそう簡単に倒れない",
+					"体力が一定以下になると衝撃吸収の効果を得る");
 
 	/* === 錬金系 Tier1 === */
 	public static final ArrayList<String> MAGIC_CORESHIELD_LORE =
