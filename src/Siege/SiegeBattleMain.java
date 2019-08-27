@@ -20,6 +20,7 @@ import org.bukkit.scoreboard.Team.Option;
 import org.bukkit.scoreboard.Team.OptionStatus;
 
 import Siege.Recipe.GappleRecipe;
+import Siege.Rune.Events.PlayerAttackEvent;
 import Siege.SiegeCore.SiegeGame;
 import Siege.SiegeEvent.BonusChestEvent;
 import Siege.SiegeEvent.BreakCancelEvent;
@@ -101,6 +102,17 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 					if (r != null) {
 						Bukkit.getPluginManager().registerEvents(r, this);
 					}
+					return true;
+				}
+			}
+			return false;
+		}
+		if(cmd.getName().equalsIgnoreCase("info")) {
+			if (getGame().getPhase() >= 2) {
+				if(sender instanceof Player) {
+					Player p = ((Player) sender).getPlayer();
+					if (getGame().isSiegePlayer(p)) return false;
+					getGame().getSiegePlayer(p).showRunesString(p);
 					return true;
 				}
 			}
@@ -194,6 +206,10 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new FallDamageEvent(), this);
 		pm.registerEvents(new GappleEatEvent(), this);
 		pm.registerEvents(new RuneInteractEvent(), this);
+	}
+
+	public void runeEventRegist(PluginManager pm) {
+		pm.registerEvents(new PlayerAttackEvent(), null);
 	}
 
 	public void recipeRegist() {
