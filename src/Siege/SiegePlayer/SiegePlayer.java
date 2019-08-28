@@ -24,10 +24,14 @@ public class SiegePlayer {
 
 	private int additionalDamage; //追加ダメージ
 	private int additionalDefend; //追加防御力
+	private int additionalDefendPerm; //追加永続防御力
+	private double additionalHealth; //追加体力
 	private float additionalSpeed; //追加移動速度
+	private float speedMultipler; //追加移動速度(倍率)
 	private ArrayList<PotionEffect> defaultEffect;
 
-	private static float defaultSpeed = 0.2F;
+	private static final float defaultSpeed = 0.2F;
+	private static final double defaultHealth = 20;
 
 	//こんすとらくたー
 	public SiegePlayer() {
@@ -38,7 +42,10 @@ public class SiegePlayer {
 		currentRunes = new Runes[5];
 		this.additionalDamage = 0;
 		this.additionalDefend = 0;
+		this.additionalDefendPerm = 0;
+		this.additionalHealth = 0;
 		this.additionalSpeed = 0;
+		this.speedMultipler = 1.0F;
 		defaultEffect = new ArrayList<PotionEffect>();
 	}
 
@@ -100,6 +107,7 @@ public class SiegePlayer {
 		this.mainPath = null;
 		this.subPath = null;
 		this.currentRunes = new Runes[5];
+		this.resetToDefault();
 	}
 
 	public String[] getRunesString() {
@@ -121,6 +129,10 @@ public class SiegePlayer {
 
 	public void refleshRuneStatus() {
 		//TODO 実装
+		Player p = getPlayer();
+		p.setWalkSpeed((defaultSpeed + getAdditionalSpeed()) * getSpeedMultipler());
+		p.setHealthScale(defaultHealth + getAdditionalHealth());
+		p.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(getAdditionalDefend() + getAdditionalDefendPerm());
 		resetToDefault();
 		for (PotionEffect e : getDeafultEffect()) {
 			if (player.hasPotionEffect(e.getType())) {
@@ -134,7 +146,8 @@ public class SiegePlayer {
 	public void resetToDefault() {
 		Player p = getPlayer();
 		p.setWalkSpeed(defaultSpeed);
-		p.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(0);
+		p.setHealthScale(defaultHealth);
+		p.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(getAdditionalDefendPerm());
 		clearDefaultEffect();
 	}
 
@@ -205,5 +218,29 @@ public class SiegePlayer {
 
 	public void clearDefaultEffect() {
 		this.defaultEffect.clear();
+	}
+
+	public double getAdditionalHealth() {
+		return additionalHealth;
+	}
+
+	public void setAdditionalHealth(double additionalHealth) {
+		this.additionalHealth = additionalHealth;
+	}
+
+	public float getSpeedMultipler() {
+		return speedMultipler;
+	}
+
+	public void setSpeedMultipler(float speedMultipler) {
+		this.speedMultipler = speedMultipler;
+	}
+
+	public int getAdditionalDefendPerm() {
+		return additionalDefendPerm;
+	}
+
+	public void setAdditionalDefendPerm(int additionalDefendPerm) {
+		this.additionalDefendPerm = additionalDefendPerm;
 	}
 }

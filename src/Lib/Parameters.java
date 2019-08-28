@@ -38,7 +38,15 @@ public class Parameters {
 	/*
 	 *  RUNE定数
 	 */
-	public static final int RUNE_MELEEDAMAGE_VALUE = 3;
-	public static final int RUNE_ANTIDEFENDER_VALUE = 5;
-	public static final int RUNE_ANTIATTACKER_VALUE = 2;
+	public static final int RUNE_MELEEDAMAGE_VALUE = 3; //近接強化のダメージ
+	public static final int RUNE_ANTIDEFENDER_VALUE = 5; //対防衛特攻のダメージ
+	public static final int RUNE_ANTIATTACKER_VALUE = 2; //対攻撃特攻のダメージ
+
+	public static final int RUNE_HEALTHBOOST_VALUE = 6;
+	public static final int RUNE_REGENERATION_TIME = 20 * 60 * 150; //自動回復の効果時間
+	public static final int RUNE_REGENERATION_AMP = 0; //自動回復の効果
+
+	public static final float RUNE_SPEEDUP_VALUE = 0.2F;
+	public static final int RUNE_JUMPBOOST_TIME = 20* 60* 150;
+	public static final int RUNE_JUMPBOOST_AMP = 2;
 }

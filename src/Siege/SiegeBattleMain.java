@@ -20,7 +20,9 @@ import org.bukkit.scoreboard.Team.Option;
 import org.bukkit.scoreboard.Team.OptionStatus;
 
 import Siege.Recipe.GappleRecipe;
+import Siege.Rune.Events.OnClickedEvent;
 import Siege.Rune.Events.PlayerAttackEvent;
+import Siege.Rune.Events.onDeathEvent;
 import Siege.SiegeCore.SiegeGame;
 import Siege.SiegeEvent.BonusChestEvent;
 import Siege.SiegeEvent.BreakCancelEvent;
@@ -211,6 +213,8 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 
 	public void runeEventRegist(PluginManager pm) {
 		pm.registerEvents(new PlayerAttackEvent(), null);
+		pm.registerEvents(new onDeathEvent(), null);
+		pm.registerEvents(new OnClickedEvent(), null);
 	}
 
 	public void recipeRegist() {
