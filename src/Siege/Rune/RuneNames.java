@@ -8,7 +8,7 @@ public class RuneNames {
 	public static final String BATTLE_BERSERKER_NAME = "狂戦士";
 	public static final String BATTLE_CHEERER_NAME = "応援団";
 	public static final String BATTLE_RESIRIENCE_NAME = "逆境魂";
-	public static final String BATTLE_TENACITY_NAME = "執念";
+	public static final String BATTLE_TENACITY_NAME = "執念"; //DONE
 
 	/* === 錬金系 Tier1 === */
 	public static final String MAGIC_CORESHIELD_NAME = "コアシールド";
@@ -20,7 +20,7 @@ public class RuneNames {
 	public static final String SWIFT_CAMO_NAME = "カモフラージュ";
 	public static final String SWIFT_DOUBLEJUMP_NAME = "ダブルジャンプ";
 	public static final String SWIFT_STORM_NAME = "強まる嵐";
-	public static final String SWIFT_WINDY_NAME = "追い風";
+	public static final String SWIFT_WINDY_NAME = "追い風"; //DONE
 
 	/* === 採掘系 Tier1 === */
 	public static final String COLLECT_THIEF_NAME = "盗賊";

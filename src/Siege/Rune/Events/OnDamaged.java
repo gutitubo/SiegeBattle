@@ -17,7 +17,7 @@ public class OnDamaged implements Listener {
 		if (!(e.getEntity() instanceof Player)) return;
 		Player p = (Player)e.getEntity();
 		SiegeGame game = Siege.SiegeBattleMain.siegeBattleMain.getGame();
-		if (game.isSiegePlayer(p)) return;
+		if (!game.isSiegePlayer(p)) return;
 		SiegePlayer sp = game.getSiegePlayer(p);
 
 		if (e.getCause().equals(DamageCause.FALL)) { //転落ダメージ

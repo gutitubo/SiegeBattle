@@ -57,7 +57,7 @@ public class OnMoved implements Listener{
 	public void giveOikaze(SiegePlayer sp, boolean enhanced) {
 		Player p = sp.getPlayer();
 		if (p.hasPotionEffect(PotionEffectType.SPEED)) {
-			if (p.getPotionEffect(PotionEffectType.SPEED).getAmplifier() > Parameters.RUNE_WINDY_AMP) {
+			if (p.getPotionEffect(PotionEffectType.SPEED).getAmplifier() > Parameters.RUNE_WINDY_AMP && p.getPotionEffect(PotionEffectType.SPEED).getDuration() < 8) {
 				return;
 			} else {
 				p.removePotionEffect(PotionEffectType.SPEED);
