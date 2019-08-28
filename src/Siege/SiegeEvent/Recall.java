@@ -39,7 +39,7 @@ public class Recall implements Listener{
 		} else {
 			return;
 		}
-		
+
 		setCount(getRecallDelay(p, game.getSiegeStage().getMiddleOfMap(), teamCore));
 		recallStart();
 		p.sendMessage(ChatColor.DARK_RED+ "" + getCount() + "秒後にリコールします");
@@ -66,6 +66,7 @@ public class Recall implements Listener{
 				}
 				if (count <= 0) { //リコール完了処理
 					player.sendMessage(ChatColor.DARK_RED + "RECAaaaaaaaaaaaaAAL");
+					recalling.remove(player);
 					/*
 					 * ここにリコール処理つける
 					 */
@@ -82,9 +83,9 @@ public class Recall implements Listener{
 					/*
 					 * デバフ解除処理入れる
 					 */
+					Siege.SiegeBattleMain.siegeBattleMain.getGame().getSiegePlayer(player).runeStatusReflect();
 
 					player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 0.5F, 0.5F);
-					recalling.remove(player);
 					this.cancel();
 				}
 				count--;

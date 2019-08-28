@@ -1,6 +1,7 @@
 package Siege.SiegeEvent;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -17,14 +18,16 @@ public class CoreDamageEvent implements Listener{
 		if (Siege.SiegeBattleMain.siegeBattleMain.getGame() == null) {
 			return ;
 		}
-		
+		if (p.getInventory().getItemInMainHand() == null) return;
+		if (!p.getInventory().getItemInMainHand().getType().equals(Material.SHEARS)) return;
+
 		Block b = e.getBlock();
 		Location redCore = Siege.SiegeBattleMain.siegeBattleMain.getGame().getSiegeStage().getRedCore();
 		Location blueCore = Siege.SiegeBattleMain.siegeBattleMain.getGame().getSiegeStage().getBlueCore();
-		
+
 		if (Siege.SiegeBattleMain.siegeBattleMain.getGame().getPhase() >= 3) {
 			//ゲームが開始していた場合
-			
+
 			SiegeTeam redTeam = Siege.SiegeBattleMain.siegeBattleMain.getGame().getRedTeam();
 			SiegeTeam blueTeam = Siege.SiegeBattleMain.siegeBattleMain.getGame().getBlueTeam();
 			if (b.equals(redCore.getBlock())) { //レッドコアだった場合

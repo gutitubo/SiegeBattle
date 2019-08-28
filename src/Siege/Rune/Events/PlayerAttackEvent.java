@@ -30,7 +30,7 @@ public class PlayerAttackEvent implements Listener {
 		SiegeGame game = Siege.SiegeBattleMain.siegeBattleMain.getGame();
 		if (game == null) return;
 		if (game.getPhase() < 2) return;
-		if (game.isSiegePlayer(p)) return;
+		if (!game.isSiegePlayer(p)) return;
 		SiegePlayer sp = game.getSiegePlayer(p);
 
 		/* ---------- 攻撃者側用ルーン --------- */
