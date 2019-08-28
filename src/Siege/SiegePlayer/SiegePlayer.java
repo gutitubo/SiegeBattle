@@ -161,9 +161,8 @@ public class SiegePlayer {
 		for (PotionEffect e : getDeafultEffect()) {
 			if (player.hasPotionEffect(e.getType())) {
 				player.removePotionEffect(e.getType());
-			} else {
-				player.addPotionEffect(e);
 			}
+			player.addPotionEffect(e);
 		}
 	}
 

@@ -60,6 +60,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		getServer().getPluginManager().registerEvents(this, this);
 		PluginManager pm = Bukkit.getServer().getPluginManager();
 		eventRegist(pm);
+		runeEventRegist(pm);
 		recipeRegist();
 		Bukkit.getWorlds().forEach( w -> {
 			w.setGameRule(GameRule.KEEP_INVENTORY, true);
