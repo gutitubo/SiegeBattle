@@ -213,9 +213,9 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 	}
 
 	public void runeEventRegist(PluginManager pm) {
-		pm.registerEvents(new PlayerAttackEvent(), null);
-		pm.registerEvents(new onDeathEvent(), null);
-		pm.registerEvents(new OnClickedEvent(), null);
+		pm.registerEvents(new PlayerAttackEvent(), this);
+		pm.registerEvents(new onDeathEvent(), this);
+		pm.registerEvents(new OnClickedEvent(), this);
 	}
 
 	public void recipeRegist() {
