@@ -19,7 +19,7 @@ public class OnMoved implements Listener{
 	public void onMoved(PlayerMoveEvent e) {
 		SiegeGame game = Siege.SiegeBattleMain.siegeBattleMain.getGame();
 		if (game == null) return;
-		if (game.isSiegePlayer(e.getPlayer())) return;
+		if (!game.isSiegePlayer(e.getPlayer())) return;
 		Player p = e.getPlayer();
 		SiegePlayer sp = game.getSiegePlayer(p);
 
