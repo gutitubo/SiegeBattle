@@ -117,6 +117,7 @@ public class SiegePlayer {
 		String[] str = new String[5];
 		int i = 0;
 		for (Runes r: this.currentRunes) {
+			if (r == null) continue;
 			str[i] = r.toString();
 			i++;
 		}
@@ -178,6 +179,9 @@ public class SiegePlayer {
 		setAdditionalSpeed(0);
 		setSpeedMultipler(1F);
 		clearDefaultEffect();
+		for (PotionEffect pe : p.getActivePotionEffects()) {
+			p.removePotionEffect(pe.getType());
+		}
 	}
 
 	public void showRunesString(Player p) {
@@ -246,7 +250,7 @@ public class SiegePlayer {
 	}
 
 	public void clearDefaultEffect() {
-		this.defaultEffect.clear();
+		this.defaultEffect.clear();;
 	}
 
 	public double getAdditionalHealth() {

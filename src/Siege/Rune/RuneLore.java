@@ -37,6 +37,9 @@ public class RuneLore {
 			asList("あなたはとってもいいにおいがする",
 					"自分にかかっているポーション効果を",
 					"近くの味方にもおすそ分けする");
+	public static final ArrayList<String> MAGIC_MAGICIAN_LORE =
+			asList("あなたはすごい",
+					"獲得する経験値の量が増加する");
 
 	/* === 敏捷系 Tier1 === */
 	public static final ArrayList<String> SWIFT_CAMO_LORE =

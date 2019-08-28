@@ -1,9 +1,14 @@
 package Siege.Rune.Events;
 
+import org.bukkit.Location;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import Lib.Parameters;
 import Siege.Rune.Runes;
@@ -43,7 +48,18 @@ public class PlayerAttackEvent implements Listener {
 		SiegePlayer vic = game.getSiegePlayer(v);
 
 		if (vic.hasRune(Runes.BATTLE_TENACITY)) { //執念
-			e.setDamage(e.getDamage() + Parameters.RUNE_MELEEDAMAGE_VALUE);
+			if (v.getHealth() < Parameters.RUNE_TENACITY_CASTLINE && v.getPotionEffect(PotionEffectType.ABSORPTION)==null) {
+				if (vic.hasRune(Runes.MAGIC_KEYSTONE)) {
+					v.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, Parameters.RUNE_TENACITY_VALUE_ENHANCED, Parameters.RUNE_TENACITY_DUR_ENHANCED));
+				} else {
+					v.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, Parameters.RUNE_TENACITY_VALUE, Parameters.RUNE_TENACITY_DUR));
+				}
+				v.getWorld().playSound(v.getLocation(), Sound.ENTITY_VINDICATOR_HURT, 0.5F, 0.5F);
+				v.playSound(v.getLocation(), Sound.BLOCK_ANVIL_USE, 0.5F, 0.5F);
+				Location l = v.getLocation();
+				l.add(0,2,0);
+				v.getWorld().spawnParticle(Particle.VILLAGER_ANGRY, l, 5);
+			}
 		}
 		if (sp.hasRune(Runes.BATTLE_ANTIDEFENDER)) { //対防衛特攻の場合
 			try {
