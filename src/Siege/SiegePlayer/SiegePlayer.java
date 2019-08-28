@@ -133,6 +133,7 @@ public class SiegePlayer {
 	public void runeStatusReflect() {
 		resetToDefault();
 		for (Runes r : getCurrentRunes()) {
+			if (r == null) continue;
 			switch (r) {
 			case BATTLE_HEALTHBOOST:
 				setAdditionalHealth(RUNE_HEALTHBOOST_VALUE);
