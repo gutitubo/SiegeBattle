@@ -1,7 +1,6 @@
 package Siege.Rune.Events;
 
 import static Lib.ConstStrings.*;
-import static Lib.Parameters.*;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -12,8 +11,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import Siege.Rune.Runes;
 import Siege.SiegePlayer.SiegePlayer;
@@ -46,32 +43,11 @@ public class OnClickedEvent implements Listener{
 		if (clicked.getType().equals(Material.NETHER_STAR)) return;
 
 		if (Runes.isRune(clicked)) {
-			runeStatusReflect(sp);
+			sp.runeStatusReflect();
 		} else {
 			return;
 		}
 		/* === ここから実装 === */
 
-	}
-
-	public void runeStatusReflect(SiegePlayer p) {
-		for (Runes r : p.getCurrentRunes()) {
-			switch (r) {
-			case BATTLE_HEALTHBOOST:
-				p.setAdditionalHealth(RUNE_HEALTHBOOST_VALUE);
-				break;
-			case BATTLE_REGENERATION:
-				p.getDeafultEffect().add(new PotionEffect(PotionEffectType.REGENERATION, RUNE_REGENERATION_TIME, RUNE_REGENERATION_AMP));
-				break;
-			case SWIFT_SPEEDUP:
-				p.setAdditionalSpeed(RUNE_SPEEDUP_VALUE);
-				break;
-			case SWIFT_JUMPBOOST:
-				p.getDeafultEffect().add(new PotionEffect(PotionEffectType.JUMP, RUNE_JUMPBOOST_TIME, RUNE_JUMPBOOST_AMP));
-			default:
-				break;
-			}
-		}
-		p.refleshRuneStatus();
 	}
 }

@@ -1,10 +1,13 @@
 package Siege.SiegePlayer;
 
+import static Lib.Parameters.*;
+
 import java.util.ArrayList;
 
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import Siege.Rune.RuneCategory;
 import Siege.Rune.Runes;
@@ -127,9 +130,30 @@ public class SiegePlayer {
 		return false;
 	}
 
+	public void runeStatusReflect() {
+		resetToDefault();
+		for (Runes r : getCurrentRunes()) {
+			switch (r) {
+			case BATTLE_HEALTHBOOST:
+				setAdditionalHealth(RUNE_HEALTHBOOST_VALUE);
+				break;
+			case BATTLE_REGENERATION:
+				getDeafultEffect().add(new PotionEffect(PotionEffectType.REGENERATION, RUNE_REGENERATION_TIME, RUNE_REGENERATION_AMP));
+				break;
+			case SWIFT_SPEEDUP:
+				setAdditionalSpeed(RUNE_SPEEDUP_VALUE);
+				break;
+			case SWIFT_JUMPBOOST:
+				getDeafultEffect().add(new PotionEffect(PotionEffectType.JUMP, RUNE_JUMPBOOST_TIME, RUNE_JUMPBOOST_AMP));
+			default:
+				break;
+			}
+		}
+		refleshRuneStatus();
+	}
+
 	public void refleshRuneStatus() {
 		//TODO 実装
-		resetToDefault();
 		Player p = getPlayer();
 		p.setWalkSpeed((defaultSpeed + getAdditionalSpeed()) * getSpeedMultipler());
 		p.setHealthScale(defaultHealth + getAdditionalHealth());
@@ -148,6 +172,11 @@ public class SiegePlayer {
 		p.setWalkSpeed(defaultSpeed);
 		p.setHealthScale(defaultHealth);
 		p.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(getAdditionalDefendPerm());
+		setAdditionalDamage(0);
+		setAdditionalDefend(0);
+		setAdditionalHealth(0);
+		setAdditionalSpeed(0);
+		setSpeedMultipler(0F);
 		clearDefaultEffect();
 	}
 
