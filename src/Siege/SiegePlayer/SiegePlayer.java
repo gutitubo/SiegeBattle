@@ -176,7 +176,7 @@ public class SiegePlayer {
 		setAdditionalDefend(0);
 		setAdditionalHealth(0);
 		setAdditionalSpeed(0);
-		setSpeedMultipler(0F);
+		setSpeedMultipler(1F);
 		clearDefaultEffect();
 	}
 
