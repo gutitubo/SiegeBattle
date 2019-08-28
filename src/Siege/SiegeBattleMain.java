@@ -21,6 +21,7 @@ import org.bukkit.scoreboard.Team.OptionStatus;
 
 import Siege.Recipe.GappleRecipe;
 import Siege.Rune.Events.OnClickedEvent;
+import Siege.Rune.Events.OnDamaged;
 import Siege.Rune.Events.OnDeathEvent;
 import Siege.Rune.Events.OnMoved;
 import Siege.Rune.Events.PlayerAttackEvent;
@@ -218,6 +219,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new OnDeathEvent(), this);
 		pm.registerEvents(new OnClickedEvent(), this);
 		pm.registerEvents(new OnMoved(), this);
+		pm.registerEvents(new OnDamaged(), this);
 	}
 
 	public void recipeRegist() {
