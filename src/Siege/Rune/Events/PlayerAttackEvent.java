@@ -30,7 +30,7 @@ public class PlayerAttackEvent implements Listener {
 		SiegeGame game = Siege.SiegeBattleMain.siegeBattleMain.getGame();
 		if (game == null) return;
 		if (game.getPhase() < 2) return;
-		if (game.isSiegePlayer(p)) return;
+		if (!game.isSiegePlayer(p)) return;
 		SiegePlayer sp = game.getSiegePlayer(p);
 
 		/* ---------- 攻撃者側用ルーン --------- */
@@ -50,9 +50,9 @@ public class PlayerAttackEvent implements Listener {
 		if (vic.hasRune(Runes.BATTLE_TENACITY)) { //執念
 			if (v.getHealth() < Parameters.RUNE_TENACITY_CASTLINE && v.getPotionEffect(PotionEffectType.ABSORPTION)==null) {
 				if (vic.hasRune(Runes.MAGIC_KEYSTONE)) {
-					v.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, Parameters.RUNE_TENACITY_VALUE_ENHANCED, Parameters.RUNE_TENACITY_DUR_ENHANCED));
+					v.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, Parameters.RUNE_TENACITY_DUR_ENHANCED, Parameters.RUNE_TENACITY_VALUE_ENHANCED));
 				} else {
-					v.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, Parameters.RUNE_TENACITY_VALUE, Parameters.RUNE_TENACITY_DUR));
+					v.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, Parameters.RUNE_TENACITY_DUR, Parameters.RUNE_TENACITY_VALUE));
 				}
 				v.getWorld().playSound(v.getLocation(), Sound.ENTITY_VINDICATOR_HURT, 0.5F, 0.5F);
 				v.playSound(v.getLocation(), Sound.BLOCK_ANVIL_USE, 0.5F, 0.5F);
