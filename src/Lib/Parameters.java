@@ -50,7 +50,7 @@ public class Parameters {
 	 */
 
 	/* === Tier 1 === */
-	public static final double RUNE_TENACITY_CASTLINE = 6; //執念発動ライン
+	public static final double RUNE_TENACITY_CASTLINE = 8; //執念発動ライン
 	public static final int RUNE_TENACITY_VALUE = 2; //執念効果
 	public static final int RUNE_TENACITY_VALUE_ENHANCED = 4; //執念効果 強化
 	public static final int RUNE_TENACITY_DUR = 20 * 30; //執念発動CD
@@ -70,8 +70,8 @@ public class Parameters {
 
 	/* === Tier 2 === */
 	public static final int RUNE_MELEEDAMAGE_VALUE = 3; //近接強化のダメージ
-	public static final int RUNE_ANTIDEFENDER_VALUE = 5; //対防衛特攻のダメージ
-	public static final int RUNE_ANTIATTACKER_VALUE = 2; //対攻撃特攻のダメージ
+	public static final int RUNE_ANTIDEFENDER_VALUE = 3; //対防衛特攻のダメージ
+	public static final int RUNE_ANTIATTACKER_VALUE = 3; //対攻撃特攻のダメージ
 	public static final int RUNE_HEALTHBOOST_VALUE = 6; //体力増加の増加量
 	public static final int RUNE_REGENERATION_TIME = 20 * 60 * 150; //自動回復の効果時間
 	public static final int RUNE_REGENERATION_AMP = 0; //自動回復の効果

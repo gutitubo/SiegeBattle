@@ -78,7 +78,7 @@ public class Recall implements Listener{
 					} else {
 
 					}
-					player.setHealth(player.getHealthScale());
+					player.setHealth(20);
 					player.setFoodLevel(20);
 					/*
 					 * デバフ解除処理入れる
