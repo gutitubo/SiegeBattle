@@ -17,20 +17,17 @@ commands:
       description: SiegeBattle basic commands.
       usage: /recall
       aliases: r
-      permission: SiegeBattle.sb
       permission-message: Banana.
       default: true
    r:
       description: SiegeBattle basic commands.
       usage: /r
       aliases: r
-      permission: SiegeBattle.sb
       permission-message: Banana.
       default: true
    info:
       description: player info.
       usage: /info
       aliases: info
-      permission: SiegeBattle.info
       permission-message: Banana.
       default: true
