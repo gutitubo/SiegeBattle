@@ -10,9 +10,9 @@ public class onEnchant implements Listener {
 	@EventHandler
 	public void onEnchanted(EnchantItemEvent e) {
 		Player p = e.getEnchanter();
-		if (e.getExpLevelCost() == 3 && p.getLevel() >= 30) {
-			p.setLevel(p.getLevel() - 30);
-		}
+		int level = p.getLevel() - e.getExpLevelCost();
+		level = level >= 0 ? level : 0;
+		p.setLevel(p.getLevel() - e.getExpLevelCost());
 	}
 
 }
