@@ -33,7 +33,7 @@ public class SiegeGame {
 
 	private int phase = 0;
 
-	private final int INVINCIBLE_TIME = 10; //default = 60 * 6
+	private final int INVINCIBLE_TIME = 60 * 6; //default = 60 * 6
 	private final int READY_TIME = 30; //default = 30
 
 	public SiegeGame(SiegeTeam redTeam, SiegeTeam blueTeam, Team red, Team blue) {
