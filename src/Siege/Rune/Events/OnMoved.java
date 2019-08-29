@@ -23,6 +23,10 @@ public class OnMoved implements Listener{
 		Player p = e.getPlayer();
 		SiegePlayer sp = game.getSiegePlayer(p);
 
+		if(sp.hasRune(Runes.SWIFT_NOFALL)) { //NOFALLを持っているとき
+			p.setFallDistance(0F);
+		}
+
 		if (sp.hasRune(Runes.SWIFT_WINDY)) {
 			if (game.getRedTeam().isMember(p)) {
 				for (SiegePlayer red : game.getRedTeam().getSiegePlayerList().getPlayerList()) {
