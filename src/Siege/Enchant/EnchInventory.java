@@ -3,6 +3,7 @@ package Siege.Enchant;
 import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -21,7 +22,7 @@ public class EnchInventory {
 
 	public static ArrayList<ItemStack> suggestCalc(SiegePlayer sp, ItemStack hand) {
 		ArrayList<ItemStack> itemAry = new ArrayList<>();
-
+		itemAry.add(getEnchantIcon(1));
 		return itemAry;
 	}
 
@@ -29,5 +30,10 @@ public class EnchInventory {
 		ArrayList<Enchants> enchAry = new ArrayList<>();
 
 		return enchAry;
+	}
+
+	private static ItemStack getEnchantIcon(int level) {
+		ItemStack item = Lib.ItemFactory.createItem(Material.BARRIER, level);
+		return item;
 	}
 }
