@@ -49,7 +49,7 @@ public class RuneNames {
 	public static final String SWIFT_2_SPEEDUP_NAME = "移動速度上昇"; //DONE
 	public static final String SWIFT_2_JUMPBOOST_NAME = "跳躍力上昇"; //DONE
 	public static final String SWIFT_2_NOFALL_NAME = "転落ダメージ無効化"; //DONE
-	public static final String SWIFT_2_NOHUNGRY_NAME = "空腹無効化";
+	public static final String SWIFT_2_NOHUNGRY_NAME = "空腹無効化"; //DONE
 	public static final String SWIFT_2_HOMEGUARD_NAME = "自陣移動速度上昇";
 	public static final String SWIFT_2_RUNNER_NAME = "逃げ足";
 
