@@ -65,7 +65,7 @@ public enum RandomPotion {
 
 		int dur = new Random().nextInt(maxDuration) + 1;
 
-		int lv = new Random().nextInt(maxLevel + 1) - 1;
+		int lv = new Random().nextInt(maxLevel + 2) - 1;
 
 		meta.setDisplayName(itemName); //TODO 名前の設定
 		meta.addCustomEffect(new PotionEffect(type, dur, lv), false); //TODO ポーション生成処理をちゃんとする
