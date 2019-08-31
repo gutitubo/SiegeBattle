@@ -9,6 +9,7 @@ public class RuneNames {
 	public static final String BATTLE_CHEERER_NAME = "応援団";
 	public static final String BATTLE_RESIRIENCE_NAME = "逆境魂";
 	public static final String BATTLE_TENACITY_NAME = "執念"; //DONE
+	public static final String BATTLE_TOKKOYARO_NAME = "特攻野郎";
 
 	/* === 錬金系 Tier1 === */
 	public static final String MAGIC_CORESHIELD_NAME = "コアシールド";
@@ -41,6 +42,7 @@ public class RuneNames {
 	public static final String MAGIC_2_POTION_AMP_NAME = "ポーション強化";
 	public static final String MAGIC_2_POTION_DUR_NAME = "ポーション効果延長";
 	public static final String MAGIC_2_EXPUP_NAME = "獲得経験値上昇"; //DONE
+	public static final String MAGIC_2_EXPPASSER_NAME = "経験値おすそわけ"; //DONE
 	public static final String MAGIC_2_KEYSTONE_NAME = "ルーン強化"; //DONE
 	public static final String MAGIC_2_KILLPOTION_NAME = "アルケミスト";
 	public static final String MAGIC_2_EXPARMOR_NAME = "経験値アーマー"; //DONE

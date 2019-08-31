@@ -113,6 +113,13 @@ public class OreMiningEvent implements Listener{
 				}
 			}
 			if (sp.hasRune(Runes.MAGIC_EXPUP)) exp *= RUNE_EXPUP2_MULTIPLY;
+			if (sp.hasRune(Runes.MAGIC_EXPPASSER)) {
+				for (SiegePlayer ally : sp.getTeam().getSiegePlayerList().getPlayerList()) {
+					if (ally.getPlayer().getLocation().distance(p.getLocation()) <= RUNE_EXPPASSER_RANGE) {
+						ally.getPlayer().giveExp((int) (exp * RUNE_EXPPASSER_RATIO));
+					}
+				}
+			}
 			p.giveExp(exp);
 			e.setDropItems(false);
 			e.setExpToDrop(0);

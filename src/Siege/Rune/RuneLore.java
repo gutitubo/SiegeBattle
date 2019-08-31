@@ -23,6 +23,9 @@ public class RuneLore {
 	public static final ArrayList<String> BATTLE_TENACITY_LORE =
 			asList("あなたはそう簡単に倒れない",
 					"体力が一定以下になると衝撃吸収の効果を得る");
+	public static final ArrayList<String> BATTLE_TOKKOYARO_LORE =
+			asList("あなたは特攻するだけしか能がない",
+					"相手のコア付近で耐久力と移動速度が上昇する");
 
 	/* === 錬金系 Tier1 === */
 	public static final ArrayList<String> MAGIC_CORESHIELD_LORE =
@@ -61,7 +64,7 @@ public class RuneLore {
 	/* === 採掘系 Tier1 === */
 	public static final ArrayList<String> COLLECT_THIEF_LORE =
 			asList("あなたの手癖はめっちゃ悪い",
-					"相手を攻撃するたびにランダムで鉱石を獲得する",
+					"相手を攻撃すると鉱石を獲得することがある",
 					"まれにめっちゃいいアイテムを手に入れることもある");
 	public static final ArrayList<String> COLLECT_SCAVENGER_LORE =
 			asList("あなたは死体の漁り方を心得ている",
@@ -95,6 +98,8 @@ public class RuneLore {
 			asList("ポーション効果の持続時間が伸びる");
 	public static final ArrayList<String> MAGIC_2_EXPUP_LORE =
 			asList("獲得経験値が増加する");
+	public static final ArrayList<String> MAGIC_2_EXPPASSER_LORE =
+			asList("経験値を獲得すると周りにもおすそわけする"); //DONE
 	public static final ArrayList<String> MAGIC_2_KEYSTONE_LORE =
 			asList("装備しているTier1ルーンが強化される");
 	public static final ArrayList<String> MAGIC_2_KILLPOTION_LORE =

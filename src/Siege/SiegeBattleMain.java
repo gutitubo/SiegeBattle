@@ -25,6 +25,7 @@ import Siege.Rune.Events.CancelHungry;
 import Siege.Rune.Events.OnClickedEvent;
 import Siege.Rune.Events.OnDamaged;
 import Siege.Rune.Events.OnDeathEvent;
+import Siege.Rune.Events.OnDrunk;
 import Siege.Rune.Events.OnMoved;
 import Siege.Rune.Events.PlayerAttackEvent;
 import Siege.SiegeCore.SiegeGame;
@@ -224,6 +225,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new OnMoved(), this);
 		pm.registerEvents(new OnDamaged(), this);
 		pm.registerEvents(new CancelHungry(), this);
+		pm.registerEvents(new OnDrunk(), this);
 	}
 
 	public void enchantmentEventRegist(PluginManager pm) {

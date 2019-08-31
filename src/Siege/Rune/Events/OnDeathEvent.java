@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 import Siege.Rune.RandomPotion;
+import Siege.Rune.RuneScheduler;
 import Siege.Rune.Runes;
 import Siege.SiegeCore.SiegeGame;
 import Siege.SiegePlayer.SiegePlayer;
@@ -16,6 +17,8 @@ public class OnDeathEvent implements Listener {
 	public void onDeadByPlayer(PlayerDeathEvent e) {
 		Player dead = e.getEntity();
 		Player killer = dead.getKiller();
+
+		RuneScheduler.setCanSeeYouAll(dead);
 
 		if (killer == null) {
 			return;
