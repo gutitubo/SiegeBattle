@@ -76,17 +76,17 @@ public class RuneScheduler extends BukkitRunnable{
 					} else {
 						sp.setAdditionalDefend(0);
 					}
-					sp.statusReflect();
 				}
+				sp.statusReflect();
 
 				/* === カモフラージュの処理 === */
 				if (sp.hasRune(Runes.SWIFT_CAMO)) {
-					boolean flag = true;
+					boolean flag = false;
 					SiegeTeam team = sp.getTeam().equals(game.getRedTeam()) ? game.getBlueTeam() : game.getRedTeam();
 					for (SiegePlayer enem : team.getSiegePlayerList().getPlayerList()) { //ひとりかどうか
 						double camo_range = sp.hasRune(Runes.MAGIC_KEYSTONE) ? RUNE_CAMO_RANGE : RUNE_CAMO_RANGE_ENHANCED;
 						if (enem.getPlayer().getLocation().distance(p.getLocation()) > camo_range) {
-							flag = false; //ひとりじゃない
+							flag = true; //ひとり
 						}
 					}
 					if (flag) {

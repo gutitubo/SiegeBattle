@@ -41,6 +41,7 @@ public class CoreDamageEvent implements Listener{
 					//コア破壊処理
 					Siege.SiegeBattleMain.siegeBattleMain.getGame().coreEffect(redCore);
 					Siege.SiegeBattleMain.siegeBattleMain.getGame().coreDamage(blueTeam.getMember(p), redTeam);
+					onBrokenRuneEffect(p);
 				}
 			} else if (b.equals(blueCore.getBlock())) { //ブルーコアだった場合
 				e.setCancelled(true);
@@ -50,6 +51,7 @@ public class CoreDamageEvent implements Listener{
 					//コア破壊処理
 					Siege.SiegeBattleMain.siegeBattleMain.getGame().coreEffect(blueCore);
 					Siege.SiegeBattleMain.siegeBattleMain.getGame().coreDamage(redTeam.getMember(p), blueTeam);
+					onBrokenRuneEffect(p);
 				}
 			}
 		} else {
@@ -68,6 +70,7 @@ public class CoreDamageEvent implements Listener{
 
 		if (sp.hasRune(Runes.MAGIC_CORESHIELD)) {
 			sp.setAdditionalDefendPerm(sp.getAdditionalDefendPerm() + 1);
+			sp.statusReflect();
 		}
 	}
 }

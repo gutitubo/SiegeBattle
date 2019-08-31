@@ -85,7 +85,7 @@ public class Parameters {
 	public static final int RUNE_REGENERATION_TIME = 20 * 60 * 150; //自動回復の効果時間
 	public static final int RUNE_REGENERATION_AMP = 0; //自動回復の効果
 	public static final double RUNE_COREDIG_DISTANCE = 16; //コア採掘発動距離
-	public static final int RUNE_COREDIG_AMP = 2; //コア採掘 強さ
+	public static final int RUNE_COREDIG_AMP = 0; //コア採掘 強さ
 
 	public static final double RUNE_POTDUR_MULTIPLY = 1.2; //ポーションの延長の上昇率
 	public static final double RUNE_EXPUP2_MULTIPLY = 1.2; //経験値アップの上昇率
