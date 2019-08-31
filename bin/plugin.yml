@@ -1,6 +1,6 @@
 name: SiegeBattle
 main: Siege.SiegeBattleMain
-version: Beta-1.1.0
+version: Beta-1.2.0
 api-version: 1.14
 commands:
    sb:
