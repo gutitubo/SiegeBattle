@@ -73,9 +73,9 @@ public class RuneScheduler extends BukkitRunnable{
 							}
 							p.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 20 * 3, RUNE_SOLOFIGHTER_REG));
 						}
-					} else {
-						sp.setAdditionalDefend(0);
 					}
+				} else {
+					sp.setAdditionalDefend(0);
 				}
 				sp.statusReflect();
 
