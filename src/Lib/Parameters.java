@@ -50,11 +50,18 @@ public class Parameters {
 	 */
 
 	/* === Tier 1 === */
+	public static final double RUNE_SOLOFIGHTER_RANGE = 16; //孤軍奮闘発動ライン
+	public static final int RUNE_SOLOFIGHTER_REG = 0; //孤軍奮闘強化時 再生力レベル
+	public static final int RUNE_SOLOFIGHTER_DEF = 20; //上昇防御力
+
 	public static final double RUNE_TENACITY_CASTLINE = 8; //執念発動ライン
 	public static final int RUNE_TENACITY_VALUE = 2; //執念効果
 	public static final int RUNE_TENACITY_VALUE_ENHANCED = 4; //執念効果 強化
 	public static final int RUNE_TENACITY_DUR = 20 * 30; //執念発動CD
 	public static final int RUNE_TENACITY_DUR_ENHANCED = 20 * 20; //執念発動CD 強化
+
+	public static final double RUNE_CAMO_RANGE = 24; //カモフラレンジ
+	public static final double RUNE_CAMO_RANGE_ENHANCED = 16; //カモフラレンジ
 
 	public static final double RUNE_WINDY_RANGE = 16; //追い風の発動距離
 	public static final double RUNE_WINDY_RANGE_ENHANCED = 24; //追い風の発動距離 強化
@@ -65,8 +72,10 @@ public class Parameters {
 	public static final double RUNE_EXPUP_MULTIPLY = 1.3; //魔法使い
 	public static final double RUNE_EXPUP_MULTIPLY_ENHANCED = 1.5; //魔法使い強化
 
+	public static final int RUNE_THIEF_CHANCE = 50; //盗賊の盗む確率 MAX100
+	public static final int RUNE_THIEF_CHANCE_ENHANCED = 100; //盗賊の盗む確率強化 MAX100
 	public static final int RUNE_MINER_VALUE = 2; //炭鉱夫
-	public static final int RUNE_MINER_VALUE_ENHANCED = 1; //炭鉱夫強化
+	public static final int RUNE_MINER_VALUE_ENHANCED = 2; //炭鉱夫強化
 
 	/* === Tier 2 === */
 	public static final int RUNE_MELEEDAMAGE_VALUE = 3; //近接強化のダメージ
@@ -75,16 +84,34 @@ public class Parameters {
 	public static final int RUNE_HEALTHBOOST_VALUE = 6; //体力増加の増加量
 	public static final int RUNE_REGENERATION_TIME = 20 * 60 * 150; //自動回復の効果時間
 	public static final int RUNE_REGENERATION_AMP = 0; //自動回復の効果
+	public static final double RUNE_COREDIG_DISTANCE = 16; //コア採掘発動距離
+	public static final int RUNE_COREDIG_AMP = 0; //コア採掘 強さ
 
-	public static final double RUNE_EXPUP2_MULTIPLY = 1.2;
+	public static final double RUNE_POTDUR_MULTIPLY = 1.2; //ポーションの延長の上昇率
+	public static final double RUNE_EXPUP2_MULTIPLY = 1.2; //経験値アップの上昇率
+	public static final double RUNE_EXPPASSER_RANGE = 32; //経験値おすそ分け距離
+	public static final double RUNE_EXPPASSER_RATIO = 0.25; //経験値おすそ分け量
 
 	public static final float RUNE_SPEEDUP_VALUE = 0.05F; //スピードアップの増加量
 	public static final int RUNE_JUMPBOOST_TIME = 20* 60* 150; //ジャンプブーストの効果時間
 	public static final int RUNE_JUMPBOOST_AMP = 2; //ジャンプブーストの強さ
+	public static final int RUNE_HOMEGUARD_AMP = 1; //ホームガードの強さ
+	public static final int RUNE_HOMEGUARD_DISTANCE = 48; //ホームガードの発動距離
+	public static final int RUNE_RUNNER_AMP = 1; //逃げ足の強さ
+	public static final int RUNE_RUNNER_HEALTH = 3; //逃げ足発動体力
 
-	public static final int RUNE_IRON_AMOUNT = 1; //鉄鉱石増加
-	public static final int RUNE_GOLD_AMOUNT = 1; //金鉱石増加
-	public static final int RUNE_DIA_AMOUNT = 1; //ダイアモンド増加
-	public static final int RUNE_RED_AMOUNT = 2; //赤石増加
+	public static final int RUNE_IRON_AMOUNT = 2; //鉄鉱石増加
+	public static final int RUNE_GOLD_AMOUNT = 2; //金鉱石増加
+	public static final int RUNE_DIA_AMOUNT = 2; //ダイアモンド増加
+	public static final int RUNE_RED_AMOUNT = 3; //赤石増加
 	public static final int RUNE_RECALL_AMOUNT = 3; //リコール短縮
+
+	/* == RandomPotionのMaxStatus == */
+	public static final int NORMALPOT_MAXLEVEL = 1; //普通のポーションの最大レベル
+	public static final int NORMALPOT_MAXDUR = 20 * 60 * 3; //普通のポーションの最大効果時間
+
+	public static final int STRE_MAXLEVEL = 1; //ストポ最大レベル
+	public static final int STRE_MAXDUR = 20 * 30 * 1; //ストポ最大効果時間
+
+	public static final int INSTANT_MAXDUR = 1; //インスタント系ポット効果時間
 }

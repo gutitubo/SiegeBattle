@@ -3,6 +3,8 @@ package Siege.SiegeShop;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
 
+import Siege.Rune.RandomPotion;
+
 public class ExpShop extends SiegeShop{
 
 	public static String invName = "ExpShop";
@@ -14,7 +16,7 @@ public class ExpShop extends SiegeShop{
 	public static Inventory getInventory() {
 		Inventory inv = Bukkit.createInventory(null, 54, invName);
 
-//		inv.setItem(0, new ItemStack(Material.DIAMOND));
+		inv.setItem(0, RandomPotion.getRandom());
 
 		return inv;
 	}

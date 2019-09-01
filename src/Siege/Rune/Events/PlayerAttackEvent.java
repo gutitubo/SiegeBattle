@@ -1,12 +1,18 @@
 package Siege.Rune.Events;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
+
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -15,6 +21,7 @@ import Siege.Rune.Runes;
 import Siege.SiegeCore.SiegeGame;
 import Siege.SiegeException.IkaretaPhaseException;
 import Siege.SiegePlayer.SiegePlayer;
+import net.md_5.bungee.api.ChatColor;
 
 public class PlayerAttackEvent implements Listener {
 
@@ -36,6 +43,10 @@ public class PlayerAttackEvent implements Listener {
 		/* ---------- 攻撃者側用ルーン --------- */
 		if (sp.hasRune(Runes.BATTLE_MELEEDAMAGE)) { //近接攻撃強化の場合
 			e.setDamage(e.getDamage() + Parameters.RUNE_MELEEDAMAGE_VALUE);
+		}
+
+		if (sp.hasRune(Runes.COLLECT_THIEF)) {
+			thiefAttack(sp, sp.hasRune(Runes.MAGIC_KEYSTONE));
 		}
 
 		/* ---------- 被害者用ルーン ---------- */
@@ -84,5 +95,39 @@ public class PlayerAttackEvent implements Listener {
 			}
 			e.setDamage(e.getDamage() - (e.getDamage() * guard));
 		}
+	}
+
+	public void thiefAttack(SiegePlayer sp, boolean enhanced) {
+		int dice = new Random().nextInt(100) + 1;
+		ArrayList<ItemStack> table = new ArrayList<>();
+		table.add(new ItemStack(Material.DIAMOND, 1));
+		table.add(new ItemStack(Material.DIAMOND, 2));
+		table.add(new ItemStack(Material.IRON_INGOT, 1));
+		table.add(new ItemStack(Material.IRON_INGOT, 2));
+		table.add(new ItemStack(Material.IRON_INGOT, 3));
+		table.add(new ItemStack(Material.COAL, 1));
+		table.add(new ItemStack(Material.COAL, 2));
+		table.add(new ItemStack(Material.COAL, 3));
+		table.add(new ItemStack(Material.GOLD_INGOT, 1));
+		table.add(new ItemStack(Material.GOLD_INGOT, 2));
+		table.add(new ItemStack(Material.GOLD_INGOT, 3));
+		table.add(new ItemStack(Material.LAPIS_BLOCK, 1));
+		table.add(new ItemStack(Material.LAPIS_BLOCK, 2));
+		table.add(new ItemStack(Material.LAPIS_BLOCK, 3));
+		table.add(new ItemStack(Material.REDSTONE, 1));
+		table.add(new ItemStack(Material.REDSTONE, 2));
+		table.add(new ItemStack(Material.REDSTONE, 3));
+		table.add(new ItemStack(Material.REDSTONE, 4));
+		table.add(new ItemStack(Material.REDSTONE, 5));
+		Collections.shuffle(table);
+		ItemStack loot = table.get(0);
+		if (enhanced && dice <= Parameters.RUNE_THIEF_CHANCE_ENHANCED) {
+		} else if (dice <= Parameters.RUNE_THIEF_CHANCE) {
+		} else {
+			return;
+		}
+		//TODO 共通処理
+		sp.getPlayer().getInventory().addItem(loot);
+		sp.getPlayer().sendMessage(ChatColor.GOLD + "鉱石を盗み取った！");
 	}
 }
