@@ -84,7 +84,7 @@ public class RuneScheduler extends BukkitRunnable{
 					boolean flag = false;
 					SiegeTeam team = sp.getTeam().equals(game.getRedTeam()) ? game.getBlueTeam() : game.getRedTeam();
 					for (SiegePlayer enem : team.getSiegePlayerList().getPlayerList()) { //ひとりかどうか
-						double camo_range = sp.hasRune(Runes.MAGIC_KEYSTONE) ? RUNE_CAMO_RANGE : RUNE_CAMO_RANGE_ENHANCED;
+						double camo_range = sp.hasRune(Runes.MAGIC_KEYSTONE) ? RUNE_CAMO_RANGE_ENHANCED : RUNE_CAMO_RANGE;
 						if (enem.getPlayer().getLocation().distance(p.getLocation()) > camo_range) {
 							flag = true; //ひとり
 						}

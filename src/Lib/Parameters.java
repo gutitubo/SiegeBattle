@@ -51,7 +51,7 @@ public class Parameters {
 
 	/* === Tier 1 === */
 	public static final double RUNE_SOLOFIGHTER_RANGE = 16; //孤軍奮闘発動ライン
-	public static final int RUNE_SOLOFIGHTER_REG = 1; //孤軍奮闘強化時 再生力レベル
+	public static final int RUNE_SOLOFIGHTER_REG = 0; //孤軍奮闘強化時 再生力レベル
 	public static final int RUNE_SOLOFIGHTER_DEF = 20; //上昇防御力
 
 	public static final double RUNE_TENACITY_CASTLINE = 8; //執念発動ライン
@@ -60,8 +60,8 @@ public class Parameters {
 	public static final int RUNE_TENACITY_DUR = 20 * 30; //執念発動CD
 	public static final int RUNE_TENACITY_DUR_ENHANCED = 20 * 20; //執念発動CD 強化
 
-	public static final double RUNE_CAMO_RANGE = 32;
-	public static final double RUNE_CAMO_RANGE_ENHANCED = 24;
+	public static final double RUNE_CAMO_RANGE = 24; //カモフラレンジ
+	public static final double RUNE_CAMO_RANGE_ENHANCED = 16; //カモフラレンジ
 
 	public static final double RUNE_WINDY_RANGE = 16; //追い風の発動距離
 	public static final double RUNE_WINDY_RANGE_ENHANCED = 24; //追い風の発動距離 強化
