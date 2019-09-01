@@ -100,6 +100,8 @@ public class RuneScheduler extends BukkitRunnable{
 					} else {
 						setCanSeeYouAll(sp.getPlayer());
 					}
+				} else {
+					setCanSeeYouAll(sp.getPlayer());
 				}
 
 			} catch (IkaretaPhaseException e) {
