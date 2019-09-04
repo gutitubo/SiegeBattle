@@ -1,5 +1,7 @@
 package Siege.SiegeCore;
 
+import java.util.ArrayList;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -12,6 +14,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.Team;
 
 import Siege.SiegeBattleMain;
+import Siege.Rune.RuneScheduler;
 import Siege.SiegeException.IkaretaPhaseException;
 import Siege.SiegePlayer.SiegePlayer;
 import Siege.SiegeStage.SiegeStage;
@@ -33,7 +36,7 @@ public class SiegeGame {
 
 	private int phase = 0;
 
-	private final int INVINCIBLE_TIME = 10; //default = 60 * 6
+	private final int INVINCIBLE_TIME = 60 * 6; //default = 60 * 6
 	private final int READY_TIME = 30; //default = 30
 
 	public SiegeGame(SiegeTeam redTeam, SiegeTeam blueTeam, Team red, Team blue) {
@@ -119,6 +122,9 @@ public class SiegeGame {
 		blueTeam.startUp(getSiegeStage().getBlueSpawnCenter());
 
 		setPhase(1);
+
+		RuneScheduler rs = new RuneScheduler(this);
+		rs.runTaskTimer(SiegeBattleMain.siegeBattleMain, 20, 20); //1秒おきに実行
 
 		//スケヂューラーーー
 		new BukkitRunnable() {
@@ -293,5 +299,12 @@ public class SiegeGame {
 
 	public void setSiegeStage(SiegeStage siegeStage) {
 		this.siegeStage = siegeStage;
+	}
+
+	public ArrayList<SiegePlayer> getJoinedPlayer() {
+		ArrayList<SiegePlayer> players = new ArrayList<SiegePlayer>();
+		players.addAll(getRedTeam().getSiegePlayerList().getPlayerList());
+		players.addAll(getBlueTeam().getSiegePlayerList().getPlayerList());
+		return players;
 	}
 }

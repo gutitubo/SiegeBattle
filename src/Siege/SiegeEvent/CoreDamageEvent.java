@@ -1,12 +1,16 @@
 package Siege.SiegeEvent;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
+import Siege.Rune.Runes;
+import Siege.SiegeCore.SiegeGame;
+import Siege.SiegePlayer.SiegePlayer;
 import Siege.SiegeTeam.SiegeTeam;
 import net.md_5.bungee.api.ChatColor;
 
@@ -17,14 +21,16 @@ public class CoreDamageEvent implements Listener{
 		if (Siege.SiegeBattleMain.siegeBattleMain.getGame() == null) {
 			return ;
 		}
-		
+		if (p.getInventory().getItemInMainHand() == null) return;
+		if (!p.getInventory().getItemInMainHand().getType().equals(Material.SHEARS)) return;
+
 		Block b = e.getBlock();
 		Location redCore = Siege.SiegeBattleMain.siegeBattleMain.getGame().getSiegeStage().getRedCore();
 		Location blueCore = Siege.SiegeBattleMain.siegeBattleMain.getGame().getSiegeStage().getBlueCore();
-		
+
 		if (Siege.SiegeBattleMain.siegeBattleMain.getGame().getPhase() >= 3) {
 			//ゲームが開始していた場合
-			
+
 			SiegeTeam redTeam = Siege.SiegeBattleMain.siegeBattleMain.getGame().getRedTeam();
 			SiegeTeam blueTeam = Siege.SiegeBattleMain.siegeBattleMain.getGame().getBlueTeam();
 			if (b.equals(redCore.getBlock())) { //レッドコアだった場合
@@ -35,6 +41,7 @@ public class CoreDamageEvent implements Listener{
 					//コア破壊処理
 					Siege.SiegeBattleMain.siegeBattleMain.getGame().coreEffect(redCore);
 					Siege.SiegeBattleMain.siegeBattleMain.getGame().coreDamage(blueTeam.getMember(p), redTeam);
+					onBrokenRuneEffect(p);
 				}
 			} else if (b.equals(blueCore.getBlock())) { //ブルーコアだった場合
 				e.setCancelled(true);
@@ -44,6 +51,7 @@ public class CoreDamageEvent implements Listener{
 					//コア破壊処理
 					Siege.SiegeBattleMain.siegeBattleMain.getGame().coreEffect(blueCore);
 					Siege.SiegeBattleMain.siegeBattleMain.getGame().coreDamage(redTeam.getMember(p), blueTeam);
+					onBrokenRuneEffect(p);
 				}
 			}
 		} else {
@@ -51,6 +59,18 @@ public class CoreDamageEvent implements Listener{
 				e.setCancelled(true);
 				return;
 			}
+		}
+	}
+
+	public void onBrokenRuneEffect(Player p) {
+		SiegeGame game = Siege.SiegeBattleMain.siegeBattleMain.getGame();
+		if (game == null) return;
+		if (!game.isSiegePlayer(p)) return;
+		SiegePlayer sp = game.getSiegePlayer(p);
+
+		if (sp.hasRune(Runes.MAGIC_CORESHIELD)) {
+			sp.setAdditionalDefendPerm(sp.getAdditionalDefendPerm() + 1);
+			sp.statusReflect();
 		}
 	}
 }

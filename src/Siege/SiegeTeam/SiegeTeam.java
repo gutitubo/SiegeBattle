@@ -36,7 +36,7 @@ public class SiegeTeam {
 		this.color = color;
 		siegeTeamDetails = new SiegeTeamDetails();
 		core = 100;
-		
+
 		for (SiegePlayer sp : siegePlayerList.getPlayerList()) {
 			sp.setTeam(this);
 		}
@@ -55,6 +55,7 @@ public class SiegeTeam {
 				sp.getPlayer().getInventory().addItem(item);
 			}
 		}
+		SiegeItemSet.giveTeamArmor(this);
 	}
 
 	public void gotoSpawn(Location spawnLocation) {
@@ -93,25 +94,25 @@ public class SiegeTeam {
 	public void createNewBar(SiegeTeam enemy) {
 		this.infoBar = new SiegeInformationBar(getInfoString(enemy),
 		BarColor.PURPLE, BarStyle.SOLID);
-		
+
 		this.infoBar.setToTeam(this);
 	}
-	
+
 	public void barReflesh(SiegeTeam enemy) {
 		getInfoBar().setBarTitle(getInfoString(enemy));
 	}
-	
+
 	public String getInfoString(SiegeTeam enemy) {
 		String msg;
-		msg = getColor() + getTeamName() + ": " + getCore() 
+		msg = getColor() + getTeamName() + ": " + getCore()
 		+ ChatColor.RESET + " | " + enemy.getColor() + enemy.getTeamName() + ": " + enemy.getCore();
 		return msg;
 	}
-	
+
 	public SiegeInformationBar getInfoBar() {
 		return this.infoBar;
 	}
-	
+
 	@Override
 	public String toString() {
 		String ret = color + teamName;

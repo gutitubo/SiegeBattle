@@ -19,9 +19,13 @@ public class OnMoved implements Listener{
 	public void onMoved(PlayerMoveEvent e) {
 		SiegeGame game = Siege.SiegeBattleMain.siegeBattleMain.getGame();
 		if (game == null) return;
-		if (game.isSiegePlayer(e.getPlayer())) return;
+		if (!game.isSiegePlayer(e.getPlayer())) return;
 		Player p = e.getPlayer();
 		SiegePlayer sp = game.getSiegePlayer(p);
+
+		if(sp.hasRune(Runes.SWIFT_NOFALL)) { //NOFALLを持っているとき
+			p.setFallDistance(0F);
+		}
 
 		if (sp.hasRune(Runes.SWIFT_WINDY)) {
 			if (game.getRedTeam().isMember(p)) {
@@ -64,6 +68,6 @@ public class OnMoved implements Listener{
 			}
 		}
 		p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Parameters.RUNE_WINDY_DUR_ENHANCED, Parameters.RUNE_WINDY_AMP));
-		p.getWorld().spawnParticle(Particle.CLOUD, p.getLocation(), 3);
+		p.getWorld().spawnParticle(Particle.CLOUD, p.getLocation(), 1, 1);
 	}
 }

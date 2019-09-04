@@ -4,6 +4,7 @@ import static Lib.ConstStrings.*;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -85,6 +86,7 @@ public class RuneInteractEvent implements Listener {
 		if (clicked.getType().equals(Material.NETHER_STAR)) {
 			sp.clearRune();
 			p.openInventory(RuneInventory.getRuneInventory(sp));
+			p.playSound(p.getLocation(), Sound.BLOCK_GRASS_BREAK, 0.5F, 0.5F);
 			return;
 		}
 
@@ -97,6 +99,7 @@ public class RuneInteractEvent implements Listener {
 		if (r.getTier() == 1) {
 			rs[0] = r;
 			p.openInventory(RuneInventory.getRuneInventory(sp));
+			p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 0.5F, 0.5F);
 			return;
 		} else if (r.getCategory() == sp.getMainPath()) {
 			/* メインパスだった場合 */
@@ -109,6 +112,7 @@ public class RuneInteractEvent implements Listener {
 				rs[2] = r;
 			}
 			p.openInventory(RuneInventory.getRuneInventory(sp));
+			p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 0.5F, 0.5F);
 			return;
 		} else if (r.getCategory() == sp.getSubPath()){
 			/* サブパスだった場合 */
@@ -121,6 +125,7 @@ public class RuneInteractEvent implements Listener {
 				rs[4] = r;
 			}
 			p.openInventory(RuneInventory.getRuneInventory(sp));
+			p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 0.5F, 0.5F);
 			return;
 		}
 	}

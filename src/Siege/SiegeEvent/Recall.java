@@ -15,7 +15,6 @@ import Lib.Parameters;
 import Siege.SiegeBattleMain;
 import Siege.Rune.Runes;
 import Siege.SiegeCore.SiegeGame;
-import Siege.SiegePlayer.SiegePlayer;
 import net.md_5.bungee.api.ChatColor;
 
 public class Recall implements Listener{
@@ -31,8 +30,7 @@ public class Recall implements Listener{
 		player = p;
 		SiegeGame game = SiegeBattleMain.siegeBattleMain.getGame();
 		if (game == null) return;
-		if (game.isSiegePlayer(p)) return;
-		SiegePlayer sp = game.getSiegePlayer(p);
+		if (!game.isSiegePlayer(p)) return;
 		Location teamCore;
 		if (game.getBlueTeam().isMember(p)) { //青チームだったら
 			teamCore = game.getSiegeStage().getBlueCore();
@@ -41,9 +39,8 @@ public class Recall implements Listener{
 		} else {
 			return;
 		}
-		int count = getRecallDelay(p, game.getSiegeStage().getMiddleOfMap(), teamCore);
-		count = sp.hasRune(Runes.COLLECT_RECALL) && count > Parameters.RUNE_RECALL_AMOUNT ? Parameters.RUNE_RECALL_AMOUNT : count;
-		setCount(count);
+
+		setCount(getRecallDelay(p, game.getSiegeStage().getMiddleOfMap(), teamCore));
 		recallStart();
 		p.sendMessage(ChatColor.DARK_RED+ "" + getCount() + "秒後にリコールします");
 	}
@@ -69,6 +66,7 @@ public class Recall implements Listener{
 				}
 				if (count <= 0) { //リコール完了処理
 					player.sendMessage(ChatColor.DARK_RED + "RECAaaaaaaaaaaaaAAL");
+					recalling.remove(player);
 					/*
 					 * ここにリコール処理つける
 					 */
@@ -80,14 +78,14 @@ public class Recall implements Listener{
 					} else {
 
 					}
-					player.setHealth(player.getHealthScale());
+					player.setHealth(20);
 					player.setFoodLevel(20);
 					/*
 					 * デバフ解除処理入れる
 					 */
+					Siege.SiegeBattleMain.siegeBattleMain.getGame().getSiegePlayer(player).runeStatusReflect();
 
 					player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 0.5F, 0.5F);
-					recalling.remove(player);
 					this.cancel();
 				}
 				count--;
@@ -127,6 +125,11 @@ public class Recall implements Listener{
 			delay = 10;
 		} else {
 			delay = (int)(pl/ten * 10);
+		}
+		if (SiegeBattleMain.siegeBattleMain.getGame().getSiegePlayer(p).hasRune(Runes.COLLECT_RECALL)) {
+			if (delay > Parameters.RUNE_RECALL_AMOUNT) {
+				return Parameters.RUNE_RECALL_AMOUNT;
+			}
 		}
 		return delay;
 	}

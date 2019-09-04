@@ -19,15 +19,19 @@ import org.bukkit.scoreboard.Team;
 import org.bukkit.scoreboard.Team.Option;
 import org.bukkit.scoreboard.Team.OptionStatus;
 
+import Siege.Enchant.Event.onEnchant;
 import Siege.Recipe.GappleRecipe;
+import Siege.Rune.Events.CancelHungry;
 import Siege.Rune.Events.OnClickedEvent;
 import Siege.Rune.Events.OnDamaged;
 import Siege.Rune.Events.OnDeathEvent;
+import Siege.Rune.Events.OnDrunk;
 import Siege.Rune.Events.OnMoved;
 import Siege.Rune.Events.PlayerAttackEvent;
 import Siege.SiegeCore.SiegeGame;
 import Siege.SiegeEvent.BonusChestEvent;
 import Siege.SiegeEvent.BreakCancelEvent;
+import Siege.SiegeEvent.CantMakeShieldEvent;
 import Siege.SiegeEvent.CoreDamageEvent;
 import Siege.SiegeEvent.FallDamageEvent;
 import Siege.SiegeEvent.GappleEatEvent;
@@ -64,6 +68,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		PluginManager pm = Bukkit.getServer().getPluginManager();
 		eventRegist(pm);
 		runeEventRegist(pm);
+		enchantmentEventRegist(pm);
 		recipeRegist();
 		Bukkit.getWorlds().forEach( w -> {
 			w.setGameRule(GameRule.KEEP_INVENTORY, true);
@@ -215,6 +220,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new FallDamageEvent(), this);
 		pm.registerEvents(new GappleEatEvent(), this);
 		pm.registerEvents(new RuneInteractEvent(), this);
+		pm.registerEvents(new CantMakeShieldEvent(), this);
 	}
 
 	public void runeEventRegist(PluginManager pm) {
@@ -223,6 +229,13 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new OnClickedEvent(), this);
 		pm.registerEvents(new OnMoved(), this);
 		pm.registerEvents(new OnDamaged(), this);
+		pm.registerEvents(new CancelHungry(), this);
+		pm.registerEvents(new OnDrunk(), this);
+	}
+
+	public void enchantmentEventRegist(PluginManager pm) {
+		pm.registerEvents(new onEnchant(), this);
+//		pm.registerEvents(new onClickedToEnchant(), this);
 	}
 
 	public void recipeRegist() {
