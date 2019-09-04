@@ -55,10 +55,10 @@ public class Parameters {
 	public static final int RUNE_SOLOFIGHTER_DEF = 20; //上昇防御力
 
 	public static final double RUNE_TENACITY_CASTLINE = 8; //執念発動ライン
-	public static final int RUNE_TENACITY_VALUE = 2; //執念効果
-	public static final int RUNE_TENACITY_VALUE_ENHANCED = 4; //執念効果 強化
-	public static final int RUNE_TENACITY_DUR = 20 * 30; //執念発動CD
-	public static final int RUNE_TENACITY_DUR_ENHANCED = 20 * 20; //執念発動CD 強化
+	public static final int RUNE_TENACITY_VALUE = 1; //執念効果
+	public static final int RUNE_TENACITY_VALUE_ENHANCED = 2; //執念効果 強化
+	public static final int RUNE_TENACITY_DUR = 20 * 60; //執念発動CD
+	public static final int RUNE_TENACITY_DUR_ENHANCED = 20 * 60; //執念発動CD 強化
 
 	public static final double RUNE_CAMO_RANGE = 24; //カモフラレンジ
 	public static final double RUNE_CAMO_RANGE_ENHANCED = 16; //カモフラレンジ
@@ -74,13 +74,13 @@ public class Parameters {
 
 	public static final int RUNE_THIEF_CHANCE = 50; //盗賊の盗む確率 MAX100
 	public static final int RUNE_THIEF_CHANCE_ENHANCED = 100; //盗賊の盗む確率強化 MAX100
-	public static final int RUNE_MINER_VALUE = 2; //炭鉱夫
-	public static final int RUNE_MINER_VALUE_ENHANCED = 2; //炭鉱夫強化
+	public static final int RUNE_MINER_VALUE = 3; //炭鉱夫
+	public static final int RUNE_MINER_VALUE_ENHANCED = 1; //炭鉱夫強化
 
 	/* === Tier 2 === */
-	public static final int RUNE_MELEEDAMAGE_VALUE = 3; //近接強化のダメージ
-	public static final int RUNE_ANTIDEFENDER_VALUE = 3; //対防衛特攻のダメージ
-	public static final int RUNE_ANTIATTACKER_VALUE = 3; //対攻撃特攻のダメージ
+	public static final int RUNE_MELEEDAMAGE_VALUE = 2; //近接強化のダメージ
+	public static final int RUNE_ANTIDEFENDER_VALUE = 2; //対防衛特攻のダメージ
+	public static final int RUNE_ANTIATTACKER_VALUE = 2; //対攻撃特攻のダメージ
 	public static final int RUNE_HEALTHBOOST_VALUE = 6; //体力増加の増加量
 	public static final int RUNE_REGENERATION_TIME = 20 * 60 * 150; //自動回復の効果時間
 	public static final int RUNE_REGENERATION_AMP = 0; //自動回復の効果
@@ -92,7 +92,7 @@ public class Parameters {
 	public static final double RUNE_EXPPASSER_RANGE = 32; //経験値おすそ分け距離
 	public static final double RUNE_EXPPASSER_RATIO = 0.25; //経験値おすそ分け量
 
-	public static final float RUNE_SPEEDUP_VALUE = 0.05F; //スピードアップの増加量
+	public static final float RUNE_SPEEDUP_VALUE = 0.08F; //スピードアップの増加量
 	public static final int RUNE_JUMPBOOST_TIME = 20* 60* 150; //ジャンプブーストの効果時間
 	public static final int RUNE_JUMPBOOST_AMP = 2; //ジャンプブーストの強さ
 	public static final int RUNE_HOMEGUARD_AMP = 1; //ホームガードの強さ

@@ -61,7 +61,10 @@ public class SignTeleport implements Listener{
 								Location l = new Location(world2, line1 + 0.5D, line2 + 0.5D, line3 + 0.5D);
 								l.setPitch(p.getLocation().getPitch());
 								l.setYaw(p.getLocation().getYaw());
-
+								if (Siege.SiegeBattleMain.siegeBattleMain.getGame() != null) {
+									if (Siege.SiegeBattleMain.siegeBattleMain.getGame().isSiegePlayer(p))
+										Siege.SiegeBattleMain.siegeBattleMain.getGame().getSiegePlayer(p).runeStatusReflect();
+								}
 								p.teleport(l);
 							}
 						}

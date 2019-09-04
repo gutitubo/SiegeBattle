@@ -2,6 +2,8 @@ package Siege.SiegeEvent;
 
 import static Lib.Parameters.*;
 
+import java.util.Random;
+
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -103,7 +105,7 @@ public class OreMiningEvent implements Listener{
 					amount += RUNE_MINER_VALUE;
 				}
 			}
-			p.getInventory().addItem(new ItemStack(mat, amount));
+			p.getInventory().addItem(new ItemStack(mat, new Random().nextInt(amount) + 1));
 			p.getWorld().playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 0.5F, 1F);
 			if (sp.hasRune(Runes.MAGIC_MAGICIAN)) {
 				if (sp.hasRune(Runes.MAGIC_KEYSTONE)) {
