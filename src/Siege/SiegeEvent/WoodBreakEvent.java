@@ -24,7 +24,10 @@ public class WoodBreakEvent implements Listener {
 		Block b = e.getBlock();
 		if (p.getGameMode().equals(GameMode.CREATIVE)) return;
 		SiegeGame game = Siege.SiegeBattleMain.siegeBattleMain.getGame();
-		if ((game == null || game.getPhase() < 1) && !p.getGameMode().equals(GameMode.CREATIVE)) e.setCancelled(true);
+		if ((game == null || game.getPhase() < 1) && !p.getGameMode().equals(GameMode.CREATIVE)) {
+			e.setCancelled(true);
+			return;
+		}
 
 		if (isWood(b)) {
 			//復活処理

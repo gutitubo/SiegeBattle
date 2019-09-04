@@ -29,7 +29,7 @@ public class onClickedToEnchant implements Listener {
 
 	@EventHandler
 	public void onOpenInventory(InventoryOpenEvent e) {
-		if (e.getView().getType().equals(InventoryType.ENCHANTING)) {
+		if (e.getInventory().getType().equals(InventoryType.ENCHANTING)) {
 			e.getInventory().setItem(1, new ItemStack(Material.LAPIS_LAZULI, 3));
 		}
 	}
