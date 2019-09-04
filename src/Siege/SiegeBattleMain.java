@@ -33,6 +33,7 @@ import Siege.SiegeEvent.FallDamageEvent;
 import Siege.SiegeEvent.GappleEatEvent;
 import Siege.SiegeEvent.LoginEvent;
 import Siege.SiegeEvent.OreMiningEvent;
+import Siege.SiegeEvent.OrePlaceEvent;
 import Siege.SiegeEvent.PlayerAttackWithHandEvent;
 import Siege.SiegeEvent.PumpkinBreakEvent;
 import Siege.SiegeEvent.Recall;
@@ -67,6 +68,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		Bukkit.getWorlds().forEach( w -> {
 			w.setGameRule(GameRule.KEEP_INVENTORY, true);
 		});
+		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "gamerule announceAdvancements false");
 	}
 
 	@Override
@@ -197,6 +199,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new CoreDamageEvent(), this);
 		pm.registerEvents(new PlayerAttackWithHandEvent(), this);
 		pm.registerEvents(new OreMiningEvent(), this);
+		pm.registerEvents(new OrePlaceEvent(), this);
 		pm.registerEvents(new WoodBreakEvent(), this);
 		pm.registerEvents(new BonusChestEvent(), this);
 		pm.registerEvents(new Recall(), this);
