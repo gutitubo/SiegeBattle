@@ -15,7 +15,8 @@ public class RuneNames {
 	public static final String MAGIC_CORESHIELD_NAME = "コアシールド";
 	public static final String MAGIC_SPELLTHIEF_NAME = "スペルシーフ";
 	public static final String MAGIC_PERFUME_NAME = "魔法の香水";
-	public static final String MAGIC_MAGICIAN_NAME = "魔法使い"; //DONE
+	public static final String MAGIC_MAGICIAN_NAME = "魔法使い";
+	public static final String MAGIC_MAGICARROW_NAME = "魔法の弓矢";
 
 	/* === 敏捷系 Tier1 === */
 	public static final String SWIFT_CAMO_NAME = "カモフラージュ";
@@ -46,6 +47,7 @@ public class RuneNames {
 	public static final String MAGIC_2_KEYSTONE_NAME = "ルーン強化"; //DONE
 	public static final String MAGIC_2_KILLPOTION_NAME = "アルケミスト";
 	public static final String MAGIC_2_EXPARMOR_NAME = "経験値アーマー"; //DONE
+	public static final String MAGIC_2_SAFETY_NAME = "安全装置";
 
 	/* === 敏捷系 Tier2 === */
 	public static final String SWIFT_2_SPEEDUP_NAME = "移動速度上昇"; //DONE
@@ -63,4 +65,5 @@ public class RuneNames {
 	public static final String COLLECT_2_LUCK_NAME = "幸運";
 	public static final String COLLECT_2_RECALL_NAME = "リコール時間短縮"; //DONE
 	public static final String COLLECT_2_HUMANFORGE_NAME = "人間かまど"; //DONE
+	public static final String COLLECT_2_LUMBERJACK_NAME = "木こり";
 }
