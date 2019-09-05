@@ -156,7 +156,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 			redTeam.setCanSeeFriendlyInvisibles(true);
 			redTeam.setAllowFriendlyFire(false);
 			redTeam.setOption(Option.COLLISION_RULE, OptionStatus.NEVER);
-			redTeam.setOption(Option.NAME_TAG_VISIBILITY, OptionStatus.FOR_OTHER_TEAMS);
+//			redTeam.setOption(Option.NAME_TAG_VISIBILITY, OptionStatus.FOR_OTHER_TEAMS);
 
 			if (sb.getTeam("BLUE") != null) {
 				sb.getTeam("BLUE").unregister();
@@ -166,7 +166,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 			blueTeam.setCanSeeFriendlyInvisibles(true);
 			blueTeam.setAllowFriendlyFire(false);
 			blueTeam.setOption(Option.COLLISION_RULE, OptionStatus.NEVER);
-			blueTeam.setOption(Option.NAME_TAG_VISIBILITY, OptionStatus.FOR_OTHER_TEAMS);
+//			blueTeam.setOption(Option.NAME_TAG_VISIBILITY, OptionStatus.FOR_OTHER_TEAMS);
 
 
 			int i = 0;
