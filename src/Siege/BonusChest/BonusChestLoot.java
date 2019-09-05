@@ -1,5 +1,7 @@
 package Siege.BonusChest;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 import org.bukkit.inventory.ItemStack;
@@ -25,7 +27,12 @@ public class BonusChestLoot {
 	}
 
 	public static ItemStack getLegendaryLoot() {
-		return null;
+		ArrayList<Legendary> list = new ArrayList<>();
+		for (Legendary l : Legendary.values()) {
+			list.add(l);
+		}
+		Collections.shuffle(list);
+		return list.get(0).toItemStack();
 	}
 
 	public static ItemStack getEpicLoot() {
