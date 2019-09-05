@@ -153,6 +153,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 			}
 			Team redTeam = sb.registerNewTeam("RED");
 			redTeam.setPrefix(ChatColor.RED.toString());
+			redTeam.setColor(ChatColor.RED);
 			redTeam.setCanSeeFriendlyInvisibles(true);
 			redTeam.setAllowFriendlyFire(false);
 			redTeam.setOption(Option.COLLISION_RULE, OptionStatus.NEVER);
@@ -163,6 +164,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 			}
 			Team blueTeam = sb.registerNewTeam("BLUE");
 			blueTeam.setPrefix(ChatColor.BLUE.toString());
+			blueTeam.setColor(ChatColor.BLUE);
 			blueTeam.setCanSeeFriendlyInvisibles(true);
 			blueTeam.setAllowFriendlyFire(false);
 			blueTeam.setOption(Option.COLLISION_RULE, OptionStatus.NEVER);
