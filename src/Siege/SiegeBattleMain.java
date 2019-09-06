@@ -32,6 +32,7 @@ import Siege.Rune.Events.PlayerAttackEvent;
 import Siege.SiegeCore.SiegeGame;
 import Siege.SiegeEvent.BonusChestEvent;
 import Siege.SiegeEvent.BreakCancelEvent;
+import Siege.SiegeEvent.CantAttackBeforeGameEvent;
 import Siege.SiegeEvent.CantMakeShieldEvent;
 import Siege.SiegeEvent.CoreDamageEvent;
 import Siege.SiegeEvent.FallDamageEvent;
@@ -224,6 +225,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new GappleEatEvent(), this);
 		pm.registerEvents(new RuneInteractEvent(), this);
 		pm.registerEvents(new CantMakeShieldEvent(), this);
+		pm.registerEvents(new CantAttackBeforeGameEvent(), this);
 	}
 
 	public void runeEventRegist(PluginManager pm) {
