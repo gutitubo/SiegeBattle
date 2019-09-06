@@ -22,11 +22,12 @@ public class BonusChestLoot {
 			} else {
 				return getNormalLoot();
 			}
+		} else {
+			return null;
 		}
-		return null;
 	}
 
-	public static ItemStack getLegendaryLoot() {
+	private static ItemStack getLegendaryLoot() {
 		ArrayList<Legendary> list = new ArrayList<>();
 		for (Legendary l : Legendary.values()) {
 			list.add(l);
@@ -35,15 +36,30 @@ public class BonusChestLoot {
 		return list.get(0).toItemStack();
 	}
 
-	public static ItemStack getEpicLoot() {
-		return null;
+	private static ItemStack getEpicLoot() {
+		ArrayList<Epic> list = new ArrayList<>();
+		for (Epic l : Epic.values()) {
+			list.add(l);
+		}
+		Collections.shuffle(list);
+		return list.get(0).toItemStack();
 	}
 
-	public static ItemStack getRareLoot() {
-		return null;
+	private static ItemStack getRareLoot() {
+		ArrayList<Rare> list = new ArrayList<>();
+		for (Rare l : Rare.values()) {
+			list.add(l);
+		}
+		Collections.shuffle(list);
+		return list.get(0).toItemStack();
 	}
 
-	public static ItemStack getNormalLoot() {
-		return null;
+	private static ItemStack getNormalLoot() {
+		ArrayList<Normal> list = new ArrayList<>();
+		for (Normal l : Normal.values()) {
+			list.add(l);
+		}
+		Collections.shuffle(list);
+		return list.get(0).toItemStack();
 	}
 }
