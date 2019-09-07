@@ -23,7 +23,7 @@ public enum Rare {
 	private Rare(Material mat, int amount, PotionType type, boolean upgraded) {
 		this.mat = mat;
 		this.amount = amount;
-		this.type = type;
+		if (type != null) this.type = type;
 		this.upgraded = upgraded;
 	}
 

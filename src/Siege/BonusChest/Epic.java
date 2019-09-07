@@ -23,8 +23,8 @@ public enum Epic {
 	private Epic(Material mat, int amount, Enchantment ench, Integer level) {
 		this.mat = mat;
 		this.amount = amount;
-		this.ench = ench;
-		this.level = level;
+		if (ench != null) this.ench = ench;
+		if (level != null) this.level = level;
 	}
 
 	public ItemStack toItemStack() {
