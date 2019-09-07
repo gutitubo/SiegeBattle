@@ -127,6 +127,8 @@ public class RuneLore {
 			asList("自陣付近にいるとき移動速度が上昇する");
 	public static final ArrayList<String> SWIFT_2_RUNNER_LORE =
 			asList("体力が一定以下になると移動速度が上昇する");
+	public static final ArrayList<String> SWIFT_2_UNBURDEN_LORE =
+			asList("全裸のとき足が早くなる");
 
 	/* === 収集系 Tier2 === */
 	public static final ArrayList<String> COLLECT_2_IRON_LORE =

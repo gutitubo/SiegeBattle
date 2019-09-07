@@ -4,6 +4,7 @@ import static Lib.Parameters.*;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -46,6 +47,11 @@ public class RuneScheduler extends BukkitRunnable{
 					}
 					p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 20 * 3, RUNE_HOMEGUARD_AMP));
 				}
+				
+				/* === かるわざの処理 === */
+//				if (sp.hasRune(Runes.SWIFT_UNBURDEN) && isZenra(p)) {
+//					sp.setAdditionalSpeed(RUNE_UNBURDEN_AMOUNT);
+//				}
 
 				/* === 逃げ足の処理 === */
 				if (sp.hasRune(Runes.SWIFT_RUNNER) && p.getHealth() <= RUNE_RUNNER_HEALTH) {
@@ -121,5 +127,14 @@ public class RuneScheduler extends BukkitRunnable{
 		for (Player targ : Bukkit.getOnlinePlayers()) {
 			targ.showPlayer(Siege.SiegeBattleMain.siegeBattleMain, p);
 		}
+	}
+	
+	public boolean isZenra(Player p) {
+		boolean flag = true;
+		ItemStack[] items = p.getInventory().getArmorContents();
+		for (ItemStack item : items) {
+			if (item != null) flag = false;
+		}
+		return flag;
 	}
 }

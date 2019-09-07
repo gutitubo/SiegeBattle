@@ -12,8 +12,11 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import Lib.Parameters;
 import Siege.SiegeBattleMain;
+import Siege.Rune.Runes;
 import Siege.SiegeCore.SiegeGame;
+import Siege.SiegePlayer.SiegePlayer;
 import net.md_5.bungee.api.ChatColor;
 
 public class WoodBreakEvent implements Listener {
@@ -33,6 +36,10 @@ public class WoodBreakEvent implements Listener {
 			//復活処理
 			int amount = 1;
 			Material mat = b.getType();
+			
+			SiegePlayer sp = null;
+			if (game.isSiegePlayer(p)) sp = game.getSiegePlayer(p); 
+			if (sp.hasRune(Runes.COLLECT_LUMBERJACK)) amount += Parameters.RUNE_LUMBERJACK_AMOUNT;
 
 			p.getInventory().addItem(new ItemStack(mat, amount));
 			p.getWorld().playSound(p.getLocation(), Sound.ENTITY_CHICKEN_EGG, 0.5F, 1F);

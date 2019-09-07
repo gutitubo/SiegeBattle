@@ -81,6 +81,7 @@ public class Parameters {
 	public static final int RUNE_MELEEDAMAGE_VALUE = 2; //近接強化のダメージ
 	public static final int RUNE_ANTIDEFENDER_VALUE = 2; //対防衛特攻のダメージ
 	public static final int RUNE_ANTIATTACKER_VALUE = 2; //対攻撃特攻のダメージ
+	public static final int RUNE_ARROWDAMAGE_VALUE = 4; //遠距離攻撃ダメージ増加
 	public static final int RUNE_HEALTHBOOST_VALUE = 6; //体力増加の増加量
 	public static final int RUNE_REGENERATION_TIME = 20 * 60 * 150; //自動回復の効果時間
 	public static final int RUNE_REGENERATION_AMP = 0; //自動回復の効果
@@ -99,12 +100,14 @@ public class Parameters {
 	public static final int RUNE_HOMEGUARD_DISTANCE = 48; //ホームガードの発動距離
 	public static final int RUNE_RUNNER_AMP = 1; //逃げ足の強さ
 	public static final int RUNE_RUNNER_HEALTH = 3; //逃げ足発動体力
+	public static final float RUNE_UNBURDEN_AMOUNT = 0.08F; //かるわざ移動速度増加量
 
 	public static final int RUNE_IRON_AMOUNT = 2; //鉄鉱石増加
 	public static final int RUNE_GOLD_AMOUNT = 2; //金鉱石増加
 	public static final int RUNE_DIA_AMOUNT = 2; //ダイアモンド増加
 	public static final int RUNE_RED_AMOUNT = 3; //赤石増加
 	public static final int RUNE_RECALL_AMOUNT = 3; //リコール短縮
+	public static final int RUNE_LUMBERJACK_AMOUNT = 3; //木こりさんの増加量
 
 	/* == RandomPotionのMaxStatus == */
 	public static final int NORMALPOT_MAXLEVEL = 1; //普通のポーションの最大レベル

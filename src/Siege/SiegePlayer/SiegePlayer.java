@@ -170,6 +170,8 @@ public class SiegePlayer {
 		p.setWalkSpeed((defaultSpeed + getAdditionalSpeed()) * getSpeedMultipler());
 		p.setHealthScale(defaultHealth + getAdditionalHealth());
 		p.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(getAdditionalDefend() + getAdditionalDefendPerm());
+		setAdditionalSpeed(0F);
+		setAdditionalHealth(0);
 	}
 
 	public void resetToDefault() {

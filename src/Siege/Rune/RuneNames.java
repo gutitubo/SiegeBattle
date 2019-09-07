@@ -56,6 +56,7 @@ public class RuneNames {
 	public static final String SWIFT_2_NOHUNGRY_NAME = "空腹無効化"; //DONE
 	public static final String SWIFT_2_HOMEGUARD_NAME = "自陣移動速度上昇";
 	public static final String SWIFT_2_RUNNER_NAME = "逃げ足";
+	public static final String SWIFT_2_UNBURDEN_NAME = "かるわざ";
 
 	/* === 収集系 Tier2 === */
 	public static final String COLLECT_2_IRON_NAME = "鉄採掘量増加"; //DONE
