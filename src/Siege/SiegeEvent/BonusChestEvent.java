@@ -47,12 +47,10 @@ public class BonusChestEvent implements Listener{
 		loc.add(0.5, 0.5, 0.5);
 		RndFirework.spawn(b.getLocation());
 		loc.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, loc, 20, 0.5, 0.5, 0.5);
-		if (b instanceof Chest) {
-			Chest chest = (Chest) b.getState();
-			Inventory inv = chest.getInventory();
-			for (int i = 0; i < inv.getSize(); i++) {
-				inv.setItem(i, BonusChestLoot.getLoot());
-			}
+		Chest chest = (Chest) b.getState();
+		Inventory inv = chest.getInventory();
+		for (int i = 0; i < inv.getSize(); i++) {
+			inv.setItem(i, BonusChestLoot.getLoot());
 		}
 	}
 }
