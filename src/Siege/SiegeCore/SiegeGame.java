@@ -245,6 +245,10 @@ public class SiegeGame {
 		}
 	}
 
+	public void lateJoin(Player p) {
+
+	}
+
 	public void coreEffect(Location loc) {
 		Location l = new Location(loc.getWorld(), loc.getX(), loc.getY(), loc.getZ());
 		l.add(0.5, 0.5, 0.5);
