@@ -36,6 +36,7 @@ public class BonusChestEvent implements Listener{
 				//ボーナスチェスト出現処理
 				p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1F, 1F);
 				spawnBonusChest(b);
+				e.setCancelled(true);
 			}
 		}
 	}
