@@ -112,7 +112,7 @@ public class RuneLore {
 			asList("現在の経験値量に応じてダメージを軽減する");
 	public static final ArrayList<String> MAGIC_2_SAFETY_LORE =
 			asList("受けるダメージと与えるダメージが1/4になる",
-					"この効果はコア付近では発動しない");
+					"この効果はコア無敵時間中のみ発動する");
 
 	/* === 俊敏系 Tier2 === */
 	public static final ArrayList<String> SWIFT_2_SPEEDUP_LORE =

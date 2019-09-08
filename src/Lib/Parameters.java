@@ -108,6 +108,7 @@ public class Parameters {
 	public static final int RUNE_RED_AMOUNT = 3; //赤石増加
 	public static final int RUNE_RECALL_AMOUNT = 3; //リコール短縮
 	public static final int RUNE_LUMBERJACK_AMOUNT = 3; //木こりさんの増加量
+	public static final double RUNE_SAFETY_MULTI = 0.25; //木こりさんの増加量
 
 	/* == RandomPotionのMaxStatus == */
 	public static final int NORMALPOT_MAXLEVEL = 1; //普通のポーションの最大レベル

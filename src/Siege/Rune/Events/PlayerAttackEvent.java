@@ -95,6 +95,11 @@ public class PlayerAttackEvent implements Listener {
 			}
 			e.setDamage(e.getDamage() - (e.getDamage() * guard));
 		}
+
+		if (vic.hasRune(Runes.MAGIC_SAFETY) || sp.hasRune(Runes.MAGIC_SAFETY)) {
+			if (game.getPhase() < 3)
+			e.setDamage(e.getDamage() * Parameters.RUNE_SAFETY_MULTI);
+		}
 	}
 
 	public void thiefAttack(SiegePlayer sp, boolean enhanced) {
