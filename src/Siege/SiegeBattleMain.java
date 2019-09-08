@@ -34,10 +34,12 @@ import Siege.Rune.Events.PlayerAttackEvent;
 import Siege.SiegeCore.SiegeGame;
 import Siege.SiegeEvent.BonusChestEvent;
 import Siege.SiegeEvent.BreakCancelEvent;
+import Siege.SiegeEvent.CantAttackBeforeGameEvent;
 import Siege.SiegeEvent.CantMakeShieldEvent;
 import Siege.SiegeEvent.CoreDamageEvent;
 import Siege.SiegeEvent.FallDamageEvent;
 import Siege.SiegeEvent.GappleEatEvent;
+import Siege.SiegeEvent.LateJoinAndLeave;
 import Siege.SiegeEvent.LoginEvent;
 import Siege.SiegeEvent.OreMiningEvent;
 import Siege.SiegeEvent.OrePlaceEvent;
@@ -165,20 +167,22 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 			}
 			Team redTeam = sb.registerNewTeam("RED");
 			redTeam.setPrefix(ChatColor.RED.toString());
+			redTeam.setColor(ChatColor.RED);
 			redTeam.setCanSeeFriendlyInvisibles(true);
 			redTeam.setAllowFriendlyFire(false);
 			redTeam.setOption(Option.COLLISION_RULE, OptionStatus.NEVER);
-			redTeam.setOption(Option.NAME_TAG_VISIBILITY, OptionStatus.FOR_OTHER_TEAMS);
+//			redTeam.setOption(Option.NAME_TAG_VISIBILITY, OptionStatus.FOR_OTHER_TEAMS);
 
 			if (sb.getTeam("BLUE") != null) {
 				sb.getTeam("BLUE").unregister();
 			}
 			Team blueTeam = sb.registerNewTeam("BLUE");
 			blueTeam.setPrefix(ChatColor.BLUE.toString());
+			blueTeam.setColor(ChatColor.BLUE);
 			blueTeam.setCanSeeFriendlyInvisibles(true);
 			blueTeam.setAllowFriendlyFire(false);
 			blueTeam.setOption(Option.COLLISION_RULE, OptionStatus.NEVER);
-			blueTeam.setOption(Option.NAME_TAG_VISIBILITY, OptionStatus.FOR_OTHER_TEAMS);
+//			blueTeam.setOption(Option.NAME_TAG_VISIBILITY, OptionStatus.FOR_OTHER_TEAMS);
 
 
 			int i = 0;
@@ -193,8 +197,8 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 				i++;
 			}
 
-			SiegeTeam red = new SiegeTeam("RED TEAM", redList, ChatColor.RED);
-			SiegeTeam blue = new SiegeTeam("BLUE TEAM", blueList, ChatColor.BLUE);
+			SiegeTeam red = new SiegeTeam("RED TEAM", redList, ChatColor.RED, redTeam);
+			SiegeTeam blue = new SiegeTeam("BLUE TEAM", blueList, ChatColor.BLUE, blueTeam);
 
 			try {
 				if (game == null) {
@@ -234,6 +238,8 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new GappleEatEvent(), this);
 		pm.registerEvents(new RuneInteractEvent(), this);
 		pm.registerEvents(new CantMakeShieldEvent(), this);
+		pm.registerEvents(new CantAttackBeforeGameEvent(), this);
+		pm.registerEvents(new LateJoinAndLeave(), this);
 	}
 
 	public void runeEventRegist(PluginManager pm) {

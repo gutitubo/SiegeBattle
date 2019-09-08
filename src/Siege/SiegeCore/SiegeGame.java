@@ -1,6 +1,7 @@
 package Siege.SiegeCore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
@@ -39,6 +40,8 @@ public class SiegeGame {
 	private final int INVINCIBLE_TIME = 60 * 6; //default = 60 * 6
 	private final int READY_TIME = 30; //default = 30
 
+	private HashMap<Player, SiegeTeam> leaver;
+
 	public SiegeGame(SiegeTeam redTeam, SiegeTeam blueTeam, Team red, Team blue) {
 		phase = 0;
 		this.redTeam = redTeam;
@@ -46,6 +49,8 @@ public class SiegeGame {
 
 		this.red = red;
 		this.blue = blue;
+
+		leaver = new HashMap<>();
 	}
 
 	public void start() throws IkaretaPhaseException{
@@ -260,6 +265,22 @@ public class SiegeGame {
 		}
 	}
 
+	public void addLeaver(Player p, SiegeTeam team) {
+		leaver.put(p, team);
+	}
+
+	public void removeLeaver(Player p) {
+		leaver.remove(p);
+	}
+
+	public SiegeTeam getLeaverTeam(Player p) {
+		return leaver.get(p);
+	}
+
+	public void clearLeaver() {
+		leaver.clear();
+	}
+
 	public void disbandTeam() {
 		this.red.unregister();
 		this.blue.unregister();
@@ -306,5 +327,9 @@ public class SiegeGame {
 		players.addAll(getRedTeam().getSiegePlayerList().getPlayerList());
 		players.addAll(getBlueTeam().getSiegePlayerList().getPlayerList());
 		return players;
+	}
+
+	public boolean isLeaver(Player p) {
+		return leaver.containsKey(p);
 	}
 }

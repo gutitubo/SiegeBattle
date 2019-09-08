@@ -40,6 +40,11 @@ public class PlayerAttackEvent implements Listener {
 		if (!game.isSiegePlayer(p)) return;
 		SiegePlayer sp = game.getSiegePlayer(p);
 
+		/* ---------- 共通処理 ---------- */
+		if (p.getInventory().getItemInMainHand() != null && isSword(p.getInventory().getItemInMainHand().getType())) {
+			e.setDamage(e.getDamage() / 3);
+		}
+
 		/* ---------- 攻撃者側用ルーン --------- */
 		if (sp.hasRune(Runes.BATTLE_MELEEDAMAGE)) { //近接攻撃強化の場合
 			e.setDamage(e.getDamage() + Parameters.RUNE_MELEEDAMAGE_VALUE);
@@ -100,6 +105,22 @@ public class PlayerAttackEvent implements Listener {
 			if (game.getPhase() < 3)
 			e.setDamage(e.getDamage() * Parameters.RUNE_SAFETY_MULTI);
 		}
+	}
+
+	public boolean isSword(Material mat) {
+		boolean flag = false;
+		switch(mat) {
+		case WOODEN_SWORD:
+		case STONE_SWORD:
+		case GOLDEN_SWORD:
+		case IRON_SWORD:
+		case DIAMOND_SWORD:
+			flag = true;
+			break;
+		default:
+			break;
+		}
+		return flag;
 	}
 
 	public void thiefAttack(SiegePlayer sp, boolean enhanced) {
