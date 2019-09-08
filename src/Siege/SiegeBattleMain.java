@@ -37,6 +37,7 @@ import Siege.SiegeEvent.CantMakeShieldEvent;
 import Siege.SiegeEvent.CoreDamageEvent;
 import Siege.SiegeEvent.FallDamageEvent;
 import Siege.SiegeEvent.GappleEatEvent;
+import Siege.SiegeEvent.LateJoinAndLeave;
 import Siege.SiegeEvent.LoginEvent;
 import Siege.SiegeEvent.OreMiningEvent;
 import Siege.SiegeEvent.OrePlaceEvent;
@@ -226,6 +227,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new RuneInteractEvent(), this);
 		pm.registerEvents(new CantMakeShieldEvent(), this);
 		pm.registerEvents(new CantAttackBeforeGameEvent(), this);
+		pm.registerEvents(new LateJoinAndLeave(), this);
 	}
 
 	public void runeEventRegist(PluginManager pm) {
