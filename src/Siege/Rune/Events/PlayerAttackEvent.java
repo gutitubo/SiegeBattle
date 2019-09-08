@@ -41,7 +41,7 @@ public class PlayerAttackEvent implements Listener {
 		SiegePlayer sp = game.getSiegePlayer(p);
 
 		/* ---------- 共通処理 ---------- */
-		if (p.getInventory().getItemInMainHand() != null && isSword(p.getInventory().getItemInMainHand().getType())) {
+		if (p.getInventory().getItemInMainHand() != null && !isSword(p.getInventory().getItemInMainHand().getType())) {
 			e.setDamage(e.getDamage() / 3);
 		}
 
