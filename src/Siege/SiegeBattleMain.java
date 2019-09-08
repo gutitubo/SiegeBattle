@@ -185,8 +185,8 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 				i++;
 			}
 
-			SiegeTeam red = new SiegeTeam("RED TEAM", redList, ChatColor.RED);
-			SiegeTeam blue = new SiegeTeam("BLUE TEAM", blueList, ChatColor.BLUE);
+			SiegeTeam red = new SiegeTeam("RED TEAM", redList, ChatColor.RED, redTeam);
+			SiegeTeam blue = new SiegeTeam("BLUE TEAM", blueList, ChatColor.BLUE, blueTeam);
 
 			try {
 				if (game == null) {

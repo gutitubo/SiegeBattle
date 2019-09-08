@@ -39,6 +39,7 @@ public class LateJoinAndLeave implements Listener {
 		p.damage(2);
 	}
 
+	@SuppressWarnings("deprecation")
 	public void lateJoinPlayer(Player p, SiegeGame game) {
 		SiegePlayer sp;
 		SiegeTeam team = null;
@@ -51,7 +52,11 @@ public class LateJoinAndLeave implements Listener {
 		}
 		sp = new SiegePlayer(p);
 		sp.setTeam(team);
+		team.getTeam().addPlayer(p);
 		team.getSiegePlayerList().getPlayerList().add(sp);
+		if (game.getPhase() > 1) {
+			team.gotoSpawnHitori(sp);
+		}
 	}
 
 	public SiegeTeam getSukuneeTeam() {

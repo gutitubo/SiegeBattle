@@ -7,6 +7,7 @@ import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scoreboard.Team;
 
 import Siege.SiegeCore.SiegeInformationBar;
 import Siege.SiegeItem.SiegeItemSet;
@@ -20,6 +21,8 @@ public class SiegeTeam {
 	private SiegeTeamDetails siegeTeamDetails;
 	private ChatColor color;
 
+	private Team team;
+
 	private Location spawnLocation;
 
 	private int core;
@@ -30,10 +33,11 @@ public class SiegeTeam {
 
 	}
 
-	public SiegeTeam(String teamName, SiegePlayerList siegePlayerList, ChatColor color) {
+	public SiegeTeam(String teamName, SiegePlayerList siegePlayerList, ChatColor color, Team team) {
 		this.teamName = teamName;
 		this.siegePlayerList = siegePlayerList;
 		this.color = color;
+		this.team = team;
 		siegeTeamDetails = new SiegeTeamDetails();
 		core = 100;
 
@@ -69,6 +73,19 @@ public class SiegeTeam {
 			p.teleport(loc);
 			p.setBedSpawnLocation(loc);
 		}
+	}
+
+	public void gotoSpawnHitori(SiegePlayer sp) {
+		if (this.spawnLocation == null) {
+			return;
+		}
+		Location loc = new Location(spawnLocation.getWorld(),
+				spawnLocation.getX() + 0.5,
+				spawnLocation.getY() + 1.5,
+				spawnLocation.getZ() + 0.5);
+		Player p = sp.getPlayer();
+		p.teleport(loc);
+		p.setBedSpawnLocation(loc);
 	}
 
 	public boolean isMember(Player p) { //チーム解散
@@ -170,5 +187,13 @@ public class SiegeTeam {
 
 	public void setCore(int core) {
 		this.core = core;
+	}
+
+	public Team getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
 	}
 }
