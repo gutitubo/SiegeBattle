@@ -278,11 +278,12 @@ public class SiegeGame {
 		Bukkit.broadcastMessage(ChatColor.GOLD + "- Core Damage Leaders -");
 		Bukkit.broadcastMessage("");
 		for (int i = 0; i < 5; i++) {
+			if (players.size() >= i) break;
 			SiegePlayer sp = players.get(i);
-			if (sp == null) break;
-			Bukkit.broadcastMessage(sp.getPlayer().getDisplayName() + ": "
+			Bukkit.broadcastMessage(sp.getTeam().getColor() + sp.getPlayer().getDisplayName() + ": "
 			+ sp.getStats().getCoreDamageDealt() + " Damage.");
 		}
+		Bukkit.broadcastMessage("==================");
 		Bukkit.broadcastMessage("");
 	}
 
@@ -290,11 +291,13 @@ public class SiegeGame {
 		Player p = sp.getPlayer();
 		ChatColor c = sp.getTeam().getColor();
 		p.sendMessage("");
-		p.sendMessage(ChatColor.GOLD + "- Your Score -");
 		p.sendMessage("==================");
+		p.sendMessage(ChatColor.GOLD + "- Your Score -");
+		p.sendMessage("");
 		p.sendMessage(c + "CoreDamage: " + sp.getStats().getCoreDamageDealt());
 		p.sendMessage(c + "Kill: " + sp.getStats().getKillCount());
 		p.sendMessage(c + "Death: " + sp.getStats().getDeathCount());
+		p.sendMessage("==================");
 		p.sendMessage("");
 	}
 
