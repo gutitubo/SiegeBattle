@@ -28,9 +28,13 @@ public class OnDeathEvent implements Listener {
 
 		SiegeGame game = Siege.SiegeBattleMain.siegeBattleMain.getGame();
 		if (game == null) return;
-		if (!game.isSiegePlayer(killer)) return;
+		if (!game.isSiegePlayer(dead)) return;
+		SiegePlayer vi = game.getSiegePlayer(dead);
+		vi.getStats().getDeathCount();
 
+		if (!game.isSiegePlayer(killer)) return;
 		SiegePlayer sp = game.getSiegePlayer(killer);
+		sp.getStats().addKillCount();
 
 		if (sp.hasRune(Runes.MAGIC_KILLPOTION)) {
 			killer.getInventory().addItem(RandomPotion.getRandom());

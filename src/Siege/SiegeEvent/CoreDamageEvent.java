@@ -18,7 +18,8 @@ public class CoreDamageEvent implements Listener{
 	@EventHandler
 	public void breakingCore (BlockBreakEvent e) {
 		Player p = e.getPlayer();
-		if (Siege.SiegeBattleMain.siegeBattleMain.getGame() == null) {
+		SiegeGame game = Siege.SiegeBattleMain.siegeBattleMain.getGame();
+		if (game == null) {
 			return ;
 		}
 		if (p.getInventory().getItemInMainHand() == null) return;
@@ -27,6 +28,8 @@ public class CoreDamageEvent implements Listener{
 		Block b = e.getBlock();
 		Location redCore = Siege.SiegeBattleMain.siegeBattleMain.getGame().getSiegeStage().getRedCore();
 		Location blueCore = Siege.SiegeBattleMain.siegeBattleMain.getGame().getSiegeStage().getBlueCore();
+
+		SiegePlayer sp = game.getSiegePlayer(p);
 
 		if (Siege.SiegeBattleMain.siegeBattleMain.getGame().getPhase() >= 3) {
 			//ゲームが開始していた場合
@@ -42,6 +45,7 @@ public class CoreDamageEvent implements Listener{
 					Siege.SiegeBattleMain.siegeBattleMain.getGame().coreEffect(redCore);
 					Siege.SiegeBattleMain.siegeBattleMain.getGame().coreDamage(blueTeam.getMember(p), redTeam);
 					onBrokenRuneEffect(p);
+					sp.getStats().addCoreDamageDealt();
 				}
 			} else if (b.equals(blueCore.getBlock())) { //ブルーコアだった場合
 				e.setCancelled(true);
@@ -49,9 +53,11 @@ public class CoreDamageEvent implements Listener{
 					p.sendMessage(Lib.SiegeLib.siegeString(ChatColor.RED + "みかた の こあ を なぐるなんて とんでもない▼"));
 				} else if (redTeam.isMember(p)) { //垢の人だった場合
 					//コア破壊処理
+
 					Siege.SiegeBattleMain.siegeBattleMain.getGame().coreEffect(blueCore);
 					Siege.SiegeBattleMain.siegeBattleMain.getGame().coreDamage(redTeam.getMember(p), blueTeam);
 					onBrokenRuneEffect(p);
+					sp.getStats().addCoreDamageDealt();
 				}
 			}
 		} else {

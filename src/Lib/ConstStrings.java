@@ -5,6 +5,17 @@ import net.md_5.bungee.api.ChatColor;
 public class ConstStrings {
 	private ConstStrings() {}
 
+	/* ========== ログインメッセージ ========== */
+	public static final String[] JOIN_MESSAGE = new String[] {
+			"",
+			"",
+			ChatColor.RED + ChatColor.BOLD.toString() + "シージバトルサーバーへようこそ！",
+			"",
+			ChatColor.DARK_RED + "現在のバージョン: " + Siege.SiegeBattleMain.siegeBattleMain.getDescription().getVersion(),
+			"",
+			""
+	};
+
 	/* ========== SHOP関連 ========== */
 	public static final String SHOP_SIGN_LINE = ChatColor.DARK_BLUE + "==============";
 	public static final String SHOP_SIGN_SIEGE = ChatColor.RED + "Siege Battle";

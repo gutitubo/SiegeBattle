@@ -6,12 +6,14 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 
+import Lib.ItemFactory;
+
 public enum Epic {
 	BOOK_DIGSPEED(Material.ENCHANTED_BOOK, 1, Enchantment.DIG_SPEED, 2),
 	BOOK_DAMAGEALL(Material.ENCHANTED_BOOK, 1, Enchantment.DAMAGE_ALL, 3),
 	BOOK_UNBREAKING(Material.ENCHANTED_BOOK, 1, Enchantment.DURABILITY, 3),
 	BOOK_FIREASPECT(Material.ENCHANTED_BOOK, 1, Enchantment.FIRE_ASPECT, 1),
-	EMELALD(Material.EMERALD, 3, null, null),
+	EMELALD(Material.EMERALD, 1, null, null),
 	DIAMOND(Material.DIAMOND, 3, null, null),
 	;
 
@@ -29,8 +31,8 @@ public enum Epic {
 
 	public ItemStack toItemStack() {
 		ItemStack item = new ItemStack(mat, new Random().nextInt(amount) + 1);
-		if (ench != null) {
-			item.addEnchantment(ench, new Random().nextInt(level));
+		if (mat == Material.ENCHANTED_BOOK) {
+			item = ItemFactory.createEnchantedBook(ench, level);
 		}
 		return item; //TODO
 	}

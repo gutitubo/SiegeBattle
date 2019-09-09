@@ -25,7 +25,7 @@ public enum Legendary {
 		ItemStack item = new ItemStack(mat, amount);
 		switch(this) {
 		case EFF5SHEARS:
-			item.addUnsafeEnchantment(Enchantment.DIG_SPEED, 4);
+			item.addUnsafeEnchantment(Enchantment.DIG_SPEED, 5);
 			break;
 		case STRPOT:
 			PotionMeta potme = (PotionMeta)item.getItemMeta();

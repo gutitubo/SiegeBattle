@@ -2,13 +2,16 @@ package Siege.SiegeEvent;
 
 import java.util.Random;
 
+import org.bukkit.Color;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.inventory.ItemStack;
 
 import Siege.SiegeCore.SiegeGame;
+import Siege.SiegeItem.SiegeItemSet;
 import Siege.SiegePlayer.SiegePlayer;
 import Siege.SiegeTeam.SiegeTeam;
 
@@ -49,8 +52,12 @@ public class LateJoinAndLeave implements Listener {
 		} else {
 			/* 途中参加だった場合の処理 */
 			team = getSukuneeTeam();
+			for (ItemStack item : SiegeItemSet.teamItem(Color.PURPLE)) {
+				p.getInventory().addItem(item);
+			}
 		}
 		sp = new SiegePlayer(p);
+		team.getInfoBar().toBossbar().addPlayer(p);
 		sp.setTeam(team);
 		team.getTeam().addPlayer(p);
 		team.getSiegePlayerList().getPlayerList().add(sp);
