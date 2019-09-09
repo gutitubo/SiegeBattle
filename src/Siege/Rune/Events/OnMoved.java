@@ -68,6 +68,9 @@ public class OnMoved implements Listener{
 			}
 		}
 		p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Parameters.RUNE_WINDY_DUR_ENHANCED, Parameters.RUNE_WINDY_AMP));
-		p.getWorld().spawnParticle(Particle.CLOUD, p.getLocation(), 1, 1);
+		try {
+			p.getWorld().spawnParticle(Particle.CLOUD, p.getLocation(), 2, 0.3, 0, 0.3);
+		} catch (NullPointerException e) {
+		}
 	}
 }

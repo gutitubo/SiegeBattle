@@ -122,7 +122,7 @@ public class SiegeGame {
 		teamJoinAnnounce(blueTeam);
 
 		//ステージローダー
-		setSiegeStage(StageLoader.loadUnkave());
+		setSiegeStage(StageLoader.loadOrenoird()); //TODO ステージ選択もできるようにしたいね
 
 		redTeam.startUp(getSiegeStage().getRedSpawnCenter());
 		blueTeam.startUp(getSiegeStage().getBlueSpawnCenter());
