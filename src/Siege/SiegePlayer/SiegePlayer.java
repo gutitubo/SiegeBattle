@@ -36,12 +36,9 @@ public class SiegePlayer {
 	private static final float defaultSpeed = 0.2F;
 	private static final double defaultHealth = 20;
 
-<<<<<<< HEAD
 	private int insuranceAmount;
-=======
 	/* === ゲーム内統計関連 === */
 	private PlayerStats stats;
->>>>>>> feature/general_fix
 
 	//こんすとらくたー
 	public SiegePlayer() {
