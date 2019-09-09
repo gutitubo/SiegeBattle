@@ -29,7 +29,7 @@ public class ToggleFlight implements Listener {
 		p.setFlying(false);
 
 		/* === ダブルジャンプの処理 === */
-		if (sp.hasRune(Runes.SWIFT_DOUBLEJUMP) && p.getFoodLevel() < Parameters.RUNE_DOUBLEJUMP_COST) {
+		if (sp.hasRune(Runes.SWIFT_DOUBLEJUMP) && p.getFoodLevel() >= Parameters.RUNE_DOUBLEJUMP_COST) {
 			Vector v = p.getVelocity();
 			Double power = sp.hasRune(Runes.MAGIC_KEYSTONE) ? Parameters.RUNE_DOUBLEJUMP_POW_ENHANCED : Parameters.RUNE_DOUBLEJUMP_POW;
 			v.setY(power);
