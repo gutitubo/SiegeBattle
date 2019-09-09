@@ -1,9 +1,11 @@
 package Siege.SiegeCore;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -21,7 +23,6 @@ import Siege.SiegePlayer.SiegePlayer;
 import Siege.SiegeStage.SiegeStage;
 import Siege.SiegeStage.StageLoader;
 import Siege.SiegeTeam.SiegeTeam;
-import net.md_5.bungee.api.ChatColor;
 
 public class SiegeGame {
 
@@ -186,12 +187,8 @@ public class SiegeGame {
 		new BukkitRunnable() {
 			@Override
 			public void run() {
-				Bukkit.broadcastMessage(ChatColor.YELLOW + "30秒後にServerを再起動します。");
-				for (Player p : Bukkit.getOnlinePlayers()) {
-					Lib.SiegeLib.teleportSpawn(p);
-
-					red.unregister();
-					blue.unregister();
+				for (SiegePlayer sp : getAllPlayer()) {
+					displayOwnScore(sp);
 				}
 			}
 		}.runTaskLater(SiegeBattleMain.siegeBattleMain, 20 * 5);
@@ -199,9 +196,29 @@ public class SiegeGame {
 		new BukkitRunnable() {
 			@Override
 			public void run() {
+				displayLeaderBoard();
+			}
+		}.runTaskLater(SiegeBattleMain.siegeBattleMain, 20 * 10);
+
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				Bukkit.broadcastMessage(ChatColor.YELLOW + "20秒後にServerを再起動します。");
+				for (Player p : Bukkit.getOnlinePlayers()) {
+					Lib.SiegeLib.teleportSpawn(p);
+
+					red.unregister();
+					blue.unregister();
+				}
+			}
+		}.runTaskLater(SiegeBattleMain.siegeBattleMain, 20 * 20);
+
+		new BukkitRunnable() {
+			@Override
+			public void run() {
 				Bukkit.shutdown();
 			}
-		}.runTaskLater(SiegeBattleMain.siegeBattleMain, 20 * 30);
+		}.runTaskLater(SiegeBattleMain.siegeBattleMain, 20 * 40);
 	}
 
 	public boolean isSiegePlayer(Player p) {
@@ -248,6 +265,48 @@ public class SiegeGame {
 		if (t.getCore() <= 0) {
 			end(t);
 		}
+	}
+
+	public void displayLeaderBoard() {
+		ArrayList<SiegePlayer> players = getAllPlayer();
+
+		/* コアダメージソート */
+		Collections.sort(players, (sp1, sp2) -> sp1.getStats().getCoreDamageDealt() - sp2.getStats().getCoreDamageDealt());
+		Collections.reverse(players);
+
+		Bukkit.broadcastMessage("");
+		Bukkit.broadcastMessage(ChatColor.GOLD + "- Core Damage Leaders -");
+		Bukkit.broadcastMessage("");
+		for (int i = 0; i < 5; i++) {
+			SiegePlayer sp = players.get(i);
+			if (sp == null) break;
+			Bukkit.broadcastMessage(sp.getPlayer().getDisplayName() + ": "
+			+ sp.getStats().getCoreDamageDealt() + " Damage.");
+		}
+		Bukkit.broadcastMessage("");
+	}
+
+	public void displayOwnScore(SiegePlayer sp) {
+		Player p = sp.getPlayer();
+		ChatColor c = sp.getTeam().getColor();
+		p.sendMessage("");
+		p.sendMessage(ChatColor.GOLD + "- Your Score -");
+		p.sendMessage("==================");
+		p.sendMessage(c + "CoreDamage: " + sp.getStats().getCoreDamageDealt());
+		p.sendMessage(c + "Kill: " + sp.getStats().getKillCount());
+		p.sendMessage(c + "Death: " + sp.getStats().getDeathCount());
+		p.sendMessage("");
+	}
+
+	public ArrayList<SiegePlayer> getAllPlayer() {
+		ArrayList<SiegePlayer> splist = new ArrayList<>();
+		for (SiegePlayer red : this.getRedTeam().getSiegePlayerList().getPlayerList()) {
+			splist.add(red);
+		}
+		for (SiegePlayer blue : this.getBlueTeam().getSiegePlayerList().getPlayerList()) {
+			splist.add(blue);
+		}
+		return splist;
 	}
 
 	public void coreEffect(Location loc) {
