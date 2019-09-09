@@ -122,6 +122,10 @@ public class OreMiningEvent implements Listener{
 					}
 				}
 			}
+			if (sp.hasRune(Runes.MAGIC_INSURANCE)) {
+				sp.addInsurance((int)(exp * 0.25));
+				exp *= 0.75;
+			}
 			p.giveExp(exp);
 			e.setDropItems(false);
 			e.setExpToDrop(0);

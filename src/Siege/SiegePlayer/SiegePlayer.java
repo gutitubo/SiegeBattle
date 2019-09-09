@@ -36,6 +36,8 @@ public class SiegePlayer {
 	private static final float defaultSpeed = 0.2F;
 	private static final double defaultHealth = 20;
 
+	private int insuranceAmount;
+
 	//こんすとらくたー
 	public SiegePlayer() {
 	}
@@ -49,6 +51,7 @@ public class SiegePlayer {
 		this.additionalHealth = 0;
 		this.additionalSpeed = 0;
 		this.speedMultipler = 1.0F;
+		this.insuranceAmount = 0;
 		defaultEffect = new ArrayList<PotionEffect>();
 	}
 
@@ -281,5 +284,19 @@ public class SiegePlayer {
 
 	public void setAdditionalDefendPerm(int additionalDefendPerm) {
 		this.additionalDefendPerm = additionalDefendPerm;
+	}
+
+	public void addInsurance(int amount) {
+		this.insuranceAmount += amount;
+	}
+
+	public int getInsurance() {
+		return this.insuranceAmount;
+	}
+
+	public void withdrawInsurance() {
+		Player p = getPlayer();
+		p.giveExp(this.insuranceAmount);
+		this.insuranceAmount = 0;
 	}
 }
