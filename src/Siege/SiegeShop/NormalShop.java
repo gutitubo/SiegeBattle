@@ -50,8 +50,8 @@ public class NormalShop extends SiegeShop{
 	public static Inventory getEmeInventory() {
 		Inventory inv = Bukkit.createInventory(null, 54, SHOP_NORMAL_TITLE);
 		SiegeLib.setInventoryFlame(inv, new ItemStack(Material.GREEN_STAINED_GLASS_PANE));
-		inv.setItem(20, getSharp5Book());
-		inv.setItem(24, getEff4Book());
+//		inv.setItem(20, getSharp5Book());
+//		inv.setItem(24, getEff4Book());
 		return inv;
 	}
 
