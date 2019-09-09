@@ -143,4 +143,8 @@ public class PlayerStats {
 		this.defenderScore = defenderScore;
 	}
 
+	public void addDeathCount() {
+		this.deathCount++;
+	}
+
 }

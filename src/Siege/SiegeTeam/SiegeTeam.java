@@ -70,8 +70,8 @@ public class SiegeTeam {
 				spawnLocation.getZ() + 0.5);
 		for (SiegePlayer sp : siegePlayerList.getPlayerList()) {
 			Player p = sp.getPlayer();
-			p.teleport(loc);
 			p.setBedSpawnLocation(loc);
+			p.teleport(sp.getTeam().getSpawnLocation());
 		}
 	}
 
@@ -84,8 +84,8 @@ public class SiegeTeam {
 				spawnLocation.getY() + 1.5,
 				spawnLocation.getZ() + 0.5);
 		Player p = sp.getPlayer();
-		p.teleport(loc);
 		p.setBedSpawnLocation(loc);
+		p.teleport(sp.getTeam().getSpawnLocation());
 	}
 
 	public boolean isMember(Player p) { //チーム解散

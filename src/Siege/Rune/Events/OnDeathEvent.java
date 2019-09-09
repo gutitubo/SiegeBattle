@@ -30,7 +30,7 @@ public class OnDeathEvent implements Listener {
 		if (game == null) return;
 		if (!game.isSiegePlayer(dead)) return;
 		SiegePlayer vi = game.getSiegePlayer(dead);
-		vi.getStats().getDeathCount();
+		vi.getStats().addDeathCount();
 
 		if (!game.isSiegePlayer(killer)) return;
 		SiegePlayer sp = game.getSiegePlayer(killer);

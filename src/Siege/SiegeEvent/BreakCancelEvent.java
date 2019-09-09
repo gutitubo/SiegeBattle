@@ -51,7 +51,7 @@ public class BreakCancelEvent implements Listener{
 	public boolean isDaijoubu(Block b) {
 		boolean is = true;
 		Location loc = b.getLocation();
-		loc.setY(1);
+		loc.setY(16);
 		if(loc.getBlock().getType().equals(Material.MELON)){
 			is = false;
 		}

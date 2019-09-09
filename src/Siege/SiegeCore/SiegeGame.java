@@ -278,7 +278,7 @@ public class SiegeGame {
 		Bukkit.broadcastMessage(ChatColor.GOLD + "- Core Damage Leaders -");
 		Bukkit.broadcastMessage("");
 		for (int i = 0; i < 5; i++) {
-			if (players.size() >= i) break;
+			if (players.size() <= i) break;
 			SiegePlayer sp = players.get(i);
 			Bukkit.broadcastMessage(sp.getTeam().getColor() + sp.getPlayer().getDisplayName() + ": "
 			+ sp.getStats().getCoreDamageDealt() + " Damage.");
