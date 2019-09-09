@@ -31,6 +31,7 @@ import Siege.Rune.Events.OnDeathEvent;
 import Siege.Rune.Events.OnDrunk;
 import Siege.Rune.Events.OnMoved;
 import Siege.Rune.Events.PlayerAttackEvent;
+import Siege.Rune.Events.ToggleFlight;
 import Siege.SiegeCore.SiegeGame;
 import Siege.SiegeEvent.BonusChestEvent;
 import Siege.SiegeEvent.BreakCancelEvent;
@@ -252,6 +253,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new OnDrunk(), this);
 		pm.registerEvents(new DamageByArrowEvent(), this);
 		pm.registerEvents(new OnArrowShoot() ,this);
+		pm.registerEvents(new ToggleFlight(), this);
 	}
 
 	public void enchantmentEventRegist(PluginManager pm) {
