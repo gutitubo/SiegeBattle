@@ -11,6 +11,7 @@ public class onEnchant implements Listener {
 	public void onEnchanted(EnchantItemEvent e) {
 		Player p = e.getEnchanter();
 		int level = p.getLevel() - e.getExpLevelCost();
+		e.setExpLevelCost(level);
 		p.setLevel(level + e.whichButton() + 1);
 	}
 }
