@@ -23,6 +23,9 @@ public class RuneLore {
 	public static final ArrayList<String> BATTLE_TENACITY_LORE =
 			asList("あなたはそう簡単に倒れない",
 					"体力が一定以下になると衝撃吸収の効果を得る");
+	public static final ArrayList<String> BATTLE_TOKKOYARO_LORE =
+			asList("あなたは特攻するだけしか能がない",
+					"相手のコア付近で耐久力と移動速度が上昇する");
 
 	/* === 錬金系 Tier1 === */
 	public static final ArrayList<String> MAGIC_CORESHIELD_LORE =
@@ -40,6 +43,10 @@ public class RuneLore {
 	public static final ArrayList<String> MAGIC_MAGICIAN_LORE =
 			asList("あなたはすごい",
 					"獲得する経験値の量が増加する");
+	public static final ArrayList<String> MAGIC_MAGICARROW_LORE =
+			asList("あなたが放つ矢には魔法の力が込められる。",
+					"オフハンドにポーションを持って弓をうつことで",
+					"放たれた矢にそのポーションエフェクトを付与する");
 
 	/* === 敏捷系 Tier1 === */
 	public static final ArrayList<String> SWIFT_CAMO_LORE =
@@ -61,7 +68,7 @@ public class RuneLore {
 	/* === 採掘系 Tier1 === */
 	public static final ArrayList<String> COLLECT_THIEF_LORE =
 			asList("あなたの手癖はめっちゃ悪い",
-					"相手を攻撃するたびにランダムで鉱石を獲得する",
+					"相手を攻撃すると鉱石を獲得することがある",
 					"まれにめっちゃいいアイテムを手に入れることもある");
 	public static final ArrayList<String> COLLECT_SCAVENGER_LORE =
 			asList("あなたは死体の漁り方を心得ている",
@@ -95,12 +102,17 @@ public class RuneLore {
 			asList("ポーション効果の持続時間が伸びる");
 	public static final ArrayList<String> MAGIC_2_EXPUP_LORE =
 			asList("獲得経験値が増加する");
+	public static final ArrayList<String> MAGIC_2_EXPPASSER_LORE =
+			asList("経験値を獲得すると周りにもおすそわけする"); //DONE
 	public static final ArrayList<String> MAGIC_2_KEYSTONE_LORE =
 			asList("装備しているTier1ルーンが強化される");
 	public static final ArrayList<String> MAGIC_2_KILLPOTION_LORE =
 			asList("相手を倒すたびにランダムなポーションを得る");
 	public static final ArrayList<String> MAGIC_2_EXPARMOR_LORE =
 			asList("現在の経験値量に応じてダメージを軽減する");
+	public static final ArrayList<String> MAGIC_2_SAFETY_LORE =
+			asList("受けるダメージと与えるダメージが1/4になる",
+					"この効果はコア無敵時間中のみ発動する");
 
 	/* === 俊敏系 Tier2 === */
 	public static final ArrayList<String> SWIFT_2_SPEEDUP_LORE =
@@ -115,6 +127,8 @@ public class RuneLore {
 			asList("自陣付近にいるとき移動速度が上昇する");
 	public static final ArrayList<String> SWIFT_2_RUNNER_LORE =
 			asList("体力が一定以下になると移動速度が上昇する");
+	public static final ArrayList<String> SWIFT_2_UNBURDEN_LORE =
+			asList("全裸のとき足が早くなる");
 
 	/* === 収集系 Tier2 === */
 	public static final ArrayList<String> COLLECT_2_IRON_LORE =
@@ -131,6 +145,8 @@ public class RuneLore {
 			asList("リコール時間が3秒に固定される");
 	public static final ArrayList<String> COLLECT_2_HUMANFORGE_LORE =
 			asList("鉄/金鉱石採掘時にインゴットで入手できる");
+	public static final ArrayList<String> COLLECT_2_LUMBERJACK_LORE =
+			asList("木を切ったときの採掘量が増える");
 
 	private static ArrayList<String> asList(String...str) {
 		ArrayList<String> ary = new ArrayList<>();

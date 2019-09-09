@@ -8,6 +8,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
+import Siege.Rune.Runes;
+import Siege.SiegeCore.SiegeGame;
+import Siege.SiegePlayer.SiegePlayer;
 import Siege.SiegeTeam.SiegeTeam;
 import net.md_5.bungee.api.ChatColor;
 
@@ -38,6 +41,7 @@ public class CoreDamageEvent implements Listener{
 					//コア破壊処理
 					Siege.SiegeBattleMain.siegeBattleMain.getGame().coreEffect(redCore);
 					Siege.SiegeBattleMain.siegeBattleMain.getGame().coreDamage(blueTeam.getMember(p), redTeam);
+					onBrokenRuneEffect(p);
 				}
 			} else if (b.equals(blueCore.getBlock())) { //ブルーコアだった場合
 				e.setCancelled(true);
@@ -47,6 +51,7 @@ public class CoreDamageEvent implements Listener{
 					//コア破壊処理
 					Siege.SiegeBattleMain.siegeBattleMain.getGame().coreEffect(blueCore);
 					Siege.SiegeBattleMain.siegeBattleMain.getGame().coreDamage(redTeam.getMember(p), blueTeam);
+					onBrokenRuneEffect(p);
 				}
 			}
 		} else {
@@ -54,6 +59,18 @@ public class CoreDamageEvent implements Listener{
 				e.setCancelled(true);
 				return;
 			}
+		}
+	}
+
+	public void onBrokenRuneEffect(Player p) {
+		SiegeGame game = Siege.SiegeBattleMain.siegeBattleMain.getGame();
+		if (game == null) return;
+		if (!game.isSiegePlayer(p)) return;
+		SiegePlayer sp = game.getSiegePlayer(p);
+
+		if (sp.hasRune(Runes.MAGIC_CORESHIELD)) {
+			sp.setAdditionalDefendPerm(sp.getAdditionalDefendPerm() + 1);
+			sp.statusReflect();
 		}
 	}
 }

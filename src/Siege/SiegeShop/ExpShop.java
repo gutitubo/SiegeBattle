@@ -14,7 +14,7 @@ public class ExpShop extends SiegeShop{
 	public static Inventory getInventory() {
 		Inventory inv = Bukkit.createInventory(null, 54, invName);
 
-//		inv.setItem(0, new ItemStack(Material.DIAMOND));
+//		inv.setItem(0, RandomPotion.getRandom());
 
 		return inv;
 	}

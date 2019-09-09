@@ -19,21 +19,30 @@ import org.bukkit.scoreboard.Team;
 import org.bukkit.scoreboard.Team.Option;
 import org.bukkit.scoreboard.Team.OptionStatus;
 
+import Siege.Enchant.Event.onClickedToEnchant;
 import Siege.Enchant.Event.onEnchant;
 import Siege.Recipe.GappleRecipe;
+import Siege.Rune.Events.CancelHungry;
+import Siege.Rune.Events.DamageByArrowEvent;
+import Siege.Rune.Events.OnArrowShoot;
 import Siege.Rune.Events.OnClickedEvent;
 import Siege.Rune.Events.OnDamaged;
 import Siege.Rune.Events.OnDeathEvent;
+import Siege.Rune.Events.OnDrunk;
 import Siege.Rune.Events.OnMoved;
 import Siege.Rune.Events.PlayerAttackEvent;
 import Siege.SiegeCore.SiegeGame;
 import Siege.SiegeEvent.BonusChestEvent;
 import Siege.SiegeEvent.BreakCancelEvent;
+import Siege.SiegeEvent.CantAttackBeforeGameEvent;
+import Siege.SiegeEvent.CantMakeShieldEvent;
 import Siege.SiegeEvent.CoreDamageEvent;
 import Siege.SiegeEvent.FallDamageEvent;
 import Siege.SiegeEvent.GappleEatEvent;
+import Siege.SiegeEvent.LateJoinAndLeave;
 import Siege.SiegeEvent.LoginEvent;
 import Siege.SiegeEvent.OreMiningEvent;
+import Siege.SiegeEvent.OrePlaceEvent;
 import Siege.SiegeEvent.PlayerAttackWithHandEvent;
 import Siege.SiegeEvent.PumpkinBreakEvent;
 import Siege.SiegeEvent.Recall;
@@ -69,6 +78,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		Bukkit.getWorlds().forEach( w -> {
 			w.setGameRule(GameRule.KEEP_INVENTORY, true);
 		});
+		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "gamerule announceAdvancements false");
 	}
 
 	@Override
@@ -120,6 +130,16 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 					Player p = ((Player) sender).getPlayer();
 					if (getGame() == null) return false;
 					if (!getGame().isSiegePlayer(p)) return false;
+					if (args[0] != null && sender.isOp()) {
+						Player tar = Bukkit.getPlayer(args[0]);
+						if (tar == null) {
+							sender.sendMessage(ChatColor.DARK_RED + "ID間違えてません？ｗ");
+							return true;
+						}
+						if (!getGame().isSiegePlayer(tar)) return true;
+						getGame().getSiegePlayer(tar).showRunesString(p);
+						return true;
+					}
 					getGame().getSiegePlayer(p).showRunesString(p);
 					return true;
 				}
@@ -147,20 +167,22 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 			}
 			Team redTeam = sb.registerNewTeam("RED");
 			redTeam.setPrefix(ChatColor.RED.toString());
+			redTeam.setColor(ChatColor.RED);
 			redTeam.setCanSeeFriendlyInvisibles(true);
 			redTeam.setAllowFriendlyFire(false);
 			redTeam.setOption(Option.COLLISION_RULE, OptionStatus.NEVER);
-			redTeam.setOption(Option.NAME_TAG_VISIBILITY, OptionStatus.FOR_OTHER_TEAMS);
+//			redTeam.setOption(Option.NAME_TAG_VISIBILITY, OptionStatus.FOR_OTHER_TEAMS);
 
 			if (sb.getTeam("BLUE") != null) {
 				sb.getTeam("BLUE").unregister();
 			}
 			Team blueTeam = sb.registerNewTeam("BLUE");
 			blueTeam.setPrefix(ChatColor.BLUE.toString());
+			blueTeam.setColor(ChatColor.BLUE);
 			blueTeam.setCanSeeFriendlyInvisibles(true);
 			blueTeam.setAllowFriendlyFire(false);
 			blueTeam.setOption(Option.COLLISION_RULE, OptionStatus.NEVER);
-			blueTeam.setOption(Option.NAME_TAG_VISIBILITY, OptionStatus.FOR_OTHER_TEAMS);
+//			blueTeam.setOption(Option.NAME_TAG_VISIBILITY, OptionStatus.FOR_OTHER_TEAMS);
 
 
 			int i = 0;
@@ -175,8 +197,8 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 				i++;
 			}
 
-			SiegeTeam red = new SiegeTeam("RED TEAM", redList, ChatColor.RED);
-			SiegeTeam blue = new SiegeTeam("BLUE TEAM", blueList, ChatColor.BLUE);
+			SiegeTeam red = new SiegeTeam("RED TEAM", redList, ChatColor.RED, redTeam);
+			SiegeTeam blue = new SiegeTeam("BLUE TEAM", blueList, ChatColor.BLUE, blueTeam);
 
 			try {
 				if (game == null) {
@@ -199,6 +221,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new CoreDamageEvent(), this);
 		pm.registerEvents(new PlayerAttackWithHandEvent(), this);
 		pm.registerEvents(new OreMiningEvent(), this);
+		pm.registerEvents(new OrePlaceEvent(), this);
 		pm.registerEvents(new WoodBreakEvent(), this);
 		pm.registerEvents(new BonusChestEvent(), this);
 		pm.registerEvents(new Recall(), this);
@@ -214,6 +237,9 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new FallDamageEvent(), this);
 		pm.registerEvents(new GappleEatEvent(), this);
 		pm.registerEvents(new RuneInteractEvent(), this);
+		pm.registerEvents(new CantMakeShieldEvent(), this);
+		pm.registerEvents(new CantAttackBeforeGameEvent(), this);
+		pm.registerEvents(new LateJoinAndLeave(), this);
 	}
 
 	public void runeEventRegist(PluginManager pm) {
@@ -222,11 +248,15 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new OnClickedEvent(), this);
 		pm.registerEvents(new OnMoved(), this);
 		pm.registerEvents(new OnDamaged(), this);
+		pm.registerEvents(new CancelHungry(), this);
+		pm.registerEvents(new OnDrunk(), this);
+		pm.registerEvents(new DamageByArrowEvent(), this);
+		pm.registerEvents(new OnArrowShoot() ,this);
 	}
 
 	public void enchantmentEventRegist(PluginManager pm) {
 		pm.registerEvents(new onEnchant(), this);
-//		pm.registerEvents(new onClickedToEnchant(), this);
+		pm.registerEvents(new onClickedToEnchant(), this);
 	}
 
 	public void recipeRegist() {

@@ -1,5 +1,8 @@
 package Siege.SiegeCore;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -12,6 +15,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.Team;
 
 import Siege.SiegeBattleMain;
+import Siege.Rune.RuneScheduler;
 import Siege.SiegeException.IkaretaPhaseException;
 import Siege.SiegePlayer.SiegePlayer;
 import Siege.SiegeStage.SiegeStage;
@@ -36,6 +40,8 @@ public class SiegeGame {
 	private final int INVINCIBLE_TIME = 60 * 6; //default = 60 * 6
 	private final int READY_TIME = 30; //default = 30
 
+	private HashMap<Player, SiegeTeam> leaver;
+
 	public SiegeGame(SiegeTeam redTeam, SiegeTeam blueTeam, Team red, Team blue) {
 		phase = 0;
 		this.redTeam = redTeam;
@@ -43,6 +49,8 @@ public class SiegeGame {
 
 		this.red = red;
 		this.blue = blue;
+
+		leaver = new HashMap<>();
 	}
 
 	public void start() throws IkaretaPhaseException{
@@ -119,6 +127,9 @@ public class SiegeGame {
 		blueTeam.startUp(getSiegeStage().getBlueSpawnCenter());
 
 		setPhase(1);
+
+		RuneScheduler rs = new RuneScheduler(this);
+		rs.runTaskTimer(SiegeBattleMain.siegeBattleMain, 20, 20); //1秒おきに実行
 
 		//スケヂューラーーー
 		new BukkitRunnable() {
@@ -254,6 +265,22 @@ public class SiegeGame {
 		}
 	}
 
+	public void addLeaver(Player p, SiegeTeam team) {
+		leaver.put(p, team);
+	}
+
+	public void removeLeaver(Player p) {
+		leaver.remove(p);
+	}
+
+	public SiegeTeam getLeaverTeam(Player p) {
+		return leaver.get(p);
+	}
+
+	public void clearLeaver() {
+		leaver.clear();
+	}
+
 	public void disbandTeam() {
 		this.red.unregister();
 		this.blue.unregister();
@@ -293,5 +320,16 @@ public class SiegeGame {
 
 	public void setSiegeStage(SiegeStage siegeStage) {
 		this.siegeStage = siegeStage;
+	}
+
+	public ArrayList<SiegePlayer> getJoinedPlayer() {
+		ArrayList<SiegePlayer> players = new ArrayList<SiegePlayer>();
+		players.addAll(getRedTeam().getSiegePlayerList().getPlayerList());
+		players.addAll(getBlueTeam().getSiegePlayerList().getPlayerList());
+		return players;
+	}
+
+	public boolean isLeaver(Player p) {
+		return leaver.containsKey(p);
 	}
 }

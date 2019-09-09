@@ -156,16 +156,22 @@ public class SiegePlayer {
 
 	public void refleshRuneStatus() {
 		//TODO 実装
-		Player p = getPlayer();
-		p.setWalkSpeed((defaultSpeed + getAdditionalSpeed()) * getSpeedMultipler());
-		p.setHealthScale(defaultHealth + getAdditionalHealth());
-		p.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(getAdditionalDefend() + getAdditionalDefendPerm());
+		statusReflect();
 		for (PotionEffect e : getDeafultEffect()) {
 			if (player.hasPotionEffect(e.getType())) {
 				player.removePotionEffect(e.getType());
 			}
 			player.addPotionEffect(e);
 		}
+	}
+
+	public void statusReflect() {
+		Player p = getPlayer();
+		p.setWalkSpeed((defaultSpeed + getAdditionalSpeed()) * getSpeedMultipler());
+		p.setHealthScale(defaultHealth + getAdditionalHealth());
+		p.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(getAdditionalDefend() + getAdditionalDefendPerm());
+		setAdditionalSpeed(0F);
+		setAdditionalHealth(0);
 	}
 
 	public void resetToDefault() {
