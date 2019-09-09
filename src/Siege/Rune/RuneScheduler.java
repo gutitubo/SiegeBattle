@@ -47,7 +47,7 @@ public class RuneScheduler extends BukkitRunnable{
 					}
 					p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 20 * 3, RUNE_HOMEGUARD_AMP));
 				}
-				
+
 				/* === かるわざの処理 === */
 //				if (sp.hasRune(Runes.SWIFT_UNBURDEN) && isZenra(p)) {
 //					sp.setAdditionalSpeed(RUNE_UNBURDEN_AMOUNT);
@@ -59,6 +59,13 @@ public class RuneScheduler extends BukkitRunnable{
 						p.removePotionEffect(PotionEffectType.SPEED);
 					}
 					p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 20 * 2, RUNE_RUNNER_AMP));
+				}
+
+				/* === ダブルジャンプの処理 === */
+				if (sp.hasRune(Runes.SWIFT_DOUBLEJUMP)) {
+					sp.getPlayer().setAllowFlight(true);
+				} else {
+					sp.getPlayer().setAllowFlight(false);
 				}
 
 				/* === 孤軍奮闘の処理 === */
@@ -128,7 +135,7 @@ public class RuneScheduler extends BukkitRunnable{
 			targ.showPlayer(Siege.SiegeBattleMain.siegeBattleMain, p);
 		}
 	}
-	
+
 	public boolean isZenra(Player p) {
 		boolean flag = true;
 		ItemStack[] items = p.getInventory().getArmorContents();

@@ -48,6 +48,7 @@ public class RuneNames {
 	public static final String MAGIC_2_KILLPOTION_NAME = "アルケミスト";
 	public static final String MAGIC_2_EXPARMOR_NAME = "経験値アーマー"; //DONE
 	public static final String MAGIC_2_SAFETY_NAME = "安全装置";
+	public static final String MAGIC_2_INSURANCE_NAME = "生命保険";
 
 	/* === 敏捷系 Tier2 === */
 	public static final String SWIFT_2_SPEEDUP_NAME = "移動速度上昇"; //DONE

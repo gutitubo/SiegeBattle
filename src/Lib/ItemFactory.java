@@ -9,6 +9,7 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import Siege.Rune.RuneCategory;
@@ -44,6 +45,24 @@ public class ItemFactory {
 	public static ItemStack createItem(Material material, int amount, String itemName, Enchantment enchant, int enchLv, String... itemLore) {
 		ItemStack item = createItem(material, amount, itemName, itemLore);
 		item.addEnchantment(enchant, enchLv);
+		return item;
+	}
+
+	public static ItemStack createEnchantedBook(Enchantment ench, int level) {
+		ItemStack item = new ItemStack(Material.ENCHANTED_BOOK);
+		EnchantmentStorageMeta meta = (EnchantmentStorageMeta) item.getItemMeta();
+		meta.addEnchant(ench, level, true);
+		item.setItemMeta(meta);
+		return item;
+	}
+
+	public static ItemStack createEnchantedBook(String name, Enchantment ench, int level, String... itemLore) {
+		ItemStack item = createEnchantedBook(ench, level);
+		ItemMeta meta = item.getItemMeta();
+		meta.setDisplayName(name);
+		List<String> loreList = Arrays.asList(itemLore);
+		meta.setLore(loreList);
+		item.setItemMeta(meta);
 		return item;
 	}
 
@@ -161,6 +180,14 @@ public class ItemFactory {
 				2,
 				"めっちゃはやい");
 		return item;
+	}
+
+	public static ItemStack getSharp5Book() {
+		return createEnchantedBook("ダメージ増加5の本", Enchantment.DAMAGE_ALL, 5,ChatColor.GREEN + "Cost: 3 Emerald");
+	}
+
+	public static ItemStack getEff4Book() {
+		return createEnchantedBook("効率強化4の本", Enchantment.DIG_SPEED, 4,ChatColor.GREEN + "Cost: 3 Emerald");
 	}
 
 	public static ItemStack getResetRunes() {

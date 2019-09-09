@@ -68,6 +68,10 @@ public class Parameters {
 	public static final int RUNE_WINDY_DUR = 20 * 4; //追い風持続時間
 	public static final int RUNE_WINDY_DUR_ENHANCED = 20 * 4; //追い風持続時間 強化
 	public static final int RUNE_WINDY_AMP = 0; //追い風効果
+	public static final double RUNE_DOUBLEJUMP_POW = 0.8; //ダブルジャンプ跳躍力
+	public static final double RUNE_DOUBLEJUMP_POW_ENHANCED = 1.2; //強化ダブルジャンプ跳躍力
+	public static final double RUNE_DOUBLEJUMP_MUL = 2.5; //ダブルジャンプ速度上昇
+	public static final int RUNE_DOUBLEJUMP_COST = 12;
 
 	public static final double RUNE_EXPUP_MULTIPLY = 1.3; //魔法使い
 	public static final double RUNE_EXPUP_MULTIPLY_ENHANCED = 1.5; //魔法使い強化

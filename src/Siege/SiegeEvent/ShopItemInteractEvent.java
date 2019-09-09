@@ -8,6 +8,7 @@ import static org.bukkit.Material.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -17,6 +18,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 
+import Lib.ItemFactory;
 import Lib.SiegeItems;
 import Siege.SiegeShop.NormalShop;
 
@@ -102,6 +104,31 @@ public class ShopItemInteractEvent implements Listener {
 			if (purchaseItem(p, LAPSHOP_ARROW_COST, LAPIS_BLOCK)) {
 				//アイテムを渡す処理
 				giveItem(p, new ItemStack(Material.ARROW, LAPSHOP_ARROW_AMOUNT));
+				//買えなかった場合
+			} else {
+				//だめなときの処理
+				youCantBuy(p);
+			}
+		}
+
+		//エンチャ本の場合
+		else if (compareItem(clicked, Material.ENCHANTED_BOOK, getSharp5Book().getItemMeta().getDisplayName())) {
+			//買えた場合
+			if (purchaseItem(p, EMESHOP_BOOK_SHARPNESS_COST, EMERALD)) {
+				//アイテムを渡す処理
+				giveItem(p, ItemFactory.createEnchantedBook(Enchantment.DAMAGE_ALL, 5));
+				//買えなかった場合
+			} else {
+				//だめなときの処理
+				youCantBuy(p);
+			}
+		}
+
+		else if (compareItem(clicked, Material.ENCHANTED_BOOK, getEff4Book().getItemMeta().getDisplayName())) {
+			//買えた場合
+			if (purchaseItem(p, EMESHOP_BOOK_EFFICIENCY_COST, EMERALD)) {
+				//アイテムを渡す処理
+				giveItem(p, ItemFactory.createEnchantedBook(Enchantment.DIG_SPEED, 4));
 				//買えなかった場合
 			} else {
 				//だめなときの処理

@@ -113,6 +113,9 @@ public class RuneLore {
 	public static final ArrayList<String> MAGIC_2_SAFETY_LORE =
 			asList("受けるダメージと与えるダメージが1/4になる",
 					"この効果はコア無敵時間中のみ発動する");
+	public static final ArrayList<String> MAGIC_2_INSURANCE_LORE =
+			asList("採掘で得る経験値が1/4引かれる",
+					"あなたが死んだときに引かれていた分が振り込まれる");
 
 	/* === 俊敏系 Tier2 === */
 	public static final ArrayList<String> SWIFT_2_SPEEDUP_LORE =
