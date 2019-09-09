@@ -33,8 +33,9 @@ public class ToggleFlight implements Listener {
 			Vector v = p.getVelocity();
 			Double power = sp.hasRune(Runes.MAGIC_KEYSTONE) ? Parameters.RUNE_DOUBLEJUMP_POW_ENHANCED : Parameters.RUNE_DOUBLEJUMP_POW;
 			v.setY(power);
+			p.setVelocity(v);
 			p.getWorld().spawnParticle(Particle.CLOUD, p.getLocation(), 10, 0.3, 0, 0.3);
-			p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PHANTOM_FLAP, 0.5F, 0.5F);
+			p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PHANTOM_FLAP, 0.5F, 1F);
 			p.setFoodLevel(p.getFoodLevel() - Parameters.RUNE_DOUBLEJUMP_COST);
 		}
 	}
