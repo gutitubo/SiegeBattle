@@ -34,7 +34,7 @@ public class Parameters {
 	public static final int REDSHOP_GOLDINGOT_COST = 4;
 	public static final int REDSHOP_COWWEB_COST = 6;
 	public static final int REDSHOP_COWWEB_AMOUNT = 2;
-	public static final int REDSHOP_SHEARS_COST = 7;
+	public static final int REDSHOP_SHEARS_COST = 9;
 	public static final int REDSHOP_GCARROT_AMOUNT = 4;
 	public static final int REDSHOP_GCARROT_COST = 4;
 

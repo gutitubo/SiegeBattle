@@ -55,6 +55,10 @@ public class BreakCancelEvent implements Listener{
 		if(loc.getBlock().getType().equals(Material.MELON)){
 			is = false;
 		}
+		loc.setY(17);
+		if(loc.getBlock().getType().equals(Material.MELON)){
+			is = false;
+		}
 		return is;
 	}
 }

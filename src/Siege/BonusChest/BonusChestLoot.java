@@ -12,12 +12,12 @@ public class BonusChestLoot {
 		Random rnd = new Random();
 		if (rnd.nextInt(100) < 30) {
 			Random rare = new Random();
-			int rarelity = rare.nextInt(1000);
+			int rarelity = rare.nextInt(10000);
 			if (rarelity < 1) {
 				return getLegendaryLoot();
-			} else if (rarelity < 100) {
+			} else if (rarelity < 1000) {
 				return getEpicLoot();
-			} else if ( rarelity < 350) {
+			} else if ( rarelity < 3500) {
 				return getRareLoot();
 			} else {
 				return getNormalLoot();

@@ -130,6 +130,7 @@ public class ItemFactory {
 		meta.setDisplayName(ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + "金塊");
 		List<String> lore = new ArrayList<String>();
 		lore.add("めっちゃ高級な金塊");
+		lore.add(ChatColor.DARK_RED + "Cost: " + Parameters.REDSHOP_GOLDINGOT_COST);
 		meta.setLore(lore);
 		item.setItemMeta(meta);
 		return item;
@@ -141,6 +142,7 @@ public class ItemFactory {
 		meta.setDisplayName(ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + "蜘蛛の巣");
 		List<String> lore = new ArrayList<String>();
 		lore.add("人を苦しませるための蜘蛛の巣");
+		lore.add(ChatColor.DARK_RED + "Cost: " + Parameters.REDSHOP_COWWEB_COST);
 		meta.setLore(lore);
 		item.setItemMeta(meta);
 		return item;
@@ -152,6 +154,7 @@ public class ItemFactory {
 		meta.setDisplayName(ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + "弓");
 		List<String> lore = new ArrayList<String>();
 		lore.add("※矢は付属しておりません");
+		lore.add(ChatColor.BLUE + "Cost: " + Parameters.LAPSHOP_BOW_COST);
 		meta.setLore(lore);
 		item.setItemMeta(meta);
 		return item;
@@ -161,7 +164,8 @@ public class ItemFactory {
 		ItemStack item = createItem(Material.ARROW,
 				1,
 				ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + "矢",
-				"これがないと始まらない");
+				"これがないと始まらない",
+				ChatColor.BLUE + "Cost: " + Parameters.LAPSHOP_ARROW_COST);
 		//		ItemStack item = new ItemStack(Material.ARROW);
 		//		ItemMeta meta = item.getItemMeta();
 		//		meta.setDisplayName(ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + "矢");
@@ -175,10 +179,11 @@ public class ItemFactory {
 	public static ItemStack getEnchantedShears() {
 		ItemStack item = createItem(Material.SHEARS,
 				1,
-				ChatColor.GOLD + "Shears +2",
+				ChatColor.GOLD + "Shears +1",
 				Enchantment.DIG_SPEED,
-				2,
-				"めっちゃはやい");
+				1,
+				ChatColor.GOLD + "ちょっとはやい",
+				ChatColor.DARK_RED + "Cost: " + Parameters.REDSHOP_SHEARS_COST);
 		return item;
 	}
 
