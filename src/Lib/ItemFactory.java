@@ -182,6 +182,14 @@ public class ItemFactory {
 		return item;
 	}
 
+	public static ItemStack getSharp5Book() {
+		return createEnchantedBook("ダメージ増加5の本", Enchantment.DAMAGE_ALL, 5,ChatColor.GREEN + "Cost: 3 Emerald");
+	}
+
+	public static ItemStack getEff4Book() {
+		return createEnchantedBook("効率強化4の本", Enchantment.DIG_SPEED, 4,ChatColor.GREEN + "Cost: 3 Emerald");
+	}
+
 	public static ItemStack getResetRunes() {
 		ItemStack item = createItem(Material.NETHER_STAR,
 				1,

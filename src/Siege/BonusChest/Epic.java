@@ -13,7 +13,7 @@ public enum Epic {
 	BOOK_DAMAGEALL(Material.ENCHANTED_BOOK, 1, Enchantment.DAMAGE_ALL, 3),
 	BOOK_UNBREAKING(Material.ENCHANTED_BOOK, 1, Enchantment.DURABILITY, 3),
 	BOOK_FIREASPECT(Material.ENCHANTED_BOOK, 1, Enchantment.FIRE_ASPECT, 1),
-	EMELALD(Material.EMERALD, 3, null, null),
+	EMELALD(Material.EMERALD, 1, null, null),
 	DIAMOND(Material.DIAMOND, 3, null, null),
 	;
 
