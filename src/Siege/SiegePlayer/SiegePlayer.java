@@ -36,12 +36,16 @@ public class SiegePlayer {
 	private static final float defaultSpeed = 0.2F;
 	private static final double defaultHealth = 20;
 
+	/* === ゲーム内統計関連 === */
+	private PlayerStats stats;
+
 	//こんすとらくたー
 	public SiegePlayer() {
 	}
 
 	public SiegePlayer(Player player) {
 		this.player = player;
+		this.stats = new PlayerStats();
 		currentRunes = new Runes[5];
 		this.additionalDamage = 0;
 		this.additionalDefend = 0;
@@ -50,6 +54,14 @@ public class SiegePlayer {
 		this.additionalSpeed = 0;
 		this.speedMultipler = 1.0F;
 		defaultEffect = new ArrayList<PotionEffect>();
+	}
+
+	public PlayerStats getStats() {
+		return stats;
+	}
+
+	public void setStats(PlayerStats stats) {
+		this.stats = stats;
 	}
 
 	@Override
@@ -170,8 +182,6 @@ public class SiegePlayer {
 		p.setWalkSpeed((defaultSpeed + getAdditionalSpeed()) * getSpeedMultipler());
 		p.setHealthScale(defaultHealth + getAdditionalHealth());
 		p.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(getAdditionalDefend() + getAdditionalDefendPerm());
-		setAdditionalSpeed(0F);
-		setAdditionalHealth(0);
 	}
 
 	public void resetToDefault() {
