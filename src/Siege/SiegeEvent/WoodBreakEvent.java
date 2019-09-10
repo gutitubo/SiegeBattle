@@ -1,5 +1,7 @@
 package Siege.SiegeEvent;
 
+import java.util.Random;
+
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -35,7 +37,13 @@ public class WoodBreakEvent implements Listener {
 		if (isLeaves(b)) {
 			//葉っぱの処理
 			if (p.getInventory().getItemInMainHand().getType().equals(Material.SHEARS)) return;
-			b.getDrops().add(new ItemStack(Material.ENCHANTED_GOLDEN_APPLE));
+			e.setCancelled(true);
+			b.setType(Material.AIR);
+			b.getWorld().playSound(b.getLocation(), Sound.BLOCK_GRASS_BREAK, 0.5F, 1F);
+			double rnd = new Random().nextDouble() * 100;
+			if (rnd <= Parameters.APPLE_DROP_CHANCE) {
+				b.getWorld().dropItem(b.getLocation(), new ItemStack(Material.APPLE));
+			}
 		}
 
 		if (isWood(b)) {
