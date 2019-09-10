@@ -48,7 +48,7 @@ public class BreakCancelEvent implements Listener{
 
 	}
 
-	public boolean isDaijoubu(Block b) {
+	public static boolean isDaijoubu(Block b) {
 		boolean is = true;
 		Location loc = b.getLocation();
 		loc.setY(16);
@@ -57,6 +57,10 @@ public class BreakCancelEvent implements Listener{
 		}
 		loc.setY(17);
 		if(loc.getBlock().getType().equals(Material.MELON)){
+			is = false;
+		}
+		loc.setY(10);
+		if(loc.getBlock() == null){
 			is = false;
 		}
 		return is;

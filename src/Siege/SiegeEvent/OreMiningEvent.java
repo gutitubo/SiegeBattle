@@ -29,6 +29,12 @@ public class OreMiningEvent implements Listener{
 		SiegePlayer sp = game.getSiegePlayer(p);
 
 		Block b = e.getBlock();
+
+		if (!BreakCancelEvent.isDaijoubu(b)) {
+			e.setCancelled(true);
+			return;
+		}
+
 		Material m = b.getType();
 		if ( p.getInventory().getItemInMainHand() == null) {
 			return;
