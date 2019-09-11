@@ -49,9 +49,9 @@ public class RuneScheduler extends BukkitRunnable{
 				}
 
 				/* === かるわざの処理 === */
-//				if (sp.hasRune(Runes.SWIFT_UNBURDEN) && isZenra(p)) {
-//					sp.setAdditionalSpeed(RUNE_UNBURDEN_AMOUNT);
-//				}
+				//				if (sp.hasRune(Runes.SWIFT_UNBURDEN) && isZenra(p)) {
+				//					sp.setAdditionalSpeed(RUNE_UNBURDEN_AMOUNT);
+				//				}
 
 				/* === 逃げ足の処理 === */
 				if (sp.hasRune(Runes.SWIFT_RUNNER) && p.getHealth() <= RUNE_RUNNER_HEALTH) {
@@ -93,29 +93,29 @@ public class RuneScheduler extends BukkitRunnable{
 				sp.statusReflect();
 
 				/* === カモフラージュの処理 === */
-//				if (sp.hasRune(Runes.SWIFT_CAMO)) {
-//					boolean flag = false;
-//					SiegeTeam team = sp.getTeam().equals(game.getRedTeam()) ? game.getBlueTeam() : game.getRedTeam();
-//					for (SiegePlayer enem : team.getSiegePlayerList().getPlayerList()) { //ひとりかどうか
-//						double camo_range = sp.hasRune(Runes.MAGIC_KEYSTONE) ? RUNE_CAMO_RANGE_ENHANCED : RUNE_CAMO_RANGE;
-//						if (enem.getPlayer().getLocation().distance(p.getLocation()) > camo_range) {
-//							flag = true; //ひとり
-//						}
-//					}
-//					if (flag) {
-//						setHideFromEnemy(sp);
-//						if (p.hasPotionEffect(PotionEffectType.INVISIBILITY)) {
-//							if (p.getPotionEffect(PotionEffectType.INVISIBILITY).getDuration() < 30) {
-//								p.removePotionEffect(PotionEffectType.INVISIBILITY);
-//							}
-//						}
-//						p.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 20 * 2, 0));
-//					} else {
-//						setCanSeeYouAll(sp.getPlayer());
-//					}
-//				} else {
-//					setCanSeeYouAll(sp.getPlayer());
-//				}
+				if (sp.hasRune(Runes.SWIFT_CAMO)) {
+					boolean flag = false;
+					SiegeTeam team = sp.getTeam().equals(game.getRedTeam()) ? game.getBlueTeam() : game.getRedTeam();
+					for (SiegePlayer enem : team.getSiegePlayerList().getPlayerList()) { //ひとりかどうか
+						double camo_range = sp.hasRune(Runes.MAGIC_KEYSTONE) ? RUNE_CAMO_RANGE_ENHANCED : RUNE_CAMO_RANGE;
+						if (enem.getPlayer().getLocation().distance(p.getLocation()) > camo_range) {
+							flag = true; //ひとり
+						}
+					}
+					if (flag) {
+						setHideFromEnemy(sp);
+						if (p.hasPotionEffect(PotionEffectType.INVISIBILITY)) {
+							if (p.getPotionEffect(PotionEffectType.INVISIBILITY).getDuration() < 30) {
+								p.removePotionEffect(PotionEffectType.INVISIBILITY);
+							}
+						}
+						p.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 20 * 2, 0));
+					} else {
+						setCanSeeYouAll(sp.getPlayer());
+					}
+				} else {
+					setCanSeeYouAll(sp.getPlayer());
+				}
 
 			} catch (IkaretaPhaseException e) {
 			}
