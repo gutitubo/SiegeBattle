@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
+import Siege.Rune.Linkage;
 import Siege.Rune.RandomPotion;
 import Siege.Rune.RuneScheduler;
 import Siege.Rune.Runes;
@@ -38,6 +39,10 @@ public class OnDeathEvent implements Listener {
 
 		if (sp.hasRune(Runes.MAGIC_KILLPOTION)) {
 			killer.getInventory().addItem(RandomPotion.getRandom());
+		}
+
+		for (Linkage l : Linkage.getList()) {
+			if(l.getOwner().getPlayer().equals(vi.getPlayer())) l.remove();
 		}
 	}
 

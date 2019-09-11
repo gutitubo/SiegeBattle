@@ -9,6 +9,7 @@ import org.bukkit.boss.BarColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
 
 public class SiegeLib {
 
@@ -45,5 +46,18 @@ public class SiegeLib {
 		 inv.setItem(49, getGambleIcon());
 		 inv.setItem(50, getDiamondShopIcon());
 		 inv.setItem(51, getEmeraldShopIcon());
+	}
+
+	public static void giveEffect(Player p, PotionEffect give) {
+		if (p.hasPotionEffect(give.getType())) {
+			PotionEffect pe = p.getPotionEffect(give.getType());
+			if (pe.getAmplifier() > give.getAmplifier()) return;
+			if (pe.getAmplifier() < give.getAmplifier()) {
+				p.removePotionEffect(pe.getType());
+			} else if (pe.getDuration() < give.getDuration()) {
+				p.removePotionEffect(pe.getType());
+			}
+		}
+		p.addPotionEffect(give);
 	}
 }

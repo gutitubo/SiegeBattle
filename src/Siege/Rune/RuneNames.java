@@ -10,6 +10,7 @@ public class RuneNames {
 	public static final String BATTLE_RESIRIENCE_NAME = "逆境魂";
 	public static final String BATTLE_TENACITY_NAME = "執念"; //DONE
 	public static final String BATTLE_TOKKOYARO_NAME = "特攻野郎";
+	public static final String BATTLE_SNIPER_NAME = "狙撃手";
 
 	/* === 錬金系 Tier1 === */
 	public static final String MAGIC_CORESHIELD_NAME = "コアシールド";
@@ -17,6 +18,7 @@ public class RuneNames {
 	public static final String MAGIC_PERFUME_NAME = "魔法の香水";
 	public static final String MAGIC_MAGICIAN_NAME = "魔法使い";
 	public static final String MAGIC_MAGICARROW_NAME = "魔法の弓矢";
+	public static final String MAGIC_LINKAGE_NAME = "共鳴";
 
 	/* === 敏捷系 Tier1 === */
 	public static final String SWIFT_CAMO_NAME = "カモフラージュ";
@@ -28,6 +30,8 @@ public class RuneNames {
 	public static final String COLLECT_THIEF_NAME = "盗賊";
 	public static final String COLLECT_SCAVENGER_NAME = "スカベンジャー";
 	public static final String COLLECT_MINER_NAME = "炭鉱夫"; //DONE
+	public static final String COLLECT_ARROWSIGHT_NAME = "鳴鏡矢水";
+	public static final String COLLECT_CAREPACKAGE_NAME = "ケア・パッケージ";
 
 	/* === 戦闘系 Tier2 === */
 	public static final String BATTLE_2_MELEEDAMAGE_NAME = "近接攻撃強化"; //DONE

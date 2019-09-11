@@ -165,6 +165,11 @@ public class SiegeTeam {
 		return color;
 	}
 
+	public Color getTeamColor() {
+		Color c = null;
+		return c;
+	}
+
 	public void setColor(ChatColor color) {
 		this.color = color;
 		for (SiegePlayer s : siegePlayerList.getPlayerList()) {

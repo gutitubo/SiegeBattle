@@ -23,7 +23,9 @@ import Siege.Enchant.Event.onClickedToEnchant;
 import Siege.Enchant.Event.onEnchant;
 import Siege.Recipe.GappleRecipe;
 import Siege.Rune.Events.CancelHungry;
+import Siege.Rune.Events.CreateLinkage;
 import Siege.Rune.Events.DamageByArrowEvent;
+import Siege.Rune.Events.DestroyLinkage;
 import Siege.Rune.Events.OnArrowShoot;
 import Siege.Rune.Events.OnClickedEvent;
 import Siege.Rune.Events.OnDamaged;
@@ -32,6 +34,7 @@ import Siege.Rune.Events.OnDrunk;
 import Siege.Rune.Events.OnMoved;
 import Siege.Rune.Events.PlayerAttackEvent;
 import Siege.Rune.Events.ToggleFlight;
+import Siege.Rune.Events.UseLinkage;
 import Siege.SiegeCore.SiegeGame;
 import Siege.SiegeEvent.BonusChestEvent;
 import Siege.SiegeEvent.BreakCancelEvent;
@@ -131,7 +134,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 					Player p = ((Player) sender).getPlayer();
 					if (getGame() == null) return false;
 					if (!getGame().isSiegePlayer(p)) return false;
-					if (args[0] != null && sender.isOp()) {
+					if (args.length > 0 && sender.isOp()) {
 						Player tar = Bukkit.getPlayer(args[0]);
 						if (tar == null) {
 							sender.sendMessage(ChatColor.DARK_RED + "ID間違えてません？ｗ");
@@ -254,6 +257,9 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new DamageByArrowEvent(), this);
 		pm.registerEvents(new OnArrowShoot() ,this);
 		pm.registerEvents(new ToggleFlight(), this);
+		pm.registerEvents(new UseLinkage(), this);
+		pm.registerEvents(new CreateLinkage(), this);
+		pm.registerEvents(new DestroyLinkage(), this);
 	}
 
 	public void enchantmentEventRegist(PluginManager pm) {

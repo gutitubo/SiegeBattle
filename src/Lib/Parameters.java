@@ -60,6 +60,20 @@ public class Parameters {
 	public static final int RUNE_TENACITY_DUR = 20 * 60; //執念発動CD
 	public static final int RUNE_TENACITY_DUR_ENHANCED = 20 * 60; //執念発動CD 強化
 
+	public static final int RUNE_CHEERER_RANGE = 24; //応援団発動距離
+	public static final int RUNE_CHEERER_RANGE_ENHANCED = 32; //応援団発動距離 強化
+	public static final int RUNE_CHEERER_OWN_DIS = 256; //応援団自陣制限距離
+	public static final int RUNE_CHEERER_OWN_LIM = 2; //自陣最大強化
+	public static final int RUNE_CHEERER_ENE_DIS = 128; //応援団敵陣強化距離
+	public static final int RUNE_CHEERER_HLT = 5; //体力ギリ強化ライン
+	public static final int RUNE_CHEERER_LV1_AMP = 0; //応援団Lv1
+	public static final int RUNE_CHEERER_LV2_AMP = 0; //応援団Lv2
+	public static final int RUNE_CHEERER_LV3_AMP = 1; //応援団Lv3
+	public static final int RUNE_CHEERER_LV4_AMP = 1; //応援団Lv4
+	public static final int RUNE_CHEERER_LV5_AMP = 0; //応援団Lv5
+	public static final int RUNE_SNIPER_CD = 20 * 5; //狙撃手CD
+	public static final double RUNE_SNIPER_ENHANCED = 1.2; //強化狙撃手 弾速強化
+
 	public static final double RUNE_CAMO_RANGE = 24; //カモフラレンジ
 	public static final double RUNE_CAMO_RANGE_ENHANCED = 16; //カモフラレンジ
 
@@ -80,6 +94,9 @@ public class Parameters {
 	public static final int RUNE_THIEF_CHANCE_ENHANCED = 100; //盗賊の盗む確率強化 MAX100
 	public static final int RUNE_MINER_VALUE = 3; //炭鉱夫
 	public static final int RUNE_MINER_VALUE_ENHANCED = 1; //炭鉱夫強化
+	public static final int RUNE_ARROWSIGHT_CD = 20 * 15; //明鏡止水クールタイム
+	public static final double RUNE_ARROWSIGHT_RANGE = 12; //明鏡止水効果範囲
+	public static final double RUNE_ARROWSIGHT_RANGE_ENHANCED = 18; //明鏡止水強化時 効果範囲
 
 	/* === Tier 2 === */
 	public static final int RUNE_MELEEDAMAGE_VALUE = 2; //近接強化のダメージ
