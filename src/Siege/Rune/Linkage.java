@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
+import org.bukkit.inventory.ItemStack;
 
 import Siege.SiegePlayer.SiegePlayer;
 import Siege.SiegeTeam.SiegeTeam;
@@ -74,5 +75,10 @@ public class Linkage {
 			if (linkage.getOwner().getTeam().equals(team)) teamLinkage.add(linkage);
 		}
 		return teamLinkage;
+	}
+
+	public ItemStack toItemStack() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
 	}
 }
