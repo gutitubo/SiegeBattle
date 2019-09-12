@@ -23,6 +23,7 @@ import Siege.Enchant.Event.onClickedToEnchant;
 import Siege.Enchant.Event.onEnchant;
 import Siege.Recipe.GappleRecipe;
 import Siege.Rune.Events.CancelHungry;
+import Siege.Rune.Events.CreateLinkage;
 import Siege.Rune.Events.DamageByArrowEvent;
 import Siege.Rune.Events.OnArrowShoot;
 import Siege.Rune.Events.OnClickedEvent;
@@ -256,6 +257,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new OnArrowShoot() ,this);
 		pm.registerEvents(new ToggleFlight(), this);
 		pm.registerEvents(new UseLinkage(), this);
+		pm.registerEvents(new CreateLinkage(), this);
 	}
 
 	public void enchantmentEventRegist(PluginManager pm) {
