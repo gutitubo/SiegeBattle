@@ -3,6 +3,8 @@ package Siege.Rune;
 import static Lib.Parameters.*;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -27,6 +29,19 @@ public class RuneScheduler extends BukkitRunnable{
 		// TODO 自動生成されたメソッド・スタブ
 		if (game == null) this.cancel();
 		if (game.getPhase() == 0) this.cancel();
+
+		/* === プレイヤー依存なしの共通処理 === */
+
+		/* === 共鳴 ポータルエフェクト === */
+		for (Linkage link : Linkage.getList()) {
+			Location loc = new Location(link.getBlock().getLocation().getWorld(),
+					link.getBlock().getLocation().getX(),
+					link.getBlock().getLocation().getY(),
+					link.getBlock().getLocation().getZ());
+			loc.add(0, 1, 0);
+			link.getBlock().getWorld().spawnParticle(Particle.DRAGON_BREATH, link.getBlock().getLocation(),
+					5, 0.5F, 1F, 0.5F);
+		}
 
 		for (SiegePlayer sp : game.getJoinedPlayer()) {
 			Player p = sp.getPlayer();

@@ -47,6 +47,12 @@ public class RuneLore {
 			asList("あなたが放つ矢には魔法の力が込められる。",
 					"オフハンドにポーションを持って弓をうつことで",
 					"放たれた矢にそのポーションエフェクトを付与する");
+	public static final ArrayList<String> MAGIC_LINKAGE_LORE =
+			asList("あなたは常に仲間とつながっている",
+					"素手で自分の真下のブロックをクリックし10秒待つと",
+					"テレポーターが設置される。",
+					"テレポーターは誰でも使用でき、味方のテレポーターに飛べる。",
+					"使用すると飛んだ距離に応じてデバフが付与される。");
 
 	/* === 敏捷系 Tier1 === */
 	public static final ArrayList<String> SWIFT_CAMO_LORE =
