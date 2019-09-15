@@ -9,9 +9,11 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import Siege.Rune.Linkage;
 import Siege.Rune.Runes;
 import Siege.SiegeCore.SiegeGame;
 import Siege.SiegePlayer.SiegePlayer;
+import net.md_5.bungee.api.ChatColor;
 
 public class CreateLinkage implements Listener {
 
@@ -41,13 +43,37 @@ public class CreateLinkage implements Listener {
 
 	public class CreateRun extends BukkitRunnable {
 		Player p;
+		Location l;
+		Block b;
+		int count = 10;
+		SiegeGame game = Siege.SiegeBattleMain.siegeBattleMain.getGame();
+
 		CreateRun(Player p) {
 			this.p = p;
+			this.l = p.getLocation();
 		}
 		@Override
 		public void run() {
 			// TODO 自動生成されたメソッド・スタブ
+			if (game == null) this.cancel();
+			if (game.isSiegePlayer(p)) this.cancel();
+			Location bl = new Location(l.getWorld(),
+					p.getLocation().getX(), p.getLocation().getY(),p.getLocation().getZ());
+			bl.add(0, -1, 0);
+			if (b == null) {
+				b = bl.getBlock();
+			} else if (b != bl.getBlock()) {
+				cancelPlace();
+			}
+			count--;
+			if (count == 0) {
+				Linkage.place(new Linkage(game.getSiegePlayer(p), b, b.getType()));
+			}
+		}
 
+		public void cancelPlace() {
+			this.cancel();
+			p.sendMessage(ChatColor.DARK_RED + "設置がキャンセルされました。");
 		}
 	}
 }

@@ -63,6 +63,11 @@ public class RuneScheduler extends BukkitRunnable{
 					p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 20 * 3, RUNE_HOMEGUARD_AMP));
 				}
 
+				/* === 共鳴消す処理 === */
+				for (Linkage l : Linkage.getList()) {
+					if(l.getOwner().equals(sp) && sp.hasRune(Runes.MAGIC_LINKAGE)) l.remove();
+				}
+
 				/* === かるわざの処理 === */
 				//				if (sp.hasRune(Runes.SWIFT_UNBURDEN) && isZenra(p)) {
 				//					sp.setAdditionalSpeed(RUNE_UNBURDEN_AMOUNT);

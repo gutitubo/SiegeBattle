@@ -1,7 +1,6 @@
 package Siege.Rune.Events;
 
 import org.bukkit.Material;
-import org.bukkit.Particle;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,7 +9,6 @@ import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionEffect;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import Siege.Rune.Runes;
 import Siege.SiegeCore.SiegeGame;
@@ -34,21 +32,21 @@ public class OnArrowShoot implements Listener {
 		SiegePlayer sp = game.getSiegePlayer(str);
 
 		/* === テスト用に実装 TODO 実装版からは消す === */
-		if (arw.isCritical()) arw.setGravity(false);
-		BukkitRunnable arwRun = new BukkitRunnable() {
-			int count = 0;
-			@Override
-			public void run() {
-				// TODO 自動生成されたメソッド・スタブ
-				arw.getWorld().spawnParticle(Particle.CRIT_MAGIC, arw.getLocation(), 1, 0, 0, 0);
-				count ++;
-				if (count > 200) {
-					arw.remove();
-					this.cancel();
-				}
-			}
-		};
-		arwRun.runTaskTimer(Siege.SiegeBattleMain.siegeBattleMain, 0, 1);
+//		if (arw.isCritical()) arw.setGravity(false);
+//		BukkitRunnable arwRun = new BukkitRunnable() {
+//			int count = 0;
+//			@Override
+//			public void run() {
+//				// TODO 自動生成されたメソッド・スタブ
+//				arw.getWorld().spawnParticle(Particle.CRIT_MAGIC, arw.getLocation(), 1, 0, 0, 0);
+//				count ++;
+//				if (count > 200) {
+//					arw.remove();
+//					this.cancel();
+//				}
+//			}
+//		};
+//		arwRun.runTaskTimer(Siege.SiegeBattleMain.siegeBattleMain, 0, 1);
 
 		/* === 屋をハナッタナオロアｋジョイラｊコ === */
 
