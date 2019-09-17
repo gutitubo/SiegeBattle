@@ -13,6 +13,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 
+import Siege.Rune.PreRunes;
 import Siege.Rune.RuneCategory;
 import Siege.Rune.RuneInventory;
 import Siege.Rune.Runes;
@@ -57,76 +58,135 @@ public class RuneInteractEvent implements Listener {
 		if (clicked == null) return; else material = clicked.getType();
 		if (!clicked.getEnchantments().isEmpty()) return;
 
+		RuneCategory cat = null;
 		if (flag == 1) {
 			if (material == Material.DIAMOND_SWORD) {
-				sp.setMainPath(RuneCategory.ATTACK);
+				cat = RuneCategory.ATTACK;
 			} else if (material == Material.BOOK) {
-				sp.setMainPath(RuneCategory.MAGIC);
+				cat = RuneCategory.MAGIC;
 			} else if (material == Material.FEATHER) {
-				sp.setMainPath(RuneCategory.SWIFT);
+				cat = RuneCategory.SWIFT;
 			} else if (material == Material.DIAMOND_PICKAXE) {
-				sp.setMainPath(RuneCategory.COLLECT);
+				cat = RuneCategory.COLLECT;
 			}
-			p.openInventory(RuneInventory.getRuneInventory(sp));
+			if (sp != null) {
+				sp.setMainPath(cat);
+				p.openInventory(RuneInventory.getRuneInventory(sp));
+			} else {
+				Siege.SiegeBattleMain.preSelect.get(p).setMain(cat);
+				p.openInventory(RuneInventory.getRuneInventory(p));
+			}
 			return;
 		} else if (flag == 2) {
 			if (material == Material.DIAMOND_SWORD) {
-				sp.setSubPath(RuneCategory.ATTACK);
+				cat = RuneCategory.ATTACK;
 			} else if (material == Material.BOOK) {
-				sp.setSubPath(RuneCategory.MAGIC);
+				cat = RuneCategory.MAGIC;
 			} else if (material == Material.FEATHER) {
-				sp.setSubPath(RuneCategory.SWIFT);
+				cat = RuneCategory.SWIFT;
 			} else if (material == Material.DIAMOND_PICKAXE) {
-				sp.setSubPath(RuneCategory.COLLECT);
+				cat = RuneCategory.COLLECT;
 			}
-			p.openInventory(RuneInventory.getRuneInventory(sp));
+			if (sp != null) {
+				sp.setSubPath(cat);
+				p.openInventory(RuneInventory.getRuneInventory(sp));
+			} else {
+				Siege.SiegeBattleMain.preSelect.get(p).setSub(cat);
+				p.openInventory(RuneInventory.getRuneInventory(p));
+			}
 			return;
 		}
 
 		if (clicked.getType().equals(Material.NETHER_STAR)) {
-			sp.clearRune();
-			p.openInventory(RuneInventory.getRuneInventory(sp));
+			if (sp != null) {
+				sp.clearRune();
+				p.openInventory(RuneInventory.getRuneInventory(sp));
+			} else {
+				Siege.SiegeBattleMain.preSelect.clear();
+				p.openInventory(RuneInventory.getRuneInventory(p));
+			}
 			p.playSound(p.getLocation(), Sound.BLOCK_GRASS_BREAK, 0.5F, 0.5F);
 			return;
 		}
-
-		Runes r = null;
-		Runes[] rs = sp.getCurrentRunes();
-		if (Runes.isRune(clicked)) {
-			r = Runes.getRune(clicked);
-		}
-
-		if (r.getTier() == 1) {
-			rs[0] = r;
-			p.openInventory(RuneInventory.getRuneInventory(sp));
-			p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 0.5F, 0.5F);
-			return;
-		} else if (r.getCategory() == sp.getMainPath()) {
-			/* メインパスだった場合 */
-			if (rs[1] == null) {
-				rs[1] = r;
-			} else if (rs[2] == null) {
-				rs[2] = r;
-			} else {
-				rs[1] = rs[2];
-				rs[2] = r;
+		if (sp != null) {
+			Runes r = null;
+			Runes[] rs = sp.getCurrentRunes();
+			if (Runes.isRune(clicked)) {
+				r = Runes.getRune(clicked);
 			}
-			p.openInventory(RuneInventory.getRuneInventory(sp));
-			p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 0.5F, 0.5F);
-			return;
-		} else if (r.getCategory() == sp.getSubPath()){
-			/* サブパスだった場合 */
-			if (rs[3] == null) {
-				rs[3] = r;
-			} else if (rs[4] == null) {
-				rs[4] = r;
-			} else {
-				rs[3] = rs[4];
-				rs[4] = r;
+
+			if (r.getTier() == 1) {
+				rs[0] = r;
+				p.openInventory(RuneInventory.getRuneInventory(sp));
+				p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 0.5F, 0.5F);
+				return;
+			} else if (r.getCategory() == sp.getMainPath()) {
+				/* メインパスだった場合 */
+				if (rs[1] == null) {
+					rs[1] = r;
+				} else if (rs[2] == null) {
+					rs[2] = r;
+				} else {
+					rs[1] = rs[2];
+					rs[2] = r;
+				}
+				p.openInventory(RuneInventory.getRuneInventory(sp));
+				p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 0.5F, 0.5F);
+				return;
+			} else if (r.getCategory() == sp.getSubPath()){
+				/* サブパスだった場合 */
+				if (rs[3] == null) {
+					rs[3] = r;
+				} else if (rs[4] == null) {
+					rs[4] = r;
+				} else {
+					rs[3] = rs[4];
+					rs[4] = r;
+				}
+				p.openInventory(RuneInventory.getRuneInventory(sp));
+				p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 0.5F, 0.5F);
+				return;
 			}
-			p.openInventory(RuneInventory.getRuneInventory(sp));
-			p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 0.5F, 0.5F);
-			return;
+		} else {
+			Runes r = null;
+			PreRunes pre = Siege.SiegeBattleMain.preSelect.get(p);
+			Runes[] rs = pre.getRunes();
+			if (Runes.isRune(clicked)) {
+				r = Runes.getRune(clicked);
+			}
+
+			if (r.getTier() == 1) {
+				rs[0] = r;
+				p.openInventory(RuneInventory.getRuneInventory(p));
+				p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 0.5F, 0.5F);
+				return;
+			} else if (r.getCategory() == pre.getMain()) {
+				/* メインパスだった場合 */
+				if (rs[1] == null) {
+					rs[1] = r;
+				} else if (rs[2] == null) {
+					rs[2] = r;
+				} else {
+					rs[1] = rs[2];
+					rs[2] = r;
+				}
+				p.openInventory(RuneInventory.getRuneInventory(p));
+				p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 0.5F, 0.5F);
+				return;
+			} else if (r.getCategory() == pre.getSub()){
+				/* サブパスだった場合 */
+				if (rs[3] == null) {
+					rs[3] = r;
+				} else if (rs[4] == null) {
+					rs[4] = r;
+				} else {
+					rs[3] = rs[4];
+					rs[4] = r;
+				}
+				p.openInventory(RuneInventory.getRuneInventory(p));
+				p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_BIT, 0.5F, 0.5F);
+				return;
+			}
 		}
 	}
 }

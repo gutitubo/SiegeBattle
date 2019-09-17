@@ -18,6 +18,7 @@ import org.bukkit.scoreboard.Team;
 
 import Siege.SiegeBattleMain;
 import Siege.Rune.RuneScheduler;
+import Siege.Rune.Runes;
 import Siege.SiegeException.IkaretaPhaseException;
 import Siege.SiegePlayer.SiegePlayer;
 import Siege.SiegeStage.SiegeStage;
@@ -64,6 +65,14 @@ public class SiegeGame {
 		Bukkit.broadcastMessage(ChatColor.GOLD + "ゲームが開始されました。");
 		Bukkit.broadcastMessage("");
 		Bukkit.broadcastMessage("");
+
+		for (SiegePlayer sp : getAllPlayer()) {
+			Runes[] cur = sp.getCurrentRunes();
+			Runes[] pre = Siege.SiegeBattleMain.preSelect.get(sp.getPlayer()).getRunes();
+			for (int i=0; i<5; i++) {
+				cur[i] = pre[i];
+			}
+		}
 
 		redTeam.giveTeamItem(Color.RED);
 		blueTeam.giveTeamItem(Color.BLUE);

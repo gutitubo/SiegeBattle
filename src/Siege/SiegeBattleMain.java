@@ -2,6 +2,7 @@ package Siege;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -22,6 +23,7 @@ import org.bukkit.scoreboard.Team.OptionStatus;
 import Siege.Enchant.Event.onClickedToEnchant;
 import Siege.Enchant.Event.onEnchant;
 import Siege.Recipe.GappleRecipe;
+import Siege.Rune.PreRunes;
 import Siege.Rune.Events.CancelHungry;
 import Siege.Rune.Events.DamageByArrowEvent;
 import Siege.Rune.Events.OnArrowShoot;
@@ -55,6 +57,7 @@ import Siege.SiegeEvent.SignInteractEvent;
 import Siege.SiegeEvent.SignPlaceEvent;
 import Siege.SiegeEvent.SignTeleport;
 import Siege.SiegeEvent.TeamChatEvent;
+import Siege.SiegeEvent.UseLobbyItem;
 import Siege.SiegeEvent.WoodBreakEvent;
 import Siege.SiegeEvent.checkingLocation;
 import Siege.SiegeException.IkaretaPhaseException;
@@ -66,6 +69,8 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 
 	private SiegeGame game;
 	public static SiegeBattleMain siegeBattleMain;
+
+	public static HashMap<Player, PreRunes> preSelect = new HashMap<>();
 
 	@Override
 	public void onEnable() {
@@ -241,6 +246,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 		pm.registerEvents(new CantMakeShieldEvent(), this);
 		pm.registerEvents(new CantAttackBeforeGameEvent(), this);
 		pm.registerEvents(new LateJoinAndLeave(), this);
+		pm.registerEvents(new UseLobbyItem(), this);
 	}
 
 	public void runeEventRegist(PluginManager pm) {
