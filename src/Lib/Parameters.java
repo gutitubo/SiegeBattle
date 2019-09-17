@@ -71,6 +71,8 @@ public class Parameters {
 	public static final int RUNE_CHEERER_LV3_AMP = 1; //応援団Lv3
 	public static final int RUNE_CHEERER_LV4_AMP = 1; //応援団Lv4
 	public static final int RUNE_CHEERER_LV5_AMP = 0; //応援団Lv5
+	public static final int RUNE_SNIPER_CD = 20 * 5; //狙撃手CD
+	public static final double RUNE_SNIPER_ENHANCED = 1.2; //強化狙撃手 弾速強化
 
 	public static final double RUNE_CAMO_RANGE = 24; //カモフラレンジ
 	public static final double RUNE_CAMO_RANGE_ENHANCED = 16; //カモフラレンジ

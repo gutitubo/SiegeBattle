@@ -41,25 +41,49 @@ public class OnArrowShoot implements Listener {
 		SiegePlayer sp = game.getSiegePlayer(str);
 
 		/* === テスト用に実装 TODO 実装版からは消す === */
-//		if (arw.isCritical()) arw.setGravity(false);
-//		BukkitRunnable arwRun = new BukkitRunnable() {
-//			int count = 0;
-//			@Override
-//			public void run() {
-//				// TODO 自動生成されたメソッド・スタブ
-//				arw.getWorld().spawnParticle(Particle.CRIT_MAGIC, arw.getLocation(), 1, 0, 0, 0);
-//				count ++;
-//				if (count > 200) {
-//					arw.remove();
-//					this.cancel();
-//				}
-//			}
-//		};
-//		arwRun.runTaskTimer(Siege.SiegeBattleMain.siegeBattleMain, 0, 1);
+		//		if (arw.isCritical()) arw.setGravity(false);
+		//		BukkitRunnable arwRun = new BukkitRunnable() {
+		//			int count = 0;
+		//			@Override
+		//			public void run() {
+		//				// TODO 自動生成されたメソッド・スタブ
+		//				arw.getWorld().spawnParticle(Particle.CRIT_MAGIC, arw.getLocation(), 1, 0, 0, 0);
+		//				count ++;
+		//				if (count > 200) {
+		//					arw.remove();
+		//					this.cancel();
+		//				}
+		//			}
+		//		};
+		//		arwRun.runTaskTimer(Siege.SiegeBattleMain.siegeBattleMain, 0, 1);
 
 		/* === 明鏡止水の処理 === */
 		if (sp.hasRune(Runes.COLLECT_ARROWSIGHT)) {
 			sp.getPlayer().setCooldown(Material.BOW, Parameters.RUNE_ARROWSIGHT_CD);
+		}
+
+		/* === 狙撃手の処理 === */
+		if (sp.hasRune(Runes.BATTLE_SNIPER)) {
+			if (arw.isCritical()) {
+				arw.setGravity(false);
+				if (sp.hasRune(Runes.MAGIC_KEYSTONE)) {
+					arw.setVelocity(arw.getVelocity().multiply(RUNE_SNIPER_ENHANCED));
+				}
+				sp.getPlayer().setCooldown(Material.BOW, Parameters.RUNE_SNIPER_CD);
+				BukkitRunnable runner = new BukkitRunnable() {
+					int count = 0;
+					@Override
+					public void run() {
+						count ++;
+						arw.getWorld().spawnParticle(Particle.END_ROD, arw.getLocation(), 1, 0, 0, 0, 0);
+						if (count > 20 * 20) {
+							arw.remove();
+							this.cancel();
+						}
+					}
+				};
+				runner.runTaskTimer(SiegeBattleMain.siegeBattleMain, 0, 1);
+			}
 		}
 
 		/* === 屋をハナッタナオロアｋジョイラｊコ === */

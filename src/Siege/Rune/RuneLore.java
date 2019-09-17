@@ -30,6 +30,11 @@ public class RuneLore {
 	public static final ArrayList<String> BATTLE_TOKKOYARO_LORE =
 			asList(C+"あなたは特攻するだけしか能がない",
 					C+"相手のコア付近で耐久力と移動速度が上昇する");
+	public static final ArrayList<String> BATTLE_SNIPER_LORE =
+			asList(C+"あなたの遠くからちまちま敵を攻撃する陰キャだ",
+					C+"あなたの放つ矢は長く飛ぶほどダメージが増していく",
+					C+"また、最大まで引き絞って放つ矢は重力の影響を受けない",
+					C+"ただし、矢を撃つたびに弓に5秒のクールタイムが付与される");
 
 	/* === 錬金系 Tier1 === */
 	public static final ArrayList<String> MAGIC_CORESHIELD_LORE =
