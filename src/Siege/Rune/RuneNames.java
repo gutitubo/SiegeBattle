@@ -29,7 +29,7 @@ public class RuneNames {
 	public static final String COLLECT_THIEF_NAME = "盗賊";
 	public static final String COLLECT_SCAVENGER_NAME = "スカベンジャー";
 	public static final String COLLECT_MINER_NAME = "炭鉱夫"; //DONE
-	public static final String COLELCT_ARROWSIGHT_NAME = ""; //TODO
+	public static final String COLLECT_ARROWSIGHT_NAME = "鳴鏡矢水";
 	public static final String COLLECT_CAREPACKAGE_NAME = "ケア・パッケージ";
 
 	/* === 戦闘系 Tier2 === */

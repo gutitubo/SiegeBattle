@@ -55,6 +55,37 @@ public class RuneScheduler extends BukkitRunnable{
 					p.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 5, RUNE_COREDIG_AMP));
 				}
 
+				/* === 応援団の処理 === */
+				int count = 0;
+				for (SiegePlayer tar : game.getAllPlayer()) {
+					int range = tar.hasRune(Runes.MAGIC_KEYSTONE) ? RUNE_CHEERER_RANGE_ENHANCED : RUNE_CHEERER_RANGE;
+					if (sp.getTeam().equals(tar.getTeam()) && tar.hasRune(Runes.BATTLE_CHEERER)
+							&& sp.getPlayer().getLocation().distance(tar.getPlayer().getLocation()) < range) {
+						count++;
+					}
+					if (sp.getDistanceWhileOwnCore() < RUNE_CHEERER_OWN_DIS && count > RUNE_CHEERER_OWN_LIM) count = RUNE_CHEERER_OWN_LIM;
+				}
+				if (sp.getDistanceWhileEnemyCore() < RUNE_CHEERER_ENE_DIS && count > 0) count ++;
+				if (sp.getPlayer().getHealth() < RUNE_CHEERER_HLT && count > 0) count ++;
+				//count は spの周りにいる応援団の数
+				if (count != 0) {
+					switch(count) {
+					case 1:
+						Lib.SiegeLib.giveEffect(p, new PotionEffect(PotionEffectType.REGENERATION, 20 * 5, RUNE_CHEERER_LV1_AMP));
+					case 2:
+						Lib.SiegeLib.giveEffect(p, new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20 * 5, RUNE_CHEERER_LV2_AMP));
+					case 3:
+						Lib.SiegeLib.giveEffect(p, new PotionEffect(PotionEffectType.REGENERATION, 20 * 5, RUNE_CHEERER_LV3_AMP));
+					case 4:
+						Lib.SiegeLib.giveEffect(p, new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20 * 5, RUNE_CHEERER_LV4_AMP));
+					case 5:
+						Lib.SiegeLib.giveEffect(p, new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 20 * 5, RUNE_CHEERER_LV5_AMP));
+						break;
+					default:
+						break;
+					}
+				}
+
 				/* === ホームガードの処理 === */
 				if (sp.hasRune(Runes.SWIFT_HOMEGUARD) && sp.getDistanceWhileOwnCore() <= RUNE_HOMEGUARD_DISTANCE) {
 					if (p.hasPotionEffect(PotionEffectType.SPEED)) {

@@ -1,15 +1,24 @@
 package Siege.Rune.Events;
+import static Lib.Parameters.*;
 
+import org.bukkit.Color;
 import org.bukkit.Material;
+import org.bukkit.Particle;
+import org.bukkit.entity.AbstractArrow.PickupStatus;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 
+import Lib.Parameters;
+import Siege.SiegeBattleMain;
 import Siege.Rune.Runes;
 import Siege.SiegeCore.SiegeGame;
 import Siege.SiegePlayer.SiegePlayer;
@@ -48,6 +57,11 @@ public class OnArrowShoot implements Listener {
 //		};
 //		arwRun.runTaskTimer(Siege.SiegeBattleMain.siegeBattleMain, 0, 1);
 
+		/* === 明鏡止水の処理 === */
+		if (sp.hasRune(Runes.COLLECT_ARROWSIGHT)) {
+			sp.getPlayer().setCooldown(Material.BOW, Parameters.RUNE_ARROWSIGHT_CD);
+		}
+
 		/* === 屋をハナッタナオロアｋジョイラｊコ === */
 
 		if (sp.hasRune(Runes.MAGIC_MAGICARROW)) {
@@ -60,6 +74,47 @@ public class OnArrowShoot implements Listener {
 				}
 				str.getInventory().setItemInOffHand(new ItemStack(Material.GLASS_BOTTLE));
 			}
+		}
+	}
+
+	@EventHandler
+	public void onHit(ProjectileHitEvent e) {
+		if (!(e.getEntity() instanceof Arrow)) return;
+		Arrow arw = (Arrow)e.getEntity();
+		if (!(arw.getShooter() instanceof Player)) return;
+		Player str = (Player) arw.getShooter();
+		SiegeGame game = Siege.SiegeBattleMain.siegeBattleMain.getGame();
+		if (game == null) return;
+		if (!game.isSiegePlayer(str)) return;
+		SiegePlayer sp = game.getSiegePlayer(str);
+
+		/* === 明鏡止水の処理 === */
+		if (sp.hasRune(Runes.COLLECT_ARROWSIGHT)) {
+			arw.setGlowing(true);
+			arw.setColor(Color.BLACK);
+			arw.setPickupStatus(PickupStatus.DISALLOWED);
+
+			BukkitRunnable runner = new BukkitRunnable() {
+				int count = 0;
+				double range = sp.hasRune(Runes.MAGIC_KEYSTONE) ? RUNE_ARROWSIGHT_RANGE : RUNE_ARROWSIGHT_RANGE_ENHANCED;
+				@Override
+				public void run() {
+					count ++;
+					for (SiegePlayer tg : game.getAllPlayer()) {
+						if (!tg.getTeam().equals(sp.getTeam())
+								&& tg.getPlayer().getLocation().distance(sp.getPlayer().getLocation()) < range) {
+							Lib.SiegeLib.giveEffect(tg.getPlayer(),
+									new PotionEffect(PotionEffectType.GLOWING, 20 * 2, 0));
+						}
+					}
+					if (count > 4) {
+						arw.getWorld().spawnParticle(Particle.SMOKE_NORMAL, arw.getLocation(), 5, 0.1, 0.1, 0.1, 1);
+						arw.remove();
+						this.cancel();
+					}
+				}
+			};
+			runner.runTaskTimer(SiegeBattleMain.siegeBattleMain, 0, 20);
 		}
 	}
 
