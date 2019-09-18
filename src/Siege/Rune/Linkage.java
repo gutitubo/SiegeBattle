@@ -100,7 +100,8 @@ public class Linkage {
 		lore.add(owner.getTeam().getColor() + "Owner: " + owner.getPlayer().getDisplayName());
 		lore.add(owner.getTeam().getColor() + "Distance: " + (int)(block.getLocation().distance(you)));
 		meta.setLore(lore);
-		return null;
+		item.setItemMeta(meta);
+		return item;
 	}
 
 	public static Linkage getLinkage(ItemStack item) {
