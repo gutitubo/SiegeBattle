@@ -133,7 +133,7 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 					Player p = ((Player) sender).getPlayer();
 					if (getGame() == null) return false;
 					if (!getGame().isSiegePlayer(p)) return false;
-					if (args[0] != null && sender.isOp()) {
+					if (args.length > 0 && sender.isOp()) {
 						Player tar = Bukkit.getPlayer(args[0]);
 						if (tar == null) {
 							sender.sendMessage(ChatColor.DARK_RED + "ID間違えてません？ｗ");

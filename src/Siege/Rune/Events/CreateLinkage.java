@@ -1,6 +1,7 @@
 package Siege.Rune.Events;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -33,13 +34,22 @@ public class CreateLinkage implements Listener {
 				b = e.getClickedBlock();
 			}
 			if (b == null) return;
+			if (b.getType().equals(Material.SPAWNER)) return;
 			Location l = p.getLocation();
 			l.add(0, -1, 0);
 			if (l.getBlock().equals(b)) {
-				CreateRun runner = new CreateRun(p);
-				runner.runTaskTimer(Siege.SiegeBattleMain.siegeBattleMain, 0, 20);
+				Location bl = new Location(l.getWorld(),
+						p.getLocation().getX(), p.getLocation().getY(),p.getLocation().getZ());
+				bl.add(0, -1, 0);
+				if (b != bl.getBlock()) {
+					cancelPlace(p);
+				}
 			}
 		}
+	}
+
+	public void cancelPlace(Player p) {
+		p.sendMessage(ChatColor.DARK_RED + "設置がキャンセルされました。");
 	}
 
 	public class CreateRun extends BukkitRunnable {
