@@ -41,7 +41,7 @@ public class CreateLinkage implements Listener {
 				Location bl = new Location(l.getWorld(),
 						p.getLocation().getX(), p.getLocation().getY(),p.getLocation().getZ());
 				bl.add(0, -1, 0);
-				if (b != bl.getBlock()) {
+				if (!b.getLocation().getBlock().equals(bl.getBlock())) {
 					cancelPlace(p);
 				}
 			}
