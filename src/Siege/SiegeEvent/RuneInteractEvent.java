@@ -102,7 +102,7 @@ public class RuneInteractEvent implements Listener {
 				sp.clearRune();
 				p.openInventory(RuneInventory.getRuneInventory(sp));
 			} else {
-				Siege.SiegeBattleMain.preSelect.clear();
+				Siege.SiegeBattleMain.preSelect.get(p).clear();
 				p.openInventory(RuneInventory.getRuneInventory(p));
 			}
 			p.playSound(p.getLocation(), Sound.BLOCK_GRASS_BREAK, 0.5F, 0.5F);
