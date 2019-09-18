@@ -12,12 +12,15 @@ public class DestroyLinkage implements Listener {
 	@EventHandler
 	public void onBroke(BlockBreakEvent e) {
 		Block b = e.getBlock();
-
-		for (Linkage l : Linkage.getList()) {
-			if (l.getBlock().equals(b)) {
-				e.setCancelled(true);
-				l.remove();
+		try {
+			for (Linkage l : Linkage.getList()) {
+				if (l.getBlock().equals(b)) {
+					e.setCancelled(true);
+					l.remove();
+				}
 			}
+		} catch (Exception ex){
+
 		}
 	}
 
