@@ -69,9 +69,12 @@ public class SiegeGame {
 		for (SiegePlayer sp : getAllPlayer()) {
 			Runes[] cur = sp.getCurrentRunes();
 			Runes[] pre = Siege.SiegeBattleMain.preSelect.get(sp.getPlayer()).getRunes();
+			sp.setMainPath(Siege.SiegeBattleMain.preSelect.get(sp.getPlayer()).getMain());
+			sp.setSubPath(Siege.SiegeBattleMain.preSelect.get(sp.getPlayer()).getSub());
 			for (int i=0; i<5; i++) {
 				cur[i] = pre[i];
 			}
+			sp.runeStatusReflect();
 		}
 
 		redTeam.giveTeamItem(Color.RED);
