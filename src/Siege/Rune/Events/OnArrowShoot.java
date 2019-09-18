@@ -67,7 +67,9 @@ public class OnArrowShoot implements Listener {
 			if (arw.isCritical()) {
 				arw.setGravity(false);
 				if (sp.hasRune(Runes.MAGIC_KEYSTONE)) {
-					arw.setVelocity(arw.getVelocity().multiply(RUNE_SNIPER_ENHANCED));
+					arw.setVelocity(arw.getVelocity().multiply(RUNE_SNIPER_SPI_ENHANCED));
+				} else {
+					arw.setVelocity(arw.getVelocity().multiply(RUNE_SNIPER_SPI));
 				}
 				sp.getPlayer().setCooldown(Material.BOW, Parameters.RUNE_SNIPER_CD);
 				BukkitRunnable runner = new BukkitRunnable() {
@@ -126,7 +128,7 @@ public class OnArrowShoot implements Listener {
 					count ++;
 					for (SiegePlayer tg : game.getAllPlayer()) {
 						if (!tg.getTeam().equals(sp.getTeam())
-								&& tg.getPlayer().getLocation().distance(sp.getPlayer().getLocation()) < range) {
+								&& tg.getPlayer().getLocation().distance(arw.getLocation()) < range) {
 							Lib.SiegeLib.giveEffect(tg.getPlayer(),
 									new PotionEffect(PotionEffectType.GLOWING, 20 * 2, 0));
 						}
