@@ -15,6 +15,7 @@ public class DestroyLinkage implements Listener {
 
 		for (Linkage l : Linkage.getList()) {
 			if (l.getBlock().equals(b)) {
+				e.setCancelled(true);
 				l.remove();
 			}
 		}

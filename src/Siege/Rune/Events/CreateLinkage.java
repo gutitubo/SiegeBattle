@@ -44,6 +44,9 @@ public class CreateLinkage implements Listener {
 				if (!b.getLocation().getBlock().equals(bl.getBlock())) {
 					cancelPlace(p);
 				}
+				for (Linkage link : Linkage.getList()) {
+					if(link.getOwner().equals(sp)) return;
+				}
 				if (Siege.SiegeEvent.BreakCancelEvent.isDaijoubu(b)) {
 					Linkage.place(new Linkage(game.getSiegePlayer(p), b, b.getType()));
 				} else {
