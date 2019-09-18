@@ -20,11 +20,7 @@ public class ToggleFlight implements Listener {
 	public void toggleFlight (PlayerToggleFlightEvent e) {
 		Player p = e.getPlayer();
 		if (p.getGameMode().equals(GameMode.CREATIVE) || p.getGameMode().equals(GameMode.SPECTATOR)) {
-			if (e.isFlying()) {
-				p.setFlying(false);
-			} else {
-				p.setFlying(true);
-			}
+			e.setCancelled(false);
 			return;
 		}
 		SiegeGame game = Siege.SiegeBattleMain.siegeBattleMain.getGame();
