@@ -95,8 +95,11 @@ public class RuneScheduler extends BukkitRunnable{
 				}
 
 				/* === 共鳴消す処理 === */
-				for (Linkage l : Linkage.getList()) {
-					if(l.getOwner().equals(sp) && !sp.hasRune(Runes.MAGIC_LINKAGE)) l.remove();
+				try {
+					for (Linkage l : Linkage.getList()) {
+						if(l.getOwner().equals(sp) && !sp.hasRune(Runes.MAGIC_LINKAGE)) l.remove();
+					}
+				} catch (Exception e) {
 				}
 
 				/* === かるわざの処理 === */

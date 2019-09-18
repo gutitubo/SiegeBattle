@@ -42,7 +42,7 @@ public class OnDeathEvent implements Listener {
 		}
 
 		for (Linkage l : Linkage.getList()) {
-			if(l.getOwner().equals(sp)) l.remove();
+			if(l.getOwner().getPlayer().equals(sp.getPlayer())) l.remove();
 		}
 	}
 
