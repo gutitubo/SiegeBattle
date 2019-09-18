@@ -59,8 +59,9 @@ public class DamageByArrowEvent implements Listener {
 		/* === 狙撃手 === */
 		if (s_str.hasRune(Runes.BATTLE_SNIPER)) {
 			double distance = s_vim.getPlayer().getLocation().distance(s_str.getPlayer().getLocation());
-			double adDmg = -5;
-			adDmg += distance / 10;
+			double adDmg = -10;
+			adDmg += distance / 5;
+			if (adDmg > 0) s_str.getPlayer().sendMessage("[Sniper] " + distance + "m HIT! (+" + adDmg + "dmg.)");
 			if (distance > 100) {
 				adDmg *= 2;
 				Bukkit.broadcastMessage(s_str.getTeam().getColor() +
