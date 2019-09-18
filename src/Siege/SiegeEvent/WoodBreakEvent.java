@@ -1,5 +1,7 @@
 package Siege.SiegeEvent;
 
+import java.util.Random;
+
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -32,13 +34,25 @@ public class WoodBreakEvent implements Listener {
 			return;
 		}
 
+		if (isLeaves(b)) {
+			//葉っぱの処理
+			if (p.getInventory().getItemInMainHand().getType().equals(Material.SHEARS)) return;
+			e.setCancelled(true);
+			b.setType(Material.AIR);
+			b.getWorld().playSound(b.getLocation(), Sound.BLOCK_GRASS_BREAK, 0.5F, 1F);
+			double rnd = new Random().nextDouble() * 100;
+			if (rnd <= Parameters.APPLE_DROP_CHANCE) {
+				b.getWorld().dropItem(b.getLocation(), new ItemStack(Material.APPLE));
+			}
+		}
+
 		if (isWood(b)) {
 			//復活処理
 			int amount = 1;
 			Material mat = b.getType();
-			
+
 			SiegePlayer sp = null;
-			if (game.isSiegePlayer(p)) sp = game.getSiegePlayer(p); 
+			if (game.isSiegePlayer(p)) sp = game.getSiegePlayer(p);
 			if (sp.hasRune(Runes.COLLECT_LUMBERJACK)) amount += Parameters.RUNE_LUMBERJACK_AMOUNT;
 
 			p.getInventory().addItem(new ItemStack(mat, amount));
@@ -71,6 +85,18 @@ public class WoodBreakEvent implements Listener {
 		if (mat.equals(Material.STRIPPED_JUNGLE_LOG)) { bool = true; }
 		if (mat.equals(Material.STRIPPED_OAK_LOG)) { bool = true; }
 		if (mat.equals(Material.STRIPPED_SPRUCE_LOG)) { bool = true; }
+		return bool;
+	}
+
+	public boolean isLeaves(Block b) {
+		boolean bool = false;
+		Material mat = b.getType();
+		if (mat.equals(Material.ACACIA_LEAVES)) bool = true;
+		if (mat.equals(Material.BIRCH_LEAVES)) bool = true;
+		if (mat.equals(Material.DARK_OAK_LEAVES)) bool = true;
+		if (mat.equals(Material.JUNGLE_LEAVES)) bool = true;
+		if (mat.equals(Material.OAK_LEAVES)) bool = true;
+		if (mat.equals(Material.SPRUCE_LEAVES)) bool = true;
 		return bool;
 	}
 

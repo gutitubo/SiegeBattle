@@ -43,7 +43,8 @@ public class OnClickedEvent implements Listener{
 		if (clicked.getType().equals(Material.NETHER_STAR)) return;
 
 		if (Runes.isRune(clicked)) {
-			sp.runeStatusReflect();
+			if (sp != null)
+				sp.runeStatusReflect();
 		} else {
 			return;
 		}

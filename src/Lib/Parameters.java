@@ -5,6 +5,12 @@ public class Parameters {
 
 	}
 	/*
+	 * 基本的なゲームの値
+	 */
+	public static final double APPLE_DROP_CHANCE = 0.5; //リンゴのドロップ率 % 
+	
+	
+	/*
 	 * 鉱石の経験値
 	 */
 	public static final int COAL_EXP = 3;

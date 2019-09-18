@@ -18,6 +18,7 @@ import org.bukkit.scoreboard.Team;
 
 import Siege.SiegeBattleMain;
 import Siege.Rune.RuneScheduler;
+import Siege.Rune.Runes;
 import Siege.SiegeException.IkaretaPhaseException;
 import Siege.SiegePlayer.SiegePlayer;
 import Siege.SiegeStage.SiegeStage;
@@ -39,7 +40,7 @@ public class SiegeGame {
 	private int phase = 0;
 
 	private final int INVINCIBLE_TIME = 60 * 6; //default = 60 * 6
-	private final int READY_TIME = 30; //default = 30
+	private final int READY_TIME = 10; //default = 30
 
 	private HashMap<Player, SiegeTeam> leaver;
 
@@ -64,6 +65,17 @@ public class SiegeGame {
 		Bukkit.broadcastMessage(ChatColor.GOLD + "ゲームが開始されました。");
 		Bukkit.broadcastMessage("");
 		Bukkit.broadcastMessage("");
+
+		for (SiegePlayer sp : getAllPlayer()) {
+			Runes[] cur = sp.getCurrentRunes();
+			Runes[] pre = Siege.SiegeBattleMain.preSelect.get(sp.getPlayer()).getRunes();
+			sp.setMainPath(Siege.SiegeBattleMain.preSelect.get(sp.getPlayer()).getMain());
+			sp.setSubPath(Siege.SiegeBattleMain.preSelect.get(sp.getPlayer()).getSub());
+			for (int i=0; i<5; i++) {
+				cur[i] = pre[i];
+			}
+			sp.runeStatusReflect();
+		}
 
 		redTeam.giveTeamItem(Color.RED);
 		blueTeam.giveTeamItem(Color.BLUE);
