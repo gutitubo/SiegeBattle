@@ -86,12 +86,12 @@ public class Linkage {
 	public ItemStack toItemStack(Location you) {
 		// TODO 自動生成されたメソッド・スタブ
 		Material mat = Material.RED_STAINED_GLASS;
-		if (you.distance(block.getLocation()) < 200) mat = Material.CYAN_STAINED_GLASS;
-		if (you.distance(block.getLocation()) < 300) mat = Material.GREEN_STAINED_GLASS;
-		if (you.distance(block.getLocation()) < 400) mat = Material.LIME_STAINED_GLASS;
-		if (you.distance(block.getLocation()) < 500) mat = Material.YELLOW_STAINED_GLASS;
-		if (you.distance(block.getLocation()) < 600) mat = Material.ORANGE_STAINED_GLASS;
-		if (you.distance(block.getLocation()) < 700) mat = Material.RED_STAINED_GLASS;
+		if ((int)(block.getLocation().distance(you)) < 300) mat = Material.RED_STAINED_GLASS;
+		if ((int)(block.getLocation().distance(you)) < 200) mat = Material.ORANGE_STAINED_GLASS;
+		if ((int)(block.getLocation().distance(you)) < 100) mat = Material.YELLOW_STAINED_GLASS;
+		if ((int)(block.getLocation().distance(you)) < 75) mat = Material.LIME_STAINED_GLASS;
+		if ((int)(block.getLocation().distance(you)) < 50) mat = Material.GREEN_STAINED_GLASS;
+		if ((int)(block.getLocation().distance(you)) < 10) mat = Material.CYAN_STAINED_GLASS;
 
 		ItemStack item = new ItemStack(mat);
 		ItemMeta meta = item.getItemMeta();
@@ -136,7 +136,7 @@ public class Linkage {
 			if (p.hasPotionEffect(pot)) {
 				p.removePotionEffect(pot);
 			}
-			p.addPotionEffect(new PotionEffect(pot, (int) (20 * (distance/10)), 0, false, false), false);
+			p.addPotionEffect(new PotionEffect(pot, (int) (20 * (distance/3)), 2, false, false), false);
 		}
 	}
 }
