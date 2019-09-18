@@ -131,14 +131,14 @@ public class OnArrowShoot implements Listener {
 									new PotionEffect(PotionEffectType.GLOWING, 20 * 2, 0));
 						}
 					}
-					if (count > 4) {
+					if (count > 25) {
 						arw.getWorld().spawnParticle(Particle.SMOKE_NORMAL, arw.getLocation(), 5, 0.1, 0.1, 0.1, 1);
 						arw.remove();
 						this.cancel();
 					}
 				}
 			};
-			runner.runTaskTimer(SiegeBattleMain.siegeBattleMain, 0, 20);
+			runner.runTaskTimer(SiegeBattleMain.siegeBattleMain, 0, 4);
 		}
 	}
 

@@ -36,7 +36,8 @@ public class CreateLinkage implements Listener {
 			Location l = p.getLocation();
 			l.add(0, -1, 0);
 			if (l.getBlock().equals(b)) {
-				new CreateRun(p).run();
+				CreateRun runner = new CreateRun(p);
+				runner.runTaskTimer(Siege.SiegeBattleMain.siegeBattleMain, 0, 20);
 			}
 		}
 	}

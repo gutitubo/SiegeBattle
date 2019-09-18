@@ -70,16 +70,16 @@ public class RuneScheduler extends BukkitRunnable{
 				//count は spの周りにいる応援団の数
 				if (count != 0) {
 					switch(count) {
-					case 1:
-						Lib.SiegeLib.giveEffect(p, new PotionEffect(PotionEffectType.REGENERATION, 20 * 5, RUNE_CHEERER_LV1_AMP));
-					case 2:
-						Lib.SiegeLib.giveEffect(p, new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20 * 5, RUNE_CHEERER_LV2_AMP));
-					case 3:
-						Lib.SiegeLib.giveEffect(p, new PotionEffect(PotionEffectType.REGENERATION, 20 * 5, RUNE_CHEERER_LV3_AMP));
-					case 4:
-						Lib.SiegeLib.giveEffect(p, new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20 * 5, RUNE_CHEERER_LV4_AMP));
 					case 5:
 						Lib.SiegeLib.giveEffect(p, new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 20 * 5, RUNE_CHEERER_LV5_AMP));
+					case 4:
+						Lib.SiegeLib.giveEffect(p, new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20 * 5, RUNE_CHEERER_LV4_AMP));
+					case 3:
+						Lib.SiegeLib.giveEffect(p, new PotionEffect(PotionEffectType.REGENERATION, 20 * 5, RUNE_CHEERER_LV3_AMP));
+					case 2:
+						Lib.SiegeLib.giveEffect(p, new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20 * 5, RUNE_CHEERER_LV2_AMP));
+					case 1:
+						Lib.SiegeLib.giveEffect(p, new PotionEffect(PotionEffectType.REGENERATION, 20 * 5, RUNE_CHEERER_LV1_AMP));
 						break;
 					default:
 						break;
