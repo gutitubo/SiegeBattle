@@ -44,6 +44,11 @@ public class CreateLinkage implements Listener {
 				if (!b.getLocation().getBlock().equals(bl.getBlock())) {
 					cancelPlace(p);
 				}
+				if (Siege.SiegeEvent.BreakCancelEvent.isDaijoubu(b)) {
+					Linkage.place(new Linkage(game.getSiegePlayer(p), b, b.getType()));
+				} else {
+					p.sendMessage(ChatColor.RED + "そこはやばい");
+				}
 			}
 		}
 	}
