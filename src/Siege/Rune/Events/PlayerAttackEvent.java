@@ -95,8 +95,8 @@ public class PlayerAttackEvent implements Listener {
 		if (vic.hasRune(Runes.MAGIC_EXPARMOR)) { //経験値アーマー
 			int level = v.getLevel();
 			double guard = (level / 10) * 0.1;
-			if (guard > 0.5) {
-				guard = 0.5;
+			if (guard > 0.3) {
+				guard = 0.3;
 			}
 			e.setDamage(e.getDamage() - (e.getDamage() * guard));
 		}
