@@ -128,7 +128,6 @@ public class Linkage {
 	public void giveDebuff(Player p, double distance) {
 		distance = distance > 600 ? 600 : distance;
 		PotionEffectType[] type = new PotionEffectType[] {
-				PotionEffectType.SLOW,
 				PotionEffectType.SLOW_DIGGING,
 				PotionEffectType.WEAKNESS};
 
@@ -136,7 +135,7 @@ public class Linkage {
 			if (p.hasPotionEffect(pot)) {
 				p.removePotionEffect(pot);
 			}
-			p.addPotionEffect(new PotionEffect(pot, (int) (20 * (distance/3)), 2, false, false), false);
+			p.addPotionEffect(new PotionEffect(pot, (int) (20 * (distance/5)), 1, false, false), false);
 		}
 	}
 }
