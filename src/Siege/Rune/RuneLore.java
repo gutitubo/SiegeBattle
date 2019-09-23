@@ -111,7 +111,8 @@ public class RuneLore {
 			asList(C+"自陣のコア付近にいる相手へのダメージが増加する");
 	public static final ArrayList<String> BATTLE_2_COREDIGSPEED_LORE =
 			asList(C+"相手のコア付近にいるとき、採掘速度が上昇する");
-
+	public static final ArrayList<String> BATTLE_2_NEBANEBA_LORE =
+			asList(C+"相手のコア付近にいるとき、採掘速度が上昇する");
 	/* === 錬金系 Tier2 === */
 	public static final ArrayList<String> MAGIC_2_ENCHANT_LORE =
 			asList(C+"エンチャントの効果が上昇する");
