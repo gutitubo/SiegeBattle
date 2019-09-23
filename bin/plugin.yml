@@ -29,5 +29,11 @@ commands:
       description: player info.
       usage: /info
       aliases: info
+      permission: SiegeBattle.info
       permission-message: Banana.
-      default: true
+   memory:
+      description: memory info.
+      usage: /memory
+      aliases: memory
+      permission: SiegeBattle.info
+      permission-message: Banana.

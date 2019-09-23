@@ -155,6 +155,14 @@ public class SiegeBattleMain extends JavaPlugin implements Listener {
 			}
 			return false;
 		}
+		if(cmd.getName().equalsIgnoreCase("memory")) {
+			sender.sendMessage("---- ♡めもりいんふぉ♡ ----");
+			sender.sendMessage("まっくすめもり♡: " + Runtime.getRuntime().totalMemory());
+			sender.sendMessage("ふりーめもり♡: " + Runtime.getRuntime().freeMemory());
+			sender.sendMessage("しようりつ♡: " + (Runtime.getRuntime().freeMemory()/Runtime.getRuntime().totalMemory()) + "%");
+			sender.sendMessage("-----------------------");
+			return true;
+		}
 		if(cmd.getName().equalsIgnoreCase("start")){
 			//チームつくんないといけない
 			ScoreboardManager sbm = Bukkit.getScoreboardManager();
