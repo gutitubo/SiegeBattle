@@ -11,8 +11,8 @@ import org.bukkit.potion.PotionType;
 public enum Rare {
 	GOLD(Material.GOLD_INGOT, 4, null, false),
 	IRON(Material.IRON_INGOT, 4, null, false),
-	HEALPOT(Material.POTION, 2, PotionType.INSTANT_HEAL, true),
-	HEALPOT_THROW(Material.SPLASH_POTION, 2, PotionType.INSTANT_HEAL, true),
+	HEALPOT(Material.POTION, 1, PotionType.INSTANT_HEAL, true),
+	HEALPOT_THROW(Material.SPLASH_POTION, 1, PotionType.INSTANT_HEAL, true),
 	;
 
 	private Material mat;
