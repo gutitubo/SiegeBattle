@@ -42,6 +42,7 @@ public class RuneNames {
 	public static final String BATTLE_2_ANTIATTACKER_NAME = "防衛力強化"; //DONE
 	public static final String BATTLE_2_COREDIGSPEED_NAME = "コア採掘強化";
 	public static final String BATTLE_2_NEBANEBA_NAME = "粘着攻撃";
+	public static final String BATTLE_2_PICAPICA_NAME = "発光攻撃";
 
 	/* === 錬金系 Tier2 === */
 	public static final String MAGIC_2_ENCHANT_NAME = "エンチャント強化";

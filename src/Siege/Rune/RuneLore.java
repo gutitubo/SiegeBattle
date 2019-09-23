@@ -2,6 +2,7 @@ package Siege.Rune;
 
 import java.util.ArrayList;
 
+import Lib.Parameters;
 import net.md_5.bungee.api.ChatColor;
 
 public class RuneLore {
@@ -112,7 +113,11 @@ public class RuneLore {
 	public static final ArrayList<String> BATTLE_2_COREDIGSPEED_LORE =
 			asList(C+"相手のコア付近にいるとき、採掘速度が上昇する");
 	public static final ArrayList<String> BATTLE_2_NEBANEBA_LORE =
-			asList(C+"相手のコア付近にいるとき、採掘速度が上昇する");
+			asList(C+"相手を攻撃したとき、相手に鈍足と採掘低下を与える",
+					C+"CD:" + Parameters.RUNE_NEBANEBA_CD + "秒");
+	public static final ArrayList<String> BATTLE_2_PICAPICA_LORE =
+			asList(C+"相手を攻撃したとき、その相手を発光させる");
+
 	/* === 錬金系 Tier2 === */
 	public static final ArrayList<String> MAGIC_2_ENCHANT_LORE =
 			asList(C+"エンチャントの効果が上昇する");

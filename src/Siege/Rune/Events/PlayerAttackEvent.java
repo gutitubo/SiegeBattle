@@ -80,16 +80,24 @@ public class PlayerAttackEvent implements Listener {
 		if (sp.hasRune(Runes.BATTLE_ANTIDEFENDER)) { //対防衛特攻の場合
 			try {
 				if(vic.getDistanceWhileOwnCore() <= 10)
-				e.setDamage(e.getDamage() + Parameters.RUNE_ANTIDEFENDER_VALUE);
+					e.setDamage(e.getDamage() + Parameters.RUNE_ANTIDEFENDER_VALUE);
 			} catch (IkaretaPhaseException e1) {
 			};
 		}
 		if (sp.hasRune(Runes.BATTLE_ANTIATTACKER)) { //対攻撃特攻の場合
 			try {
 				if(vic.getDistanceWhileEnemyCore() <= 10)
-				e.setDamage(e.getDamage() + Parameters.RUNE_ANTIATTACKER_VALUE);
+					e.setDamage(e.getDamage() + Parameters.RUNE_ANTIATTACKER_VALUE);
 			} catch (IkaretaPhaseException e1) {
 			};
+		}
+		if (sp.hasRune(Runes.BATTLE_NEBANEBA) && !sp.getPlayer().hasCooldown(Material.ICE)) { //粘着攻撃の場合
+			sp.getPlayer().setCooldown(Material.ICE, 20 * Parameters.RUNE_NEBANEBA_CD);
+			Lib.SiegeLib.giveEffect(v, new PotionEffect(PotionEffectType.SLOW, 20 * 3, 0));
+			Lib.SiegeLib.giveEffect(v, new PotionEffect(PotionEffectType.SLOW_DIGGING, 20 * 5, 0));
+		}
+		if (sp.hasRune(Runes.BATTLE_PICAPICA)) { //発光攻撃の場合
+			Lib.SiegeLib.giveEffect(v, new PotionEffect(PotionEffectType.GLOWING, 20 * 1, 0));
 		}
 
 		if (vic.hasRune(Runes.MAGIC_EXPARMOR)) { //経験値アーマー
@@ -103,7 +111,7 @@ public class PlayerAttackEvent implements Listener {
 
 		if (vic.hasRune(Runes.MAGIC_SAFETY) || sp.hasRune(Runes.MAGIC_SAFETY)) {
 			if (game.getPhase() < 3)
-			e.setDamage(e.getDamage() * Parameters.RUNE_SAFETY_MULTI);
+				e.setDamage(e.getDamage() * Parameters.RUNE_SAFETY_MULTI);
 		}
 	}
 

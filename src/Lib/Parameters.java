@@ -7,9 +7,9 @@ public class Parameters {
 	/*
 	 * 基本的なゲームの値
 	 */
-	public static final double APPLE_DROP_CHANCE = 0.5; //リンゴのドロップ率 % 
-	
-	
+	public static final double APPLE_DROP_CHANCE = 0.5; //リンゴのドロップ率 %
+
+
 	/*
 	 * 鉱石の経験値
 	 */
@@ -91,7 +91,7 @@ public class Parameters {
 	public static final int RUNE_WINDY_AMP = 0; //追い風効果
 	public static final double RUNE_DOUBLEJUMP_POW = 0.8; //ダブルジャンプ跳躍力
 	public static final double RUNE_DOUBLEJUMP_POW_ENHANCED = 1.2; //強化ダブルジャンプ跳躍力
-	public static final double RUNE_DOUBLEJUMP_MUL = 2.5; //ダブルジャンプ速度上昇
+	public static final double RUNE_DOUBLEJUMP_MUL = 7; //ダブルジャンプ速度上昇
 	public static final int RUNE_DOUBLEJUMP_COST = 12;
 
 	public static final double RUNE_EXPUP_MULTIPLY = 1.3; //魔法使い
@@ -115,6 +115,7 @@ public class Parameters {
 	public static final int RUNE_REGENERATION_AMP = 0; //自動回復の効果
 	public static final double RUNE_COREDIG_DISTANCE = 16; //コア採掘発動距離
 	public static final int RUNE_COREDIG_AMP = 0; //コア採掘 強さ
+	public static final int RUNE_NEBANEBA_CD = 30; //粘着攻撃クールタイム
 
 	public static final double RUNE_POTDUR_MULTIPLY = 1.2; //ポーションの延長の上昇率
 	public static final double RUNE_EXPUP2_MULTIPLY = 1.2; //経験値アップの上昇率
