@@ -1,6 +1,6 @@
 name: SiegeBattle
 main: Siege.SiegeBattleMain
-version: Beta-1.5.3
+version: Beta-1.6.0
 api-version: 1.14
 commands:
    sb:
@@ -29,8 +29,8 @@ commands:
       description: player info.
       usage: /info
       aliases: info
-      permission: SiegeBattle.info
       permission-message: Banana.
+      default: true
    memory:
       description: memory info.
       usage: /memory
