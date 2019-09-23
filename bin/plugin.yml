@@ -31,3 +31,9 @@ commands:
       aliases: info
       permission: SiegeBattle.info
       permission-message: Banana.
+   memory:
+      description: memory info.
+      usage: /memory
+      aliases: memory
+      permission: SiegeBattle.info
+      permission-message: Banana.
